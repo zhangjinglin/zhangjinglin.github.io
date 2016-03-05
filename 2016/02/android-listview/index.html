@@ -1,0 +1,718 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="原文：Android Swipe Down to Refresh ListView Tutorial
+大量的Android程序都提供了下拉刷新的功能。以前我们可以使用自定义的来完成功能，现在Google已经在android.support.v4中提供了这个功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 使用ListView的下拉刷新">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/02/android-listview/index.html">
+<meta property="og:site_name" content="张景林的博客">
+<meta property="og:description" content="原文：Android Swipe Down to Refresh ListView Tutorial
+大量的Android程序都提供了下拉刷新的功能。以前我们可以使用自定义的来完成功能，现在Google已经在android.support.v4中提供了这个功能。">
+<meta property="og:updated_time" content="2016-03-05T09:11:39.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 使用ListView的下拉刷新">
+<meta name="twitter:description" content="原文：Android Swipe Down to Refresh ListView Tutorial
+大量的Android程序都提供了下拉刷新的功能。以前我们可以使用自定义的来完成功能，现在Google已经在android.support.v4中提供了这个功能。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android 使用ListView的下拉刷新 | 张景林的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/zjl.jpg"
+             alt="张景林的博客"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张景林的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">关于技术，关于人生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 使用ListView的下拉刷新
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-09T13:36:33+00:00" content="2016-02-09">
+              2016-02-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文：<a href="http://www.androidhive.info/2015/05/android-swipe-down-to-refresh-listview-tutorial/" target="_blank" rel="external">Android Swipe Down to Refresh ListView Tutorial</a></p>
+<p>大量的Android程序都提供了下拉刷新的功能。以前我们可以使用自定义的来完成功能，现在Google已经在android.support.v4中提供了这个功能。</p>
+<a id="more"></a>
+<h2 id="1-Android-SwipeRefreshLayout"><a href="#1-Android-SwipeRefreshLayout" class="headerlink" title="1 Android SwipeRefreshLayout"></a>1 Android SwipeRefreshLayout</h2><p>下拉刷新组件非常容易使用，在需要下拉刷新的view之外包裹SwipeRefreshLayout即可。我们使用ListView。当用户向下滑动view的时候就会触发onRefresh()方法，我们需要在这个方法里面实现我们的获取最新数据的逻辑。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.v4.widget.SwipeRefreshLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/swipe_refresh_layout"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">&lt;!-- place your view here --&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.v4.widget.SwipeRefreshLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-案例-JSON"><a href="#2-案例-JSON" class="headerlink" title="2 案例 JSON"></a>2 案例 JSON</h2><p>这个案例显示IMDB top 250的数据。每次请求给出20个结果，需要传送<code>offset</code>参数，初始为0。</p>
+<p>url： <a href="http://api.androidhive.info/json/imdb_top_250.php?offset=0" target="_blank" rel="external">http://api.androidhive.info/json/imdb_top_250.php?offset=0</a></p>
+<h2 id="3-建立Android项目"><a href="#3-建立Android项目" class="headerlink" title="3 建立Android项目"></a>3 建立Android项目</h2><ul>
+<li>建立项目，选择<code>Blank Activity</code></li>
+<li>打开<code>app</code>文件夹下面的<code>build.gradle</code>，添加<code>volley</code>库依赖，我们使用volley来获取JSON。</li>
+</ul>
+<p>build.gradle</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span><br><span class="line">    compile 'com.android.support:appcompat-v7:22.1.0'</span><br><span class="line">    compile 'com.mcxiaoke.volley:library-aar:1.0.0'</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>res =&gt; values</code>下面的<code>colors.xml</code>中添加颜色资源。这个颜色用于设置ListView的背景颜色和影片的排名颜色。</li>
+</ul>
+<p>colors.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string-array</span> <span class="attr">name</span>=<span class="string">"movie_serial_bg"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#24c6d5<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#57dd86<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#ad7dcf<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#ff484d<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#fcba59<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>#24c6d5<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">string-array</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在项目包下新建三个包，<code>app, activity, helper</code></li>
+<li>在 <code>app</code>包下建立 <code>MyApplication.java</code>，这是单实例的应用，初始化volley核心对象。</li>
+</ul>
+<p>MyApplication.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> info.androidhive.swiperefresh.app;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> android.app.Application;</span><br><span class="line"><span class="keyword">import</span> android.text.TextUtils;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> com.android.volley.Request;</span><br><span class="line"><span class="keyword">import</span> com.android.volley.RequestQueue;</span><br><span class="line"><span class="keyword">import</span> com.android.volley.toolbox.Volley;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by Ravi on 13/05/15.</span><br><span class="line"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = MyApplication.class</span><br><span class="line">            .getSimpleName();</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> RequestQueue mRequestQueue;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MyApplication mInstance;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        mInstance = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> MyApplication <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mInstance;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> RequestQueue <span class="title">getRequestQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mRequestQueue == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mRequestQueue = Volley.newRequestQueue(getApplicationContext());</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> mRequestQueue;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">addToRequestQueue</span><span class="params">(Request&lt;T&gt; req, String tag)</span> </span>&#123;</span><br><span class="line">        req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);</span><br><span class="line">        getRequestQueue().add(req);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">addToRequestQueue</span><span class="params">(Request&lt;T&gt; req)</span> </span>&#123;</span><br><span class="line">        req.setTag(TAG);</span><br><span class="line">        getRequestQueue().add(req);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancelPendingRequests</span><span class="params">(Object tag)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mRequestQueue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mRequestQueue.cancelAll(tag);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>AndroidManifest.xml</code>中添加<code>MyApplication.java</code>类到<code>&lt;application&gt;</code>标记。当然还需要<code>INTERET</code>权限。</li>
+</ul>
+<p>AndroidManifest.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">package</span>=<span class="string">"info.androidhive.swiperefresh"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span><br><span class="line">        <span class="attr">android:name</span>=<span class="string">".app.MyApplication"</span></span><br><span class="line">        <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span><br><span class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span><br><span class="line">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span><br><span class="line">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span></span><br><span class="line">            <span class="attr">android:name</span>=<span class="string">".activity.MainActivity"</span></span><br><span class="line">            <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"> </span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>为listview 创建定制的adaper class。在<code>res=&gt;layout</code>中建立list_row.xml。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/serial"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:padding</span>=<span class="string">"25dp"</span></span><br><span class="line">        <span class="attr">android:layout_margin</span>=<span class="string">"5dp"</span></span><br><span class="line">        <span class="attr">android:layout_alignParentLeft</span>=<span class="string">"true"</span></span><br><span class="line">        <span class="attr">android:textSize</span>=<span class="string">"20dp"</span></span><br><span class="line">        <span class="attr">android:textStyle</span>=<span class="string">"bold"</span> /&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/title"</span></span><br><span class="line">        <span class="attr">android:layout_toRightOf</span>=<span class="string">"@id/serial"</span></span><br><span class="line">        <span class="attr">android:layout_centerVertical</span>=<span class="string">"true"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:textStyle</span>=<span class="string">"bold"</span></span><br><span class="line">        <span class="attr">android:paddingLeft</span>=<span class="string">"20dp"</span></span><br><span class="line">        <span class="attr">android:textSize</span>=<span class="string">"18dp"</span> /&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>helper</code>包中建立<code>Movie.java</code>，listview中的每一行都是这个模型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> info.androidhive.swiperefresh.helper;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by Ravi on 13/05/15.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Movie</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">public</span> String title;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Movie</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Movie</span><span class="params">(<span class="keyword">int</span> id, String title)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>helper</code>包中建立<code>SwipeListAdapter.java</code>。这是我们的custom adpater。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> info.androidhive.swiperefresh.helper;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.BaseAdapter;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> info.androidhive.swiperefresh.R;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by Ravi on 13/05/15.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwipeListAdapter</span> <span class="keyword">extends</span> <span class="title">BaseAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Activity activity;</span><br><span class="line">    <span class="keyword">private</span> LayoutInflater inflater;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Movie&gt; movieList;</span><br><span class="line">    <span class="keyword">private</span> String[] bgColors;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SwipeListAdapter</span><span class="params">(Activity activity, List&lt;Movie&gt; movieList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.activity = activity;</span><br><span class="line">        <span class="keyword">this</span>.movieList = movieList;</span><br><span class="line">        bgColors = activity.getApplicationContext().getResources().getStringArray(R.array.movie_serial_bg);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> movieList.size();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> location)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> movieList.get(location);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> position;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (inflater == <span class="keyword">null</span>)</span><br><span class="line">            inflater = (LayoutInflater) activity</span><br><span class="line">                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>)</span><br><span class="line">            convertView = inflater.inflate(R.layout.list_row, <span class="keyword">null</span>);</span><br><span class="line"> </span><br><span class="line">        TextView serial = (TextView) convertView.findViewById(R.id.serial);</span><br><span class="line">        TextView title = (TextView) convertView.findViewById(R.id.title);</span><br><span class="line"> </span><br><span class="line">        serial.setText(String.valueOf(movieList.get(position).id));</span><br><span class="line">        title.setText(movieList.get(position).title);</span><br><span class="line"> </span><br><span class="line">        String color = bgColors[position % bgColors.length];</span><br><span class="line">        serial.setBackgroundColor(Color.parseColor(color));</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改 <code>activity_main.xml</code>。使用listview来显示电影的列表，在外边包裹<code>SwipeRefreshLayout</code>完成滑动刷新。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.v4.widget.SwipeRefreshLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/swipe_refresh_layout"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">ListView</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/listView"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">ListView</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.v4.widget.SwipeRefreshLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开<code>MainActivity.java</code>进行下面的修改完成下来刷新。<ul>
+<li>实现 <code>SwipeRefreshLayout.OnRefreshListener</code>中的<code>onRefresh()</code>方法</li>
+<li>实现<code>fetchMovie()</code>方法获取volley的JSON数组修改列表视图</li>
+<li>在<code>onRefresh()</code>方法中调用<code>fetchMovie()</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> info.androidhive.swiperefresh.activity;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.widget.SwipeRefreshLayout;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.ActionBarActivity;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.widget.ListView;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> com.android.volley.Response;</span><br><span class="line"><span class="keyword">import</span> com.android.volley.VolleyError;</span><br><span class="line"><span class="keyword">import</span> com.android.volley.toolbox.JsonArrayRequest;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.json.JSONArray;</span><br><span class="line"><span class="keyword">import</span> org.json.JSONException;</span><br><span class="line"><span class="keyword">import</span> org.json.JSONObject;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> info.androidhive.swiperefresh.R;</span><br><span class="line"><span class="keyword">import</span> info.androidhive.swiperefresh.app.MyApplication;</span><br><span class="line"><span class="keyword">import</span> info.androidhive.swiperefresh.helper.Movie;</span><br><span class="line"><span class="keyword">import</span> info.androidhive.swiperefresh.helper.SwipeListAdapter;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ActionBarActivity</span> <span class="keyword">implements</span> <span class="title">SwipeRefreshLayout</span>.<span class="title">OnRefreshListener</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> String TAG = MainActivity.class.getSimpleName();</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> String URL_TOP_250 = <span class="string">"http://api.androidhive.info/json/imdb_top_250.php?offset="</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> SwipeRefreshLayout swipeRefreshLayout;</span><br><span class="line">    <span class="keyword">private</span> ListView listView;</span><br><span class="line">    <span class="keyword">private</span> SwipeListAdapter adapter;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Movie&gt; movieList;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// initially offset will be 0, later will be updated while parsing the json</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> offSet = <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"> </span><br><span class="line">        listView = (ListView) findViewById(R.id.listView);</span><br><span class="line">        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);</span><br><span class="line"> </span><br><span class="line">        movieList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        adapter = <span class="keyword">new</span> SwipeListAdapter(<span class="keyword">this</span>, movieList);</span><br><span class="line">        listView.setAdapter(adapter);</span><br><span class="line"> </span><br><span class="line">        swipeRefreshLayout.setOnRefreshListener(<span class="keyword">this</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * Showing Swipe Refresh animation on activity create</span><br><span class="line">         * As animation won't start on onCreate, post runnable is used</span><br><span class="line">         */</span></span><br><span class="line">        swipeRefreshLayout.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                                    <span class="meta">@Override</span></span><br><span class="line">                                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                                        swipeRefreshLayout.setRefreshing(<span class="keyword">true</span>);</span><br><span class="line"> </span><br><span class="line">                                        fetchMovies();</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">        );</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * This method is called when swipe refresh is pulled down</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        fetchMovies();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Fetching movies json by making http call</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fetchMovies</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// showing refresh animation before making http call</span></span><br><span class="line">        swipeRefreshLayout.setRefreshing(<span class="keyword">true</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// appending offset to url</span></span><br><span class="line">        String url = URL_TOP_250 + offSet;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// Volley's json array request object</span></span><br><span class="line">        JsonArrayRequest req = <span class="keyword">new</span> JsonArrayRequest(url,</span><br><span class="line">                <span class="keyword">new</span> Response.Listener&lt;JSONArray&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(JSONArray response)</span> </span>&#123;</span><br><span class="line">                        Log.d(TAG, response.toString());</span><br><span class="line"> </span><br><span class="line">                        <span class="keyword">if</span> (response.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line"> </span><br><span class="line">                            <span class="comment">// looping through json and adding to movies list</span></span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; response.length(); i++) &#123;</span><br><span class="line">                                <span class="keyword">try</span> &#123;</span><br><span class="line">                                    JSONObject movieObj = response.getJSONObject(i);</span><br><span class="line"> </span><br><span class="line">                                    <span class="keyword">int</span> rank = movieObj.getInt(<span class="string">"rank"</span>);</span><br><span class="line">                                    String title = movieObj.getString(<span class="string">"title"</span>);</span><br><span class="line"> </span><br><span class="line">                                    Movie m = <span class="keyword">new</span> Movie(rank, title);</span><br><span class="line"> </span><br><span class="line">                                    movieList.add(<span class="number">0</span>, m);</span><br><span class="line"> </span><br><span class="line">                                    <span class="comment">// updating offset value to highest value</span></span><br><span class="line">                                    <span class="keyword">if</span> (rank &gt;= offSet)</span><br><span class="line">                                        offSet = rank;</span><br><span class="line"> </span><br><span class="line">                                &#125; <span class="keyword">catch</span> (JSONException e) &#123;</span><br><span class="line">                                    Log.e(TAG, <span class="string">"JSON Parsing error: "</span> + e.getMessage());</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line"> </span><br><span class="line">                            adapter.notifyDataSetChanged();</span><br><span class="line">                        &#125;</span><br><span class="line"> </span><br><span class="line">                        <span class="comment">// stopping swipe refresh</span></span><br><span class="line">                        swipeRefreshLayout.setRefreshing(<span class="keyword">false</span>);</span><br><span class="line"> </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, <span class="keyword">new</span> Response.ErrorListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError error)</span> </span>&#123;</span><br><span class="line">                Log.e(TAG, <span class="string">"Server Error: "</span> + error.getMessage());</span><br><span class="line"> </span><br><span class="line">                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();</span><br><span class="line"> </span><br><span class="line">                <span class="comment">// stopping swipe refresh</span></span><br><span class="line">                swipeRefreshLayout.setRefreshing(<span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// Adding request to request queue</span></span><br><span class="line">        MyApplication.getInstance().addToRequestQueue(req);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h4><h2 id="4-PHP-class-生成-JSON"><a href="#4-PHP-class-生成-JSON" class="headerlink" title="4 PHP class 生成 JSON"></a>4 PHP class 生成 JSON</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// sleep for 2 sec show that the androd swipe refresh will be visible for sometime</span></span><br><span class="line">sleep(<span class="number">2</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// all top 250 movies</span></span><br><span class="line">$movies = <span class="keyword">array</span>(<span class="string">"The Shawshank Redemption"</span>, <span class="string">"The Godfather"</span>, <span class="string">"The Godfather: Part II"</span>, <span class="string">"The Dark Knight"</span>, <span class="string">"Pulp Fiction"</span>, <span class="string">"Schindler's List"</span>, <span class="string">"12 Angry Men"</span>, <span class="string">"The Good, the Bad and the Ugly"</span>, <span class="string">"The Lord of the Rings: The Return of the King"</span>, <span class="string">"Fight Club"</span>, <span class="string">"The Lord of the Rings: The Fellowship of the Ring"</span>, <span class="string">"Star Wars: Episode V - The Empire Strikes Back"</span>, <span class="string">"Forrest Gump"</span>, <span class="string">"Inception"</span>, <span class="string">"One Flew Over the Cuckoo's Nest"</span>, <span class="string">"The Lord of the Rings: The Two Towers"</span>, <span class="string">"Goodfellas"</span>, <span class="string">"The Matrix"</span>, <span class="string">"Star Wars"</span>, <span class="string">"Seven Samurai"</span>, <span class="string">"City of God"</span>, <span class="string">"Se7en"</span>, <span class="string">"The Usual Suspects"</span>, <span class="string">"The Silence of the Lambs"</span>, <span class="string">"It's a Wonderful Life"</span>, <span class="string">"Interstellar"</span>, <span class="string">"Léon: The Professional"</span>, <span class="string">"Life Is Beautiful"</span>, <span class="string">"Once Upon a Time in the West"</span>, <span class="string">"Casablanca"</span>, <span class="string">"American History X"</span>, <span class="string">"Saving Private Ryan"</span>, <span class="string">"Spirited Away"</span>, <span class="string">"Raiders of the Lost Ark"</span>, <span class="string">"City Lights"</span>, <span class="string">"Psycho"</span>, <span class="string">"Rear Window"</span>, <span class="string">"The Intouchables"</span>, <span class="string">"Whiplash"</span>, <span class="string">"Modern Times"</span>, <span class="string">"The Green Mile"</span>, <span class="string">"Terminator 2: Judgment Day"</span>, <span class="string">"Memento"</span>, <span class="string">"The Pianist"</span>, <span class="string">"The Departed"</span>, <span class="string">"Apocalypse Now"</span>, <span class="string">"Gladiator"</span>, <span class="string">"Sunset Blvd."</span>, <span class="string">"Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb"</span>, <span class="string">"Back to the Future"</span>, <span class="string">"Alien"</span>, <span class="string">"The Prestige"</span>, <span class="string">"The Lion King"</span>, <span class="string">"The Great Dictator"</span>, <span class="string">"The Lives of Others"</span>, <span class="string">"Cinema Paradiso"</span>, <span class="string">"Django Unchained"</span>, <span class="string">"The Shining"</span>, <span class="string">"Paths of Glory"</span>, <span class="string">"The Dark Knight Rises"</span>, <span class="string">"American Beauty"</span>, <span class="string">"WALL·E"</span>, <span class="string">"North by Northwest"</span>, <span class="string">"Aliens"</span>, <span class="string">"Citizen Kane"</span>, <span class="string">"Grave of the Fireflies"</span>, <span class="string">"Vertigo"</span>, <span class="string">"M"</span>, <span class="string">"Oldboy"</span>, <span class="string">"Das Boot"</span>, <span class="string">"Amélie"</span>, <span class="string">"Princess Mononoke"</span>, <span class="string">"Star Wars: Episode VI - Return of the Jedi"</span>, <span class="string">"Once Upon a Time in America"</span>, <span class="string">"Toy Story 3"</span>, <span class="string">"Reservoir Dogs"</span>, <span class="string">"A Clockwork Orange"</span>, <span class="string">"Braveheart"</span>, <span class="string">"Taxi Driver"</span>, <span class="string">"Double Indemnity"</span>, <span class="string">"Witness for the Prosecution"</span>, <span class="string">"Requiem for a Dream"</span>, <span class="string">"To Kill a Mockingbird"</span>, <span class="string">"Lawrence of Arabia"</span>, <span class="string">"Eternal Sunshine of the Spotless Mind"</span>, <span class="string">"Full Metal Jacket"</span>, <span class="string">"Bicycle Thieves"</span>, <span class="string">"The Sting"</span>, <span class="string">"Singin' in the Rain"</span>, <span class="string">"Amadeus"</span>, <span class="string">"Monty Python and the Holy Grail"</span>, <span class="string">"Snatch."</span>, <span class="string">"2001: A Space Odyssey"</span>, <span class="string">"For a Few Dollars More"</span>, <span class="string">"Rashomon"</span>, <span class="string">"L.A. Confidential"</span>, <span class="string">"The Kid"</span>, <span class="string">"All About Eve"</span>, <span class="string">"The Apartment"</span>, <span class="string">"Inglourious Basterds"</span>, <span class="string">"Toy Story"</span>, <span class="string">"The Treasure of the Sierra Madre"</span>, <span class="string">"A Separation"</span>, <span class="string">"Indiana Jones and the Last Crusade"</span>, <span class="string">"Yojimbo"</span>, <span class="string">"The Third Man"</span>, <span class="string">"Some Like It Hot"</span>, <span class="string">"Metropolis"</span>, <span class="string">"Batman Begins"</span>, <span class="string">"Unforgiven"</span>, <span class="string">"Scarface"</span>, <span class="string">"Like Stars on Earth"</span>, <span class="string">"Raging Bull"</span>, <span class="string">"Up"</span>, <span class="string">"3 Idiots"</span>, <span class="string">"Downfall"</span>, <span class="string">"Chinatown"</span>, <span class="string">"The Great Escape"</span>, <span class="string">"Die Hard"</span>, <span class="string">"The Hunt"</span>, <span class="string">"On the Waterfront"</span>, <span class="string">"Heat"</span>, <span class="string">"Mr. Smith Goes to Washington"</span>, <span class="string">"Pan's Labyrinth"</span>, <span class="string">"Good Will Hunting"</span>, <span class="string">"The Bridge on the River Kwai"</span>, <span class="string">"My Neighbor Totoro"</span>, <span class="string">"Ikiru"</span>, <span class="string">"The Seventh Seal"</span>, <span class="string">"The Gold Rush"</span>, <span class="string">"Ran"</span>, <span class="string">"Wild Strawberries"</span>, <span class="string">"The General"</span>, <span class="string">"Blade Runner"</span>, <span class="string">"The Elephant Man"</span>, <span class="string">"Lock, Stock and Two Smoking Barrels"</span>, <span class="string">"The Secret in Their Eyes"</span>, <span class="string">"The Wolf of Wall Street"</span>, <span class="string">"Casino"</span>, <span class="string">"Gran Torino"</span>, <span class="string">"Howl's Moving Castle"</span>, <span class="string">"Warrior"</span>, <span class="string">"The Big Lebowski"</span>, <span class="string">"V for Vendetta"</span>, <span class="string">"Rebecca"</span>, <span class="string">"The Bandit"</span>, <span class="string">"Gone Girl"</span>, <span class="string">"The Deer Hunter"</span>, <span class="string">"Judgment at Nuremberg"</span>, <span class="string">"Cool Hand Luke"</span>, <span class="string">"How to Train Your Dragon"</span>, <span class="string">"It Happened One Night"</span>, <span class="string">"Fargo"</span>, <span class="string">"A Beautiful Mind"</span>, <span class="string">"Gone with the Wind"</span>, <span class="string">"Trainspotting"</span>, <span class="string">"Into the Wild"</span>, <span class="string">"Rush"</span>, <span class="string">"Dial M for Murder"</span>, <span class="string">"The Maltese Falcon"</span>, <span class="string">"The Sixth Sense"</span>, <span class="string">"Mary and Max"</span>, <span class="string">"Finding Nemo"</span>, <span class="string">"The Thing"</span>, <span class="string">"The Wages of Fear"</span>, <span class="string">"Hotel Rwanda"</span>, <span class="string">"No Country for Old Men"</span>, <span class="string">"Incendies"</span>, <span class="string">"Rang De Basanti"</span>, <span class="string">"Kill Bill: Vol. 1"</span>, <span class="string">"Platoon"</span>, <span class="string">"Life of Brian"</span>, <span class="string">"Butch Cassidy and the Sundance Kid"</span>, <span class="string">"Network"</span>, <span class="string">"A Wednesday"</span>, <span class="string">"Munna Bhai M.B.B.S."</span>, <span class="string">"Touch of Evil"</span>, <span class="string">"There Will Be Blood"</span>, <span class="string">"12 Years a Slave"</span>, <span class="string">"Annie Hall"</span>, <span class="string">"The 400 Blows"</span>, <span class="string">"Stand by Me"</span>, <span class="string">"The Princess Bride"</span>, <span class="string">"Persona"</span>, <span class="string">"The Grand Budapest Hotel"</span>, <span class="string">"Amores Perros"</span>, <span class="string">"Ben-Hur"</span>, <span class="string">"Diabolique"</span>, <span class="string">"In the Name of the Father"</span>, <span class="string">"The Grapes of Wrath"</span>, <span class="string">"Million Dollar Baby"</span>, <span class="string">"Sin City"</span>, <span class="string">"Hachi: A Dog's Tale"</span>, <span class="string">"Nausicaä of the Valley of the Wind"</span>, <span class="string">"The Wizard of Oz"</span>, <span class="string">"The Best Years of Our Lives"</span>, <span class="string">"Gandhi"</span>, <span class="string">"The Avengers"</span>, <span class="string">"The Bourne Ultimatum"</span>, <span class="string">"Donnie Darko"</span>, <span class="string">"Shutter Island"</span>, <span class="string">"Stalker"</span>, <span class="string">"8½"</span>, <span class="string">"Guardians of the Galaxy"</span>, <span class="string">"Strangers on a Train"</span>, <span class="string">"Infernal Affairs"</span>, <span class="string">"Twelve Monkeys"</span>, <span class="string">"Fanny and Alexander"</span>, <span class="string">"Before Sunrise"</span>, <span class="string">"Boyhood"</span>, <span class="string">"Jaws"</span>, <span class="string">"The Imitation Game"</span>, <span class="string">"The Battle of Algiers"</span>, <span class="string">"The Terminator"</span>, <span class="string">"High Noon"</span>, <span class="string">"Groundhog Day"</span>, <span class="string">"Harry Potter and the Deathly Hallows: Part 2"</span>, <span class="string">"Memories of Murder"</span>, <span class="string">"The King's Speech"</span>, <span class="string">"Ip Man"</span>, <span class="string">"Monsters, Inc."</span>, <span class="string">"Notorious"</span>, <span class="string">"Rocky"</span>, <span class="string">"Dog Day Afternoon"</span>, <span class="string">"Barry Lyndon"</span>, <span class="string">"La Haine"</span>, <span class="string">"The Truman Show"</span>, <span class="string">"Who's Afraid of Virginia Woolf?"</span>, <span class="string">"A Fistful of Dollars"</span>, <span class="string">"Dil Chahta Hai"</span>, <span class="string">"The Night of the Hunter"</span>, <span class="string">"Pirates of the Caribbean: The Curse of the Black Pearl"</span>, <span class="string">"Lagaan: Once Upon a Time in India"</span>, <span class="string">"Castle in the Sky"</span>, <span class="string">"Jurassic Park"</span>, <span class="string">"X-Men: Days of Future Past"</span>, <span class="string">"La Strada"</span>, <span class="string">"The Help"</span>, <span class="string">"Roman Holiday"</span>, <span class="string">"Wild Tales"</span>, <span class="string">"The Big Sleep"</span>, <span class="string">"Spring, Summer, Fall, Winter... and Spring"</span>, <span class="string">"Le Samouraï"</span>, <span class="string">"Prisoners"</span>, <span class="string">"Underground"</span>, <span class="string">"The Graduate"</span>, <span class="string">"Paris, Texas"</span>, <span class="string">"Solaris"</span>, <span class="string">"Three Colors: Red"</span>, <span class="string">"Papillon"</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// reading offset from get parameter</span></span><br><span class="line">$offset = <span class="keyword">isset</span>($_GET[<span class="string">'offset'</span>]) &amp;&amp; $_GET[<span class="string">'offset'</span>] != <span class="string">''</span> ? $_GET[<span class="string">'offset'</span>] : <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// page limit</span></span><br><span class="line">$limit = <span class="number">20</span>;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">$movies_array = <span class="keyword">array</span>();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// loop through page movies</span></span><br><span class="line"><span class="keyword">for</span> ($j = $offset; $j &lt; $offset + $limit &amp;&amp; $j &lt; sizeof($movies); $j++) &#123;</span><br><span class="line">    $tmp = <span class="keyword">array</span>();</span><br><span class="line">    $tmp[<span class="string">'rank'</span>] = $j + <span class="number">1</span>;</span><br><span class="line">    $tmp[<span class="string">'title'</span>] = $movies[$j];</span><br><span class="line"> </span><br><span class="line">    array_push($movies_array, $tmp);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// printing json response</span></span><br><span class="line"><span class="keyword">echo</span> json_encode($movies_array);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/first/" rel="next" title="基于Hexo和Next的第一篇博客">
+                <i class="fa fa-chevron-left"></i> 基于Hexo和Next的第一篇博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/laravel5/" rel="prev" title="Laravel 5 基础">
+                Laravel 5 基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zjl.jpg"
+               alt="张景林 ldxyzjl@163.com" />
+          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
+          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Android-SwipeRefreshLayout"><span class="nav-number">1.</span> <span class="nav-text">1 Android SwipeRefreshLayout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-案例-JSON"><span class="nav-number">2.</span> <span class="nav-text">2 案例 JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-建立Android项目"><span class="nav-number">3.</span> <span class="nav-text">3 建立Android项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#测试运行"><span class="nav-number">3.0.1.</span> <span class="nav-text">测试运行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-PHP-class-生成-JSON"><span class="nav-number">4.</span> <span class="nav-text">4 PHP class 生成 JSON</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

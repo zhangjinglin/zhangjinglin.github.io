@@ -1,0 +1,740 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="CodeIgniter是所有PHP MVC框架中最简单切轻量的一个，我会用一些列的教程来讲解CodeIgniter的使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodeIgniter教程 - 基础">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/02/codeigniter-1/index.html">
+<meta property="og:site_name" content="张景林的博客">
+<meta property="og:description" content="CodeIgniter是所有PHP MVC框架中最简单切轻量的一个，我会用一些列的教程来讲解CodeIgniter的使用。">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/02/codeigniter-1/01.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/02/codeigniter-1/02.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/02/codeigniter-1/03.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/02/codeigniter-1/04.png">
+<meta property="og:updated_time" content="2016-03-05T09:14:14.023Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CodeIgniter教程 - 基础">
+<meta name="twitter:description" content="CodeIgniter是所有PHP MVC框架中最简单切轻量的一个，我会用一些列的教程来讲解CodeIgniter的使用。">
+<meta name="twitter:image" content="http://zhangjinglin.github.io/2016/02/codeigniter-1/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> CodeIgniter教程 - 基础 | 张景林的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/zjl.jpg"
+             alt="张景林的博客"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张景林的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">关于技术，关于人生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CodeIgniter教程 - 基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-11T12:09:16+00:00" content="2016-02-11">
+              2016-02-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CodeIgniter是所有PHP MVC框架中最简单切轻量的一个，我会用一些列的教程来讲解CodeIgniter的使用。</p>
+<a id="more"></a>
+<h2 id="CodeIgniter-是什么？"><a href="#CodeIgniter-是什么？" class="headerlink" title="CodeIgniter 是什么？"></a>CodeIgniter 是什么？</h2><p>CodeIgniter是一个PHP的MVC框架，非常简单。</p>
+<p>可以访问<a href="http://www.codeigniter.com/" target="_blank" rel="external">CodeIgniter</a>网站查看更进一步的信息，在我写作的时候，CodeIgniter的版本是3.0.4。如果你对英文恐慌的话，<a href="http://codeigniter.org.cn/" target="_blank" rel="external">CodeIgniter中国</a>是完整的中文网站。网站上的用户手册是你最好的朋友，你有任何问题基本上都可以在上面周到解答。如果实在没有解决问题，你可以Google。</p>
+<ul>
+<li><strong>模型</strong> 代表你的数据结构。通常来说，模型类将包含帮助你对数据库进行增删改查的方法。</li>
+<li><strong>视图</strong> 是要展现给用户的信息。一个视图通常就是一个网页，但是在 CodeIgniter 中， 一个视图也可以是一部分页面（例如页头、页尾），它也可以是一个 RSS 页面， 或其他任何类型的页面。</li>
+<li><strong>控制器</strong> 是模型、视图以及其他任何处理 HTTP 请求所必须的资源之间的中介，并生成网页。</li>
+</ul>
+<p>如果你暂时不明白没关系，后面你会逐渐理解MVC到底是什么。</p>
+<h2 id="安装CodeIgniter"><a href="#安装CodeIgniter" class="headerlink" title="安装CodeIgniter"></a>安装CodeIgniter</h2><p>直接从CodeIgniter网站下载即可。下载后将文件解压到<code>htdocs</code>目录下。更改目录名为<code>ci</code>这样简单一些。访问<code>http://localhost/ci</code>查看结果。</p>
+<h2 id="CodeIgniter文件结构"><a href="#CodeIgniter文件结构" class="headerlink" title="CodeIgniter文件结构"></a>CodeIgniter文件结构</h2><p>下面我们来查看一下文件结构。</p>
+<img src="/2016/02/codeigniter-1/01.png" alt="01.png" title="">
+<p></p><br>user_guide 目录是用户手册，和网站是一样的，你可以安全的删除这个目录。<br>system 目录是CodeIgniter的系统，一般情况下我们不用去管他。<br>application 目录是我们的工作目录。我们来仔细查看一下。<br><br><img src="/2016/02/codeigniter-1/02.png" alt="02.png" title=""><br><p></p>
+
+<p>这里面我们可以看到models，views和controllers三个目录，ok，这就是我们mvc的目录，暂时我们知道这三个目录就OK了，最多我们还要知道config配置目录。</p>
+<p>我们在浏览器中访问主页，会注意到下面的提示：</p>
+<img src="/2016/02/codeigniter-1/03.png" alt="03.png" title="">
+<p></p>
+
+<p>这个说明了，如果我们想要修改页面在<code>application/views/</code>下面直接修改<code>welcome_message.php</code>即可。如果我们查看这个页面，这个就是简单的HTML。</p>
+<p>我们把h1修改一下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>欢迎学习CodeIgniter教程<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>保存后刷新页面。</p>
+<img src="/2016/02/codeigniter-1/04.png" alt="04.png" title="">
+<p></p>
+
+<blockquote><p>非常重要的事情：如果你在浏览的时候，中文出现了乱码，一定要查看 1、<code>&lt;meta charset=&quot;utf-8&quot;&gt;</code>这个是否在你的文件中，2、如果你使用PhpStorm检查右下角当前文件的编码，如果你用中文系统，很可能是<code>GBK</code>，把他修改为<code>UTF-8</code>。</p>
+</blockquote>
+<p>页面虽然修改了，但是我们会发现为什么我嫩只是直接访问<code>http://localhost/ci</code>这个地址，而会显示这个页面，这个有什么关联么？</p>
+<p>在MVC中，controller控制着一切，让我们查看一下controller目录。在下面我们会看到Welcome.php这个文件。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">defined(<span class="string">'BASEPATH'</span>) <span class="keyword">OR</span> <span class="keyword">exit</span>(<span class="string">'No direct script access allowed'</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welcome</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * Index Page for this controller.</span><br><span class="line">	 *</span><br><span class="line">	 * Maps to the following URL</span><br><span class="line">	 * 		http://example.com/index.php/welcome</span><br><span class="line">	 *	- or -</span><br><span class="line">	 * 		http://example.com/index.php/welcome/index</span><br><span class="line">	 *	- or -</span><br><span class="line">	 * Since this controller is set as the default controller in</span><br><span class="line">	 * config/routes.php, it's displayed at http://example.com/</span><br><span class="line">	 *</span><br><span class="line">	 * So any other public methods not prefixed with an underscore will</span><br><span class="line">	 * map to /index.php/welcome/&lt;method_name&gt;</span><br><span class="line">	 * <span class="doctag">@see</span> https://codeigniter.com/user_guide/general/urls.html</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span><br><span class="line">	</span>&#123;</span><br><span class="line">		$this-&gt;load-&gt;view(<span class="string">'welcome_message'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Welcome派生自CI_Controller这个类。这个控制器有一个方法index，这个方法中我们可以看到装载视图<code>welcome_message</code>。我们修改这个方法一下，不再装载视图，而是输出一个字符串：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span><br><span class="line">	</span>&#123;</span><br><span class="line"><span class="comment">//		$this-&gt;load-&gt;view('welcome_message');</span></span><br><span class="line">		<span class="keyword">echo</span> <span class="string">'This is the welcome controller'</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>再次浏览，就会发现页面变化了。</p>
+<h2 id="添加方法"><a href="#添加方法" class="headerlink" title="添加方法"></a>添加方法</h2><p>做一个测试，将<code>index</code>方法的名字修改为其他，例如<code>test</code>再次访问，会发现出现了错误，只有index方法可以作为默认的方法被访问。</p>
+<p>如果我们增加一个方法，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"this is test funtion"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在浏览器中访问<code>http://localhost/ci/test</code>会出现错误，那到底怎么访问呢？在<code>welcome.php</code>里面的注释中说明了如何访问：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 		http:<span class="comment">//example.com/index.php/welcome</span></span><br><span class="line">*	- <span class="keyword">or</span> -</span><br><span class="line">* 		http:<span class="comment">//example.com/index.php/welcome/index</span></span><br></pre></td></tr></table></figure>
+<p>所以访问<code>test</code>方法的路径是<code>http://localhost/ci/index.php/welcome/test</code>，测试一下。在CI中，index.php是入口文件，所有的访问都通过这个文件进行转发。</p>
+<p>如果忽略路径中前面的部分，我们访问的方式就是<code>{控制器/方法}</code>。</p>
+<h2 id="添加控制器"><a href="#添加控制器" class="headerlink" title="添加控制器"></a>添加控制器</h2><p>我们来创建一个自己的控制器，在<code>controller</code>目录中新建文件<code>Home.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by PhpStorm.</span><br><span class="line"> * User: jingl</span><br><span class="line"> * Date: 2016/2/11</span><br><span class="line"> * Time: 13:27</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'this is the home controller at index'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>访问<code>http://localhost/ci/index.php/home</code>，index是默认方法，不需要显示的说明。在<code>views</code>目录中新建视图文件<code>home_index.php</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, CodeIgniter!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>虽然我们的扩展名是php，但是这个文件仅仅是简单的html，修改<code>Home.php</code>控制器，装载视图</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    $this-&gt;load-&gt;view(<span class="string">'home_index'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>刷新页面， 查看结果。</p>
+<h2 id="模型和数据库"><a href="#模型和数据库" class="headerlink" title="模型和数据库"></a>模型和数据库</h2><p>我们来创建一个数据库，当然是使用MySQL了。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">create</span> <span class="keyword">database</span> ci <span class="keyword">default</span> <span class="keyword">charset</span> utf8;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">use</span> ci;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">users</span>(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">    <span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">255</span>));</span><br><span class="line">    </span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">users</span>(<span class="keyword">name</span>, <span class="keyword">password</span>) <span class="keyword">values</span>(<span class="string">'Zhang Jinglin'</span>, <span class="string">'123'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">users</span>(<span class="keyword">name</span>, <span class="keyword">password</span>) <span class="keyword">values</span>(<span class="string">'Jinglin Zhang'</span>, <span class="string">'123'</span>);</span><br></pre></td></tr></table></figure>
+<p>有了数据库以后，我们要告诉CI如何访问我们的数据库。在<code>config\database.php</code>中，修改<code>hostname username password database</code>即可，其他的属性不管，非常简单。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'hostname'</span> =&gt; <span class="string">'localhost'</span>,</span><br><span class="line"><span class="string">'username'</span> =&gt; <span class="string">'root'</span>,</span><br><span class="line"><span class="string">'password'</span> =&gt; <span class="string">''</span>,</span><br><span class="line"><span class="string">'database'</span> =&gt; <span class="string">'ci'</span>,</span><br></pre></td></tr></table></figure>
+<p>现在，我们的CI就知道如何访问数据了。<br>我们来创建模型，在<code>models</code>目录下创建<code>User_model.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by PhpStorm.</span><br><span class="line"> * User: jingl</span><br><span class="line"> * Date: 2016/2/11</span><br><span class="line"> * Time: 13:46</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User_model</span> <span class="keyword">extends</span> <span class="title">CI_Model</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get_users</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">//通知CI装载数据库组件</span></span><br><span class="line">        $this-&gt;load-&gt;database();</span><br><span class="line">        <span class="comment">//查询数据库，获取所有users表中的内容</span></span><br><span class="line">        $query = $this-&gt;db-&gt;get(<span class="string">'users'</span>);</span><br><span class="line">        <span class="comment">//返回查询结果</span></span><br><span class="line">        <span class="keyword">return</span> $query-&gt;result();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了模型，下面创建一个<code>User.php</code>控制器，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by PhpStorm.</span><br><span class="line"> * User: jingl</span><br><span class="line"> * Date: 2016/2/11</span><br><span class="line"> * Time: 13:50</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">//通知CI，装载模型</span></span><br><span class="line">        $this-&gt;load-&gt;model(<span class="string">'user_model'</span>);</span><br><span class="line">        <span class="comment">//通过模型获取结果</span></span><br><span class="line">        $result = $this-&gt;user_model-&gt;get_users();</span><br><span class="line">        <span class="comment">//调用PHP函数输出数组</span></span><br><span class="line">        print_r($result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过上面的代码我们已经可以访问数据库了，非常简单。</p>
+<h2 id="自动装载"><a href="#自动装载" class="headerlink" title="自动装载"></a>自动装载</h2><p>我们的代码还有些小问题，在每一个模型类的方法中，我们都需要一句代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;load-&gt;database();</span><br></pre></td></tr></table></figure>
+<p>虽说不麻烦，但是总是重复毕竟是不好的。所以我们可以告诉CI把一些在我们应用中总是使用的组件给我们自动装载进来。在<code>config\autoload.php</code>中，修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$autoload[&apos;libraries&apos;] = array(&apos;database&apos;);</span><br></pre></td></tr></table></figure>
+<p>然后，在模型代码中，注释掉装载数据库的代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get_users</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">//$this-&gt;load-&gt;database();</span></span><br><span class="line">    $query = $this-&gt;db-&gt;get(<span class="string">'users'</span>);</span><br><span class="line">    <span class="keyword">return</span> $query-&gt;result();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重新刷新并检查结果。自动装载除了可以加载CI的组件外，也可以加载我们自己定义的组件，比如，在我们的应用中，总是要使用<code>User_model</code>这个组件，我们也可以自动装载这个我们自己的组件。在<code>config/autoload.php</code>中，修改代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$autoload[<span class="string">'model'</span>] = <span class="keyword">array</span>(<span class="string">'user_model'</span>);</span><br></pre></td></tr></table></figure>
+<p>然后在我们的控制器方法中就不需要显示的转载模型了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">//$this-&gt;load-&gt;model('user_model');</span></span><br><span class="line">    $result = $this-&gt;user_model-&gt;get_users();</span><br><span class="line">    print_r($result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是我个人是不推荐自动装载模型的，在方法中明确的装载模型是有利于代码的清晰度的，除非你有非常好的理由来自动装在模型。</p>
+<h2 id="把数据传送到视图"><a href="#把数据传送到视图" class="headerlink" title="把数据传送到视图"></a>把数据传送到视图</h2><p>在控制器中我们可以装载不同的视图，在装载视图的同时，我们也可以把数据传送给视图，非常简单。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        $this-&gt;load-&gt;model(<span class="string">'user_model'</span>);</span><br><span class="line">        <span class="comment">//把结果发在一个命名数组中</span></span><br><span class="line">        $data[<span class="string">'results'</span>] = $this-&gt;user_model-&gt;get_users();</span><br><span class="line">        <span class="comment">//在装在视图的同时，把数据传送过去</span></span><br><span class="line">        $this-&gt;load-&gt;view(<span class="string">'user_index'</span>, $data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建视图文件，<code>views\user_index.php</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>User View<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>User View<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="php"><span class="meta">&lt;?php</span> <span class="keyword">foreach</span>($results <span class="keyword">as</span> $item): <span class="meta">?&gt;</span></span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $item-&gt;name; <span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="php"><span class="meta">&lt;?php</span> <span class="keyword">endforeach</span> <span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这就是如何把数据传送到视图中。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/laravel5/" rel="next" title="Laravel 5 基础">
+                <i class="fa fa-chevron-left"></i> Laravel 5 基础
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/codeigniter-2/" rel="prev" title="CodeIgniter教程 - CRUD">
+                CodeIgniter教程 - CRUD <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zjl.jpg"
+               alt="张景林 ldxyzjl@163.com" />
+          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
+          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CodeIgniter-是什么？"><span class="nav-number">1.</span> <span class="nav-text">CodeIgniter 是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装CodeIgniter"><span class="nav-number">2.</span> <span class="nav-text">安装CodeIgniter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CodeIgniter文件结构"><span class="nav-number">3.</span> <span class="nav-text">CodeIgniter文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加方法"><span class="nav-number">4.</span> <span class="nav-text">添加方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加控制器"><span class="nav-number">5.</span> <span class="nav-text">添加控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型和数据库"><span class="nav-number">6.</span> <span class="nav-text">模型和数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动装载"><span class="nav-number">7.</span> <span class="nav-text">自动装载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把数据传送到视图"><span class="nav-number">8.</span> <span class="nav-text">把数据传送到视图</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>

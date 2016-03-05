@@ -1,0 +1,708 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="我们来完成一个完整的登录项目。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodeIgniter教程 - 登录项目">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/02/codeigniter-3/index.html">
+<meta property="og:site_name" content="张景林的博客">
+<meta property="og:description" content="我们来完成一个完整的登录项目。">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/02/codeigniter-3/01.png">
+<meta property="og:updated_time" content="2016-03-05T09:16:06.011Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CodeIgniter教程 - 登录项目">
+<meta name="twitter:description" content="我们来完成一个完整的登录项目。">
+<meta name="twitter:image" content="http://zhangjinglin.github.io/2016/02/codeigniter-3/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> CodeIgniter教程 - 登录项目 | 张景林的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/zjl.jpg"
+             alt="张景林的博客"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张景林的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">关于技术，关于人生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CodeIgniter教程 - 登录项目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-12T10:28:03+00:00" content="2016-02-12">
+              2016-02-12
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我们来完成一个完整的登录项目。</p>
+<a id="more"></a>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>我们不会从头创建我们的样式，我们使用流行的CSS框架Bootstrap来进行构建。下载bootstrap，然后在项目中新建一个目录，目录的名字叫做<code>public</code>可能是一个好的选择。在<code>public</code>下面，新建文件夹<code>css fonts js</code>，参考下面的图片，别忘了必备的<code>jQuery</code>。</p>
+<img src="/2016/02/codeigniter-3/01.png" alt="01.png" title="">
+<h2 id="创建模板"><a href="#创建模板" class="headerlink" title="创建模板"></a>创建模板</h2><p>我们不想每个页面都从头构建，最佳的方式是创建模板。创建<code>views\layouts</code>目录。</p>
+<p>在模板文件中如何引入css和js文件呢？路径是什么？我们可以使用CI提供的<code>base_url()</code>函数来获取项目的URL，当然这个值你也可以在<code>config.php</code>中进行修改。引入css类似这样的语句：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"&lt;?=base_url()?&gt;public/css/bootstrap.min.css"</span>&gt;</span><br></pre></td></tr></table></figure>
+<blockquote><p>base_url()函数返回的结果带有<code>/</code>路径，所以在<code>public</code>之前不要在添加<code>/</code>，以免画蛇添足。</p>
+</blockquote>
+<p>这个函数不是马上就能使用的，它是CI提供的URL辅助功能，需要在<code>autoload.php</code>中开启这个支持。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$autoload[<span class="string">'helper'</span>] = <span class="keyword">array</span>(<span class="string">'url'</span>);</span><br></pre></td></tr></table></figure>
+<p>在下面创建布局文件，我们起名叫做<code>main.php</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Login Project<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"&lt;?=base_url()?&gt;public/css/bootstrap.min.css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&lt;?=base_url()?&gt;public/js/jquery-2.2.0.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&lt;?=base_url()?&gt;public/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-3"</span>&gt;</span></span><br><span class="line">        this is the side bar.</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-9"</span>&gt;</span></span><br><span class="line">        <span class="php"><span class="meta">&lt;?php</span> $this-&gt;load-&gt;view($content_view); <span class="meta">?&gt;</span></span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码一目了然，最关键的就是引入内容视图的语句，那么如何给模板传送数据呢？我们修改我们的<code>Home.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by PhpStorm.</span><br><span class="line"> * User: jingl</span><br><span class="line"> * Date: 2016/2/11</span><br><span class="line"> * Time: 13:27</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        $data[<span class="string">'content_view'</span>] = <span class="string">'home_index'</span>;</span><br><span class="line">        $this-&gt;load-&gt;view(<span class="string">'layouts/main'</span>, $data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在控制器的index方法中，我们返回的是模板文件，但是我们传入了要现实的内容视图的变量，这样就完成了模板和内容的结合。</p>
+<p><code>home_index.php</code>的内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, CodeIgniter!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>是的，就这么简单，其他的已经通过模板来完成了。访问<code>http://localhost/ci/index.php/home</code>应该可以看到结果，打开浏览器控制台，确保没有错误，所有的css和js正确加载了。</p>
+<h2 id="侧边栏"><a href="#侧边栏" class="headerlink" title="侧边栏"></a>侧边栏</h2><p>在侧边栏我们想显示登录窗口，这就涉及到了CI的表单控制功能，所以我们要在<code>autoload.php</code>中开启我们的表单辅助功能。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$autoload[<span class="string">'helper'</span>] = <span class="keyword">array</span>(<span class="string">'url'</span>, <span class="string">'form'</span>);</span><br></pre></td></tr></table></figure>
+<p>我们在<code>views</code>目录下创建子目录<code>user</code>，然后创建文件<code>login_view.php</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?</span>=form_open(<span class="string">'user/login'</span>, [<span class="string">'id'</span> =&gt; <span class="string">'login_form'</span>, <span class="string">'class'</span> =&gt; <span class="string">''</span>])<span class="meta">?&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"用户名"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"密码"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Login"</span> <span class="attr">class</span>=<span class="string">"btn btn-block btn-primary"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">&lt;?</span>=form_close()<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>我们使用了<code>form_open</code>和<code>form_close()</code>辅助函数，当然可以直接使用普通的HTML表单方式，但是推荐用这种方式以避免书写完整的URL提交地址。在CI的表单辅助函数中，也包含了一些字段的辅助函数，上面的HTML字段也可以替换成下面的辅助函数，使用哪个，取决于你自己。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>=form_input([<span class="string">'id'</span> =&gt; <span class="string">'name'</span>, <span class="string">'name'</span> =&gt; <span class="string">'name'</span>, <span class="string">'class'</span> =&gt; <span class="string">'form-control'</span>, <span class="string">'placeholder'</span> =&gt; <span class="string">'用户名'</span>])<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="php"><span class="meta">&lt;?</span>=form_password([<span class="string">'id'</span> =&gt; <span class="string">'password'</span>, <span class="string">'name'</span> =&gt; <span class="string">'password'</span>, <span class="string">'class'</span> =&gt; <span class="string">'form-control'</span>, <span class="string">'placeholder'</span> =&gt; <span class="string">'密码'</span>])<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="php"><span class="meta">&lt;?</span>=form_submit([<span class="string">'name'</span> =&gt; <span class="string">'submit'</span>, <span class="string">'value'</span> =&gt; <span class="string">'登录'</span>, <span class="string">'class'</span> =&gt; <span class="string">'btn btn-primary btn-block'</span>])<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>在我们的表单中，我们声明了表单的提交地址是<code>user/login</code>，就是User控制器的login方法。在<code>User.php</code>控制器中添加<code>login</code>方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by PhpStorm.</span><br><span class="line"> * User: jingl</span><br><span class="line"> * Date: 2016/2/11</span><br><span class="line"> * Time: 13:50</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">parent</span>::__construct();</span><br><span class="line">        $this-&gt;load-&gt;model(<span class="string">'user_model'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> $_POST[<span class="string">'name'</span>];</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> $_POST[<span class="string">'password'</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目前我们的登录方法仅仅是简单的将输入数据显示出来。测试一下吧。login方法可以使用CI的功能来进行一致化，修改代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> $this-&gt;input-&gt;post(<span class="string">'name'</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> $this-&gt;input-&gt;post(<span class="string">'password'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="表单数据验证"><a href="#表单数据验证" class="headerlink" title="表单数据验证"></a>表单数据验证</h2><p>CI提供了表单验证的功能，帮助我们来进行数据的验证。首先，要在<code>autoload.php</code>中装载表单验证</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$autoload[<span class="string">'libraries'</span>] = <span class="keyword">array</span>(<span class="string">'database'</span>, <span class="string">'form_validation'</span>);</span><br></pre></td></tr></table></figure>
+<p>下面我们就可以修改<code>User.php</code>中的<code>login</code>方法，让它支持验证了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    $this-&gt;form_validation-&gt;set_rules(<span class="string">'name'</span>, <span class="string">'用户名'</span>, <span class="string">'trim|required|min_length[3]'</span>);</span><br><span class="line">    $this-&gt;form_validation-&gt;set_rules(<span class="string">'password'</span>, <span class="string">'密码'</span>, <span class="string">'trim|required|min_length[3]'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ($this-&gt;form_validation-&gt;run() == <span class="keyword">FALSE</span>) &#123;</span><br><span class="line">        print_r(validation_errors());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的rules是CI提供的验证规则，trim是去掉输入的空格，required是必须提供输入，min_length是最小的输入长度，实际上CI提供的rules非常多，在CI的类库参考-表单验证类中可以找到全部的规则。你可以尝试着什么也不输入直接提交，或者输入一个自负的情况下提交。</p>
+<p>上面的处理有一个问题，输出的错误信息是英文，我们不能指望我们的访问者读懂英语，毕竟我们说中文。那要怎么处理呢？这就涉及到了CI应用的语言问题。解决这个有几种方案。</p>
+<p>第一，在<code>application\config\config.php</code>中，我们可以把<code>$config[&#39;language&#39;] = &#39;english&#39;;</code>修改为<code>chinese</code>表示我们要说中文。如果现在你在重新提交表单，你会发现CI出现了错误，错误信息是<code>找不到语言文件 language/chinese/form_validation_lang.php</code>。这个文件我们怎么创建呢？我们复制<code>system/language/english/form_validation-lang.php</code>到目录<code>application/language/chinese/</code>下，什么，没有这个目录？你自己创建一个就完了。我们修改一个提示坐下测试</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lang[<span class="string">'form_validation_required'</span>]		= <span class="string">'&#123;field&#125; 必须输入'</span>;</span><br></pre></td></tr></table></figure>
+<p>现在表单里面什么也不写，直接提交就看到中文的错误提示。</p>
+<p>第二种方法，就是我们只需要几个中文的错误信息，没必要向上一种方法那么复杂，而且有些错误信息要单独的提示，怎么办？我们可以直接在可能输出错误信息的方法里面提供我们自己的错误说明。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    $this-&gt;form_validation-&gt;set_rules(<span class="string">'name'</span>, <span class="string">'用户名'</span>, <span class="string">'trim|required|min_length[3]'</span>, [</span><br><span class="line">        <span class="string">'required'</span> =&gt; <span class="string">'你不写用户名我知道你是谁'</span>,</span><br><span class="line">        <span class="string">'min_length'</span> =&gt; <span class="string">'没哟这么短的名字'</span></span><br><span class="line">    ]);</span><br><span class="line">    $this-&gt;form_validation-&gt;set_rules(<span class="string">'password'</span>, <span class="string">'密码'</span>, <span class="string">'trim|required|min_length[3]'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ($this-&gt;form_validation-&gt;run() == <span class="keyword">FALSE</span>) &#123;</span><br><span class="line">        print_r(validation_errors());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是我们直接在规则里面添加我们的错误信息即可。你愿意用哪种方法你自己随意吧。</p>
+<p>获取到了错误信息，我们不能直接这么粗暴的显示出来，正常的情况是我们返回登录页面然后在上面显示错误信息。但这就涉及到了跳转，也就是从User控制器跳转到Home控制器，然后传送我们的错误信息，我们需要在<code>autoload.php</code>中开启session。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$autoload[<span class="string">'libraries'</span>] = <span class="keyword">array</span>(<span class="string">'database'</span>, <span class="string">'form_validation'</span>, <span class="string">'session'</span>);</span><br></pre></td></tr></table></figure>
+<p>在CI中可以使用session中的flashdata作为一次性的输出信息，也就是输出一次，下次请求就没有了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    $this-&gt;form_validation-&gt;set_rules(<span class="string">'name'</span>, <span class="string">'用户名'</span>, <span class="string">'trim|required|min_length[3]'</span>, [</span><br><span class="line">        <span class="string">'required'</span> =&gt; <span class="string">'你不写用户名我知道你是谁'</span>,</span><br><span class="line">        <span class="string">'min_length'</span> =&gt; <span class="string">'没哟这么短的名字'</span></span><br><span class="line">    ]);</span><br><span class="line">    $this-&gt;form_validation-&gt;set_rules(<span class="string">'password'</span>, <span class="string">'密码'</span>, <span class="string">'trim|required|min_length[3]'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ($this-&gt;form_validation-&gt;run() == <span class="keyword">FALSE</span>) &#123;</span><br><span class="line">        $data[<span class="string">'errors'</span>] = validation_errors();</span><br><span class="line">        $this-&gt;session-&gt;set_flashdata($data);</span><br><span class="line">        redirect(<span class="string">'home'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码一目了然，没啥可说的。下面我们就要在我们的视图中添加对错误信息的处理了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">if</span> ($this-&gt;session-&gt;flashdata(<span class="string">'errors'</span>)): <span class="meta">?&gt;</span></span></span><br><span class="line">    <span class="php"><span class="meta">&lt;?</span>= $this-&gt;session-&gt;flashdata(<span class="string">'errors'</span>) <span class="meta">?&gt;</span></span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">endif</span> <span class="meta">?&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">&lt;?</span>=form_open(<span class="string">'user/login'</span>, [<span class="string">'id'</span> =&gt; <span class="string">'login_form'</span>, <span class="string">'class'</span> =&gt; <span class="string">''</span>])<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>现在在进行登录测试，就可以看到错误信息了。</p>
+<p>获取到正确的数据就可以进行正式的登录处理了，好了，这篇教程就到这里了，希望你喜欢。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/codeigniter-2/" rel="next" title="CodeIgniter教程 - CRUD">
+                <i class="fa fa-chevron-left"></i> CodeIgniter教程 - CRUD
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zjl.jpg"
+               alt="张景林 ldxyzjl@163.com" />
+          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
+          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建模板"><span class="nav-number">2.</span> <span class="nav-text">创建模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侧边栏"><span class="nav-number">3.</span> <span class="nav-text">侧边栏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单数据验证"><span class="nav-number">4.</span> <span class="nav-text">表单数据验证</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
