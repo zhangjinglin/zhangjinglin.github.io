@@ -1,0 +1,713 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="这篇文章中，将常见的一些安卓功能实现做一个简单的说明，以便在以后开发中随时查看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓功能案例">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/02/android-example/index.html">
+<meta property="og:site_name" content="张景林的博客">
+<meta property="og:description" content="这篇文章中，将常见的一些安卓功能实现做一个简单的说明，以便在以后开发中随时查看。">
+<meta property="og:updated_time" content="2016-03-07T04:43:18.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安卓功能案例">
+<meta name="twitter:description" content="这篇文章中，将常见的一些安卓功能实现做一个简单的说明，以便在以后开发中随时查看。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 安卓功能案例 | 张景林的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/zjl.jpg"
+             alt="张景林的博客"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张景林的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">关于技术，关于人生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                安卓功能案例
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-26T11:26:05+00:00" content="2016-02-26">
+              2016-02-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇文章中，将常见的一些安卓功能实现做一个简单的说明，以便在以后开发中随时查看。</p>
+<a id="more"></a>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><h3 id="alpha动画"><a href="#alpha动画" class="headerlink" title="alpha动画"></a>alpha动画</h3><p>可以通过设定对象的alpha动画来实现对象的透明度，如果对象原先的alpha设定为0，则可以逐渐显示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ImageView img = (ImageView)findViewById(R.id.xxx);</span><br><span class="line">img.animate()</span><br><span class="line">    .alpha(<span class="number">0f</span>)</span><br><span class="line">    .setDuration(<span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="位置动画"><a href="#位置动画" class="headerlink" title="位置动画"></a>位置动画</h3><p>设定x和y的坐标来进行位置上的变化，<code>translationYBy, translationXBy</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img.animate()</span><br><span class="line">    .tanslationYBy(<span class="number">1000f</span>)</span><br><span class="line">    .setDuration(<span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="旋转动画"><a href="#旋转动画" class="headerlink" title="旋转动画"></a>旋转动画</h3><p>通过<code>rotation(xxxf)</code>来完成旋转动画</p>
+<h3 id="缩放动画"><a href="#缩放动画" class="headerlink" title="缩放动画"></a>缩放动画</h3><p>通过<code>scaleX, scaleY</code>来完成缩放动画</p>
+<h3 id="联和动画"><a href="#联和动画" class="headerlink" title="联和动画"></a>联和动画</h3><p>以上的动画可以合并在一起，完成特殊的动画动能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">img.animate()</span><br><span class="line">    .translationXBy(<span class="number">1000f</span>)</span><br><span class="line">    .translationYBy(<span class="number">1000f</span>)</span><br><span class="line">    .rotationBy(<span class="number">3600</span>)</span><br><span class="line">    .setDuration(<span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="播放视频"><a href="#播放视频" class="headerlink" title="播放视频"></a>播放视频</h2><ol>
+<li>将视频文件放置在<code>res/raw</code>下面</li>
+<li>添加<code>VideoView</code>控件</li>
+<li><p>关键是找到视频的路径</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">videoView.setVideoPath = <span class="string">"android.resource://"</span> + getPackageName() + <span class="string">"/"</span> + R.raw.demovideo);</span><br><span class="line">videoView.start();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为视频播放添加控制</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MediaController media = <span class="keyword">new</span> MediaController(<span class="keyword">this</span>);</span><br><span class="line">media.setAnchorView(videoView);</span><br><span class="line">videoView.setMediaController(media);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="播放音频"><a href="#播放音频" class="headerlink" title="播放音频"></a>播放音频</h2><ol>
+<li>将音频文件放置在<code>res/raw</code>下面</li>
+<li><p>使用<code>MediaPlayer</code>播放音频</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MediaPlayer mplayer = MediaPlayer.create(<span class="keyword">this</span>, R.raw.mp3);</span><br><span class="line">mplayer.start();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以调用<code>mplayer.pause() mplayer.stop()</code>来暂停和停止播放。</p>
+</li>
+</ol>
+<h3 id="控制音量"><a href="#控制音量" class="headerlink" title="控制音量"></a>控制音量</h3><p>控制音量主要是通过<code>AudioManager</code>来进行的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取服务</span></span><br><span class="line">AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);</span><br><span class="line"><span class="comment">//获取音乐播放最大音量</span></span><br><span class="line"><span class="keyword">int</span> maxVolume = audioManger.getStreamMaxVolume(AudioManager.STREAM_MUSIC);</span><br><span class="line"><span class="comment">//获取当前系统播放音量</span></span><br><span class="line"><span class="keyword">int</span> currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以通过SeekBar来进行音量的设置</span></span><br><span class="line">audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress.value, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="控制播放进度"><a href="#控制播放进度" class="headerlink" title="控制播放进度"></a>控制播放进度</h3><p>可以通过<code>MediaPlayer</code>来获取当前播放的音乐的信息，并设置播放进度</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取音乐长度</span></span><br><span class="line">mplayer.getDuration();</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过定时器任务来更新进度条的位置</span></span><br><span class="line"><span class="keyword">new</span> Timer().scheduleAtFixedRate(<span class="keyword">new</span> TimerTask() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        scrubber.setProgress(mplayer.getCurrentPosition());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="number">0</span>, <span class="number">100</span>); <span class="comment">//立即开始，每隔100毫秒调用一次</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//可以拖拽进度挑来进行定位</span></span><br><span class="line">mplayer.seekTo(progress.value);</span><br></pre></td></tr></table></figure>
+<h2 id="简单的ListView"><a href="#简单的ListView" class="headerlink" title="简单的ListView"></a>简单的ListView</h2><p>ListView是移动客户端最常见的组件，能够显示很多的条目。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ListView listView = (ListView)findViewById(R.id.listView);</span><br><span class="line"></span><br><span class="line">ArrayList&lt;String&gt; myFriend = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">myFriend.add(<span class="string">"Zhang San"</span>);</span><br><span class="line">myFriend.add(<span class="string">"Li si"</span>);</span><br><span class="line">myFriend.add(<span class="string">"Wang wu"</span>);</span><br><span class="line">myFriend.add(<span class="string">"Zhao liu"</span>);</span><br><span class="line">myFriend.add(<span class="string">"Liu qi"</span>);</span><br><span class="line"></span><br><span class="line">ArrayAdapter&lt;String&gt; arrayAdapter = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(<span class="keyword">this</span>, android.R.layout.simple_list_item_1, myFriend);</span><br><span class="line"></span><br><span class="line">listView.setAdapter(arrayAdapter);</span><br></pre></td></tr></table></figure>
+<p>设定点击条目的事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置点击条目的事件</span></span><br><span class="line">listView.setOnItemClickListener(<span class="keyword">new</span> AdapterView.OnItemClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; parent, View view, <span class="keyword">int</span> position, <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">        Log.i(<span class="string">"ZJL"</span>, myFriend.get(position));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在设置字符串数组中，可以应用<code>asList</code>的便捷方法来进行处理，这需要静态导入<code>java.util.Arrays.asList</code>，并将<code>myFrind</code>设置为final对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.Arrays.asList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> ArrayList&lt;String&gt; myFriend = <span class="keyword">new</span> ArrayList&lt;String&gt;(asList(<span class="string">"Zhang San"</span>, <span class="string">"Li si"</span>, <span class="string">"Wang wu"</span>, <span class="string">"Zhao liu"</span>, <span class="string">"Liu qi"</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="安卓中的定时任务"><a href="#安卓中的定时任务" class="headerlink" title="安卓中的定时任务"></a>安卓中的定时任务</h2><p>可以使用<code>Handler</code>和<code>Runnable</code>来构造一个定时执行的任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Handler 负责进行处理一个定时运行的任务</span></span><br><span class="line"><span class="keyword">final</span> Handler handler = <span class="keyword">new</span> Handler();</span><br><span class="line"><span class="comment">//定义要定时运行的任务</span></span><br><span class="line">Runnable run = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="comment">//实际运行的代码在run方法中</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//模拟实际运行的代码</span></span><br><span class="line">        Log.i(<span class="string">"ZJL"</span>, <span class="string">"a second must have passed..."</span>);</span><br><span class="line">        <span class="comment">//handler负责1秒后继续运行任务</span></span><br><span class="line">        handler.postDelayed(<span class="keyword">this</span>, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//首次开始运行</span></span><br><span class="line">handler.post(run);</span><br></pre></td></tr></table></figure>
+<p>安卓也提供了一种叫做<code>CountDownTimer</code>的基础类，来让我们完成一种倒计时的任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//倒计时10秒，每秒触发任务</span></span><br><span class="line"> <span class="keyword">new</span> CountDownTimer(<span class="number">10000</span>, <span class="number">1000</span>) &#123;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTick</span><span class="params">(<span class="keyword">long</span> millisUntilFinished)</span> </span>&#123;</span><br><span class="line">         Log.i(<span class="string">"ZJL"</span>, <span class="string">"Seconds left: "</span> + millisUntilFinished / <span class="number">1000</span>);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFinish</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         Log.i(<span class="string">"Zjl"</span>, <span class="string">"Countdown Timer Finished"</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;.start();</span><br></pre></td></tr></table></figure>
+<p>对CountDownTimer来说，在第一次<code>onTick</code>方法调用的时候，实际上已经经过了1秒，为了精确定时，我们可以设定总时间稍微多一些毫秒。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> CountDownTimer(<span class="number">10000</span> + <span class="number">100</span>, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="显示和隐藏控件"><a href="#显示和隐藏控件" class="headerlink" title="显示和隐藏控件"></a>显示和隐藏控件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">view.setVisibility(View.VISIBLE);//显示控件</span><br><span class="line">view.setVisibility(View.INVISIBEL);//隐藏控件，但任然占用空间</span><br></pre></td></tr></table></figure>
+<h2 id="安卓中的异步任务"><a href="#安卓中的异步任务" class="headerlink" title="安卓中的异步任务"></a>安卓中的异步任务</h2><p>安卓中的异步任务可以简单的通过<code>AsyncTask</code>来完成。在<code>MainActivity</code>中添加内部类定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一个参数表示异步类的调用参数类型，第二个表示异步类中间结果的返回类型，第三个参数表示最终的结果返回类型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DownloadTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span>, <span class="title">Void</span>, <span class="title">String</span>&gt; </span>&#123; </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">doInBackground</span><span class="params">(String... params)</span> </span>&#123;</span><br><span class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            URL url = <span class="keyword">new</span> URL(params[<span class="number">0</span>]);</span><br><span class="line">            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();</span><br><span class="line"></span><br><span class="line">            InputStreamReader isr = <span class="keyword">new</span> InputStreamReader(httpURLConnection.getInputStream());</span><br><span class="line">            <span class="keyword">int</span> data;</span><br><span class="line">            <span class="keyword">while</span> ((data = isr.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                result.append((<span class="keyword">char</span>)data);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Log.i(<span class="string">"ZJL"</span>, <span class="string">"return result"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>MainActivity</code>中可以调用我们的异步类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DownloadTask task = <span class="keyword">new</span> DownloadTask();</span><br><span class="line">String result = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    result = task.execute(<span class="string">"http://www.ldxy.cn"</span>).get();</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Log.i(<span class="string">"ZJL"</span>, result);</span><br></pre></td></tr></table></figure>
+<p>因为涉及到网络访问，需要在<code>AndroidManifest.xml</code>中声明权限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="利用异步任务下载图像"><a href="#利用异步任务下载图像" class="headerlink" title="利用异步任务下载图像"></a>利用异步任务下载图像</h3><p>使用异步任务也可以完成图像的下载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意返回值是bitmap</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DownloadTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span>, <span class="title">Void</span>, <span class="title">Bitmap</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">doInBackground</span><span class="params">(String... params)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            HttpURLConnection httpURLConnection = (HttpURLConnection) (<span class="keyword">new</span> URL(params[<span class="number">0</span>])).openConnection();</span><br><span class="line">            <span class="keyword">return</span> BitmapFactory.decodeStream(httpURLConnection.getInputStream());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用的方式是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ImageView imageView = (ImageView) findViewById(R.id.imageView);</span><br><span class="line">Bitmap myImage = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    myImage = (<span class="keyword">new</span> DownloadTask()).execute(<span class="string">"图像地址"</span>).get();</span><br><span class="line">    imageView.setImageBitmap(myImage);</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="处理JSON数据"><a href="#处理JSON数据" class="headerlink" title="处理JSON数据"></a>处理JSON数据</h2><p>安卓可以使用<code>JSONObject</code>来处理网络获取到的JSON数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">JSONObject jsonObject = <span class="keyword">new</span> JSONObject(result);</span><br><span class="line">jsonObject.getString(<span class="string">"xxxKey"</span>);</span><br><span class="line"></span><br><span class="line">JSONArray arr = <span class="keyword">new</span> JSONArray(jsonString);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length(); i++) &#123;</span><br><span class="line">    JSONObject item = arr.getJSONObject(i);</span><br><span class="line">    <span class="comment">//process item</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/codeigniter-3/" rel="next" title="CodeIgniter教程 - 登录项目">
+                <i class="fa fa-chevron-left"></i> CodeIgniter教程 - 登录项目
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zjl.jpg"
+               alt="张景林 ldxyzjl@163.com" />
+          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
+          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">1.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#alpha动画"><span class="nav-number">1.1.</span> <span class="nav-text">alpha动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位置动画"><span class="nav-number">1.2.</span> <span class="nav-text">位置动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旋转动画"><span class="nav-number">1.3.</span> <span class="nav-text">旋转动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放动画"><span class="nav-number">1.4.</span> <span class="nav-text">缩放动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联和动画"><span class="nav-number">1.5.</span> <span class="nav-text">联和动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#播放视频"><span class="nav-number">2.</span> <span class="nav-text">播放视频</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#播放音频"><span class="nav-number">3.</span> <span class="nav-text">播放音频</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#控制音量"><span class="nav-number">3.1.</span> <span class="nav-text">控制音量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制播放进度"><span class="nav-number">3.2.</span> <span class="nav-text">控制播放进度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的ListView"><span class="nav-number">4.</span> <span class="nav-text">简单的ListView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安卓中的定时任务"><span class="nav-number">5.</span> <span class="nav-text">安卓中的定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示和隐藏控件"><span class="nav-number">6.</span> <span class="nav-text">显示和隐藏控件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安卓中的异步任务"><span class="nav-number">7.</span> <span class="nav-text">安卓中的异步任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用异步任务下载图像"><span class="nav-number">7.1.</span> <span class="nav-text">利用异步任务下载图像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理JSON数据"><span class="nav-number">8.</span> <span class="nav-text">处理JSON数据</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
