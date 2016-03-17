@@ -1,0 +1,770 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="PHP安装Mac：安装MAMPWindows：安装XAMPPLinux：独立安装各个组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP 基础(一)">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/03/php-fundamentals/index.html">
+<meta property="og:site_name" content="张景林的博客">
+<meta property="og:description" content="PHP安装Mac：安装MAMPWindows：安装XAMPPLinux：独立安装各个组件">
+<meta property="og:updated_time" content="2016-03-17T02:05:04.218Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP 基础(一)">
+<meta name="twitter:description" content="PHP安装Mac：安装MAMPWindows：安装XAMPPLinux：独立安装各个组件">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> PHP 基础(一) | 张景林的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/zjl.jpg"
+             alt="张景林的博客"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张景林的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">关于技术，关于人生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PHP 基础(一)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-15T05:52:48+00:00" content="2016-03-15">
+              2016-03-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="PHP安装"><a href="#PHP安装" class="headerlink" title="PHP安装"></a>PHP安装</h2><p>Mac：安装MAMP<br>Windows：安装XAMPP<br>Linux：独立安装各个组件</p>
+<a id="more"></a>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>我们来写一个基本的HTML</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>My Website<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>My Website<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在HTML h1后面增加一个PHP的输出语句，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="string">'Hello, World'</span>; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在浏览器中查看结果。对服务器来说，所有的HTML标记会原封不动的发送到客户端，但是一旦遇到了<code>&lt;?php</code>的<br>开始标记，就会交给PHP处理程序进行处理，然后将结果发送回浏览器。在浏览器中查看源代码，我们只会看见<br>PHP的处理结果，而不会看见php的语句。</p>
+<p>对php来说，我们也可以使用<code>print</code>来进行输出，不过使用<code>echo</code>在php的世界中更常用一些。字符串可以使用<br>单引号或者双引号。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $name = <span class="string">'Zhang Jinglin'</span>;</span><br><span class="line">    <span class="keyword">echo</span> $name;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>php中的变量使用<code>$</code>开始作为变量开始。<br>我们来看一下单引号和双引号之间的区别。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$name = <span class="string">'zhangjinglin'</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Hello, $name"</span>; <span class="comment">//Hello, zhangjinglin</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'Hello, $name'</span>; <span class="comment">//Hello, $name</span></span><br></pre></td></tr></table></figure>
+<p>对php来说，双引号字符串中的变量是可以被解析的，单引号中的变量不被解析，直接原样输出。对于<br>不含变量的字符串来说，单双引号没有区别。</p>
+<p>php使用<code>.</code>作为字符串连接符。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'hello, '</span> . $name;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"hello, "</span> . $name;</span><br></pre></td></tr></table></figure>
+<p>上面的语句结果相同。</p>
+<p>php是和HTML结合在一起使用的。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $name = <span class="string">'zhangjinglin'</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;p&gt;Hello, <span class="meta">&lt;?</span> <span class="keyword">echo</span> $name; <span class="meta">?&gt;</span>&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>一定要注意上面的<code>&lt;?php</code>与<code>?&gt;</code>的成对出现。</p>
+<p>如果我们只是想输出一个变量，而不是执行一个语句，可以使用php的简洁写法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Hello, <span class="meta">&lt;?</span>=$name<span class="meta">?&gt;</span>&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>当然也可以直接使用php来输出与HTML的结合。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$name = <span class="string">'zhangjinglin'</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;p&gt;Hello, $name&lt;/p&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="显示错误信息"><a href="#显示错误信息" class="headerlink" title="显示错误信息"></a>显示错误信息</h2><p>下面的语句会出项错误，但是我们什么也看不到</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span></span><br><span class="line"><span class="keyword">echo</span> hello, world!;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在php.ini的配置中，我们需要设定：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">display_errors</span> = <span class="literal">On</span></span><br></pre></td></tr></table></figure>
+<p>当然，这个应该在开发环境中，在生产环境中需要设置为<code>Off</code>. 在<code>XAMPP</code>中，默认为<code>On</code>，但在其他环境中，<br>可能需要自行设定。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>比如我们想定义12个月的变量，当然可以使用<code>$jan $feb ...</code>去定义，不过最好的方式是使用数组。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$months = <span class="keyword">array</span>(<span class="string">'januara'</span>, <span class="string">'february'</span>, <span class="string">'march'</span>, <span class="string">'april'</span>, <span class="string">'may'</span>);</span><br><span class="line">var_dump($months);</span><br></pre></td></tr></table></figure>
+<p><code>var_dump</code>是用于输出数组的函数，不能使用<code>echo</code>输出数组。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> $months[<span class="number">4</span>]; <span class="comment">//may</span></span><br><span class="line"><span class="keyword">echo</span> $months[<span class="number">0</span>]; <span class="comment">//januara</span></span><br></pre></td></tr></table></figure>
+<p>也可以使用php的数组简写定义方式(php 5.4 以上版本)，和<code>print_r</code>来输出数组。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$months = [<span class="string">'januara'</span>, <span class="string">'february'</span>, <span class="string">'march'</span>, <span class="string">'april'</span>, <span class="string">'may'</span>];</span><br><span class="line">print_r($months);</span><br></pre></td></tr></table></figure>
+<p>在php中输出数组与html结合的方式。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $months = [<span class="string">'januara'</span>, <span class="string">'february'</span>, <span class="string">'march'</span>, <span class="string">'april'</span>, <span class="string">'may'</span>];</span><br><span class="line">    <span class="keyword">foreach</span> ($months <span class="keyword">as</span> $month) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;li&gt;$month&lt;/li&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>php也可以定义在不同的位置上，我们在文件头部定义变量，这次定义一个关联数组。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $sites = <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">'baidu'</span> =&gt; <span class="string">'www.baidu.com'</span>,</span><br><span class="line">        <span class="string">'google'</span> =&gt; <span class="string">'www.google.com'</span>,</span><br><span class="line">        <span class="string">'bing'</span> =&gt; <span class="string">'www.bing.com'</span></span><br><span class="line">    );</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;My Website&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">    <span class="meta">&lt;?php</span> <span class="keyword">foreach</span>($sites <span class="keyword">as</span> $name =&gt; $url) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;li&gt;$name, $url&lt;/li&gt;"</span>;</span><br><span class="line">    &#125; <span class="meta">?&gt;</span></span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>我们也可以更进一步，将输出改为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;li&gt;&lt;a href='$url'&gt;$name&lt;/a&gt;&lt;/li&gt;"</span>;</span><br></pre></td></tr></table></figure>
+<p>php也提供了短写的写法，能够简化<code>foreach if</code>的语句复杂度，修改上面的语句为</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">foreach</span>($sites <span class="keyword">as</span> $name =&gt; $url): <span class="meta">?&gt;</span></span><br><span class="line">    &lt;li&gt;</span><br><span class="line">    &lt;a href=<span class="string">"&lt;?=$url?&gt;"</span>&gt;<span class="meta">&lt;?</span>=$name<span class="meta">?&gt;</span>&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">endforeach</span> <span class="meta">?&gt;</span></span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>这样，写起来会舒服一些。同样，<code>if</code>的写法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">if</span> (xxx): <span class="meta">?&gt;</span></span><br><span class="line"><span class="comment">//html</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">else</span>: <span class="meta">?&gt;</span></span><br><span class="line"><span class="comment">//html</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">endif</span> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>array_push($arr, $val)</code> 向数组中添加数据，更简单的方法是<code>$arr[] = $val</code>。<br>对关联数组来说，使用<code>$arr[$key] = $val</code>。<br><code>array_pop($arr)</code>删除最后一个数据，并返回删除数据。<br><code>array_shift($arr)</code>删除开始的数据，并返回删除数据。<br><code>array_unshift($arr, $val)</code> - 在数组开头插入一个或多个单元</p>
+<p>在<a href="http://php.net" target="_blank" rel="external">php.net</a>中可以搜索所有的函数。</p>
+<p>查看<code>array_filter()</code>函数，并掌握用法。</p>
+<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><p><code>if</code>语句的格式</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>() &#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125; esleif() &#123;</span><br><span class="line">    <span class="comment">//do other</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//do something else</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个简单的例子</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$name = <span class="string">'zjl'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(strlen($name) == <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'Your name length is 3'</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'Your name length is not 3'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>php中的判等有两种方式，注意类型</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'3'</span> == <span class="number">3</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">'3'</span> === <span class="number">3</span> <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>php中认为<code>0, false</code>都是假值，<code>1, true, 已定义的变量</code>都是真值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$name = <span class="string">'zjl'</span>;</span><br><span class="line">$val = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> ($name) <span class="keyword">echo</span> <span class="string">'true'</span>; <span class="comment">//true</span></span><br><span class="line"><span class="keyword">if</span> ($val) <span class="keyword">echo</span> <span class="string">'true'</span>; <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>请自行了解<code>switch</code>。</p>
+<p>可以使用<code>isset</code>来判断变量是否定义。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="keyword">isset</span>($name) ? <span class="string">"Hello, $name"</span> : <span class="string">'Noname'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>使用<code>foreach</code>来遍历数组。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $item) &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $key =&gt; $val) &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>for</code>语句也可以使用。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; count($arr); $i++) &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>在实际的工作中，我们可能有一些文件的很多内容是相同的，比如说多个页面都有相同的页面布局，<br>或者我们需要一些公共的函数库，这就可以使用PHP的文件包含功能。</p>
+<p>比如我们创建一个文件，叫做<code>header.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;<span class="keyword">Include</span>&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">        &lt;h1&gt;My Website&lt;/h1&gt;</span><br><span class="line">    &lt;/header&gt;</span><br></pre></td></tr></table></figure>
+<p>这个文件包含了HTML模板头部，可以在多个文件中使用。</p>
+<p>我们再创建一个<code>footer.php</code>文件，包含模板的尾部。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Copyright Infomation<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>现在我们就可以定义多个文件来使用了。创建文件<code>index.php</code>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php include 'header.php'; ?&gt;</span><br><span class="line">    &lt;div class="container"&gt;</span><br><span class="line">        &lt;p&gt;Main content.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;?php include 'footer.php'; ?&gt;</span><br></pre></td></tr></table></figure>
+<p>再创建一个<code>about.php</code>文件，也使用包含文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php include 'header.php'; ?&gt;</span><br><span class="line">    &lt;div class="container"&gt;</span><br><span class="line">        &lt;p&gt;About content.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;?php include 'footer.php'; ?&gt;</span><br></pre></td></tr></table></figure>
+<p>可见，我们简化了很多的工作。</p>
+<p>出了可以使用<code>include</code>也可以使用<code>require</code>来进行文件包含，两者的区别是，include如果没有找到文件<br>会发出警告并继续执行，而require会出现错误并停止执行。<br>还有一个<code>require_once</code>能够保证仅仅包含一次文件，即使你写了多个。比如你写了一个类B文件，依赖<br>另外一个类A，有可能其他的类C也依赖类A，当同时使用类B和类C就可能引入两次类A，所以使用<code>require_once</code><br>就是一个好的选择。</p>
+<h2 id="函数和变量作用域"><a href="#函数和变量作用域" class="headerlink" title="函数和变量作用域"></a>函数和变量作用域</h2><p>在php中使用<code>function</code>关键字来定义函数，函数可以包含参数和返回值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say_hello</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hi, there'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> say_hello();</span><br></pre></td></tr></table></figure>
+<p>当然我们也可以存储函数的返回值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$greeting = say_hello();</span><br><span class="line"><span class="keyword">echo</span> $greeting;</span><br></pre></td></tr></table></figure>
+<p>函数中添加参数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say_hello</span><span class="params">($name)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hi, $name"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$greeting = say_hello(<span class="string">'zhang jinglin'</span>);</span><br><span class="line"><span class="keyword">echo</span> $greeting;</span><br></pre></td></tr></table></figure>
+<p>如果函数有参数，但是调用的时候没有调用参数则会出错。我们也可以给函数参数一个默认值，这样，<br>调用的时候就不一定要赋值了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say_hello</span><span class="params">($name = <span class="string">'nobody'</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hi, $name"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以使用<code>print_r</code>来输出数组信息，不过显示的结果并不是和直观，所以我们可以写一个工具<br>函数来输出数组或者变量的信息。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pp</span><span class="params">($value)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</span><br><span class="line">    print_r($value);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$arr = [<span class="string">'name'</span> =&gt; <span class="string">'zjl'</span>, <span class="string">'age'</span> =&gt; <span class="number">43</span>, <span class="string">'ocupation'</span> =&gt; <span class="string">'teacher'</span>];</span><br><span class="line">pp($arr);</span><br></pre></td></tr></table></figure>
+<p>假设我们有一个这样一个数组，数组的每个元素是一个包含个人信息的数组，也就是这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$people = [</span><br><span class="line">    [&apos;name&apos; =&gt; &apos;zjl&apos;, &apos;age&apos; =&gt; 43, &apos;occupation&apos; =&gt; &apos;Teacher&apos;],</span><br><span class="line">    [&apos;name&apos; =&gt; &apos;zhao si&apos;, &apos;age&apos; =&gt; 50, &apos;occupation&apos; =&gt; &apos;Actor&apos;],</span><br><span class="line">    [&apos;name&apos; =&gt; &apos;wang wu&apos;, &apos;age&apos; =&gt; 21, &apos;occupation&apos; =&gt; &apos;Student&apos;]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>现在我们希望能有一个函数，能够根据我们提供的关键字来抽取出一个数组，比如抽取出所有的名字<br>组成的数组，也就是希望</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_pluck(&apos;name&apos;, $people); //[&apos;zjl&apos;, &apos;zhao si&apos;, &apos;wang wu&apos;]</span><br></pre></td></tr></table></figure>
+<p>我们来实现上面的函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">array_pluck</span><span class="params">($toPluck, $arr)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    $ret = [];</span><br><span class="line">    <span class="keyword">foreach</span>($arr <span class="keyword">as</span> $item) &#123;</span><br><span class="line">        $ret[] = $item[$toPluck];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $ret;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们现在利用php提供的<code>array_map</code>来实现我们上面的函数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">array_pluck</span><span class="params">($toPluck, $arr)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> array_map(<span class="function"><span class="keyword">function</span><span class="params">($item)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $item[$toPluck];</span><br><span class="line">    &#125;, $arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的函数将导致错误，说<code>$toPluck</code>是一个没有定义的变量。在php中，变量的作用域仅仅在函数中<br>，这意味着我们的<code>array_map</code>的调用函数中是不存在<code>$toPluck</code>这个变量的。为了使用函数外部的变量，<br>我们需要修改代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function array_pluck($toPluck, $arr)</span><br><span class="line">&#123;</span><br><span class="line">    return array_map(function($item) use($toPluck) &#123;</span><br><span class="line">        return $item[$toPluck];</span><br><span class="line">    &#125;, $arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中的<code>use($toPluck)</code>将函数外部的变量带入到了函数中。</p>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>我们来看一下php的对对象定义</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $job;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $job)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">        $this-&gt;job = $job;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">introduction</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"I'm $this-&gt;name, a $this-&gt;job"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$p = <span class="keyword">new</span> Person(<span class="string">'zjl'</span>, <span class="string">'teacher'</span>);</span><br><span class="line"><span class="keyword">echo</span> $p-&gt;introduction();</span><br></pre></td></tr></table></figure>
+<p>php也提供了一个<code>stdClass</code>的类模板，我们可以直接使用。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$person = <span class="keyword">new</span> stdClass;</span><br><span class="line">$person-&gt;name = <span class="string">'zjl'</span>;</span><br><span class="line">$person-&gt;job = <span class="string">'teacher'</span>;</span><br><span class="line"></span><br><span class="line">var_dump($person);</span><br><span class="line"><span class="keyword">echo</span> $person-&gt;name;</span><br></pre></td></tr></table></figure>
+<blockquote><p>在使用<code>stdClass</code>中要注意的问题是，不能使用方法，如果必须使用方法的话，就需要自定义类。</p>
+</blockquote>
+<p>还可以使用强制类型转换来将数组转换为<code>stdClass</code>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$person = [</span><br><span class="line">    <span class="string">'name'</span> =&gt; <span class="string">'zjl'</span>,</span><br><span class="line">    <span class="string">'job'</span> =&gt; <span class="string">'teacher'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">var_dump($person);</span><br><span class="line">var_dump((object)$person);</span><br><span class="line"></span><br><span class="line">$o = (object)$person;</span><br><span class="line"><span class="keyword">echo</span> $person[<span class="string">'name'</span>];</span><br><span class="line"><span class="keyword">echo</span> $o-&gt;job;</span><br></pre></td></tr></table></figure>
+<h2 id="heredocs"><a href="#heredocs" class="headerlink" title="heredocs"></a>heredocs</h2><p>我们来看一下下面的代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$post = [</span><br><span class="line">    <span class="string">'author'</span> =&gt; <span class="string">'zjl'</span>,</span><br><span class="line">    <span class="string">'title'</span> =&gt; <span class="string">'My Awesome Post'</span>,</span><br><span class="line">    <span class="string">'body'</span> =&gt; <span class="string">'Here is the body'</span>,</span><br><span class="line">    <span class="string">'publish-date'</span> =&gt; <span class="string">'2016-3-15'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面的语句会出错，对数组不能直接这样写</span></span><br><span class="line"><span class="comment">// $email = "&lt;h1&gt;$post['title']";</span></span><br><span class="line"><span class="comment">// 必须修改成带有&#123;&#125;的样式</span></span><br><span class="line">$email = <span class="string">"&lt;h1&gt;&#123;$post['title']&#125;&lt;/h1&gt;&lt;p&gt;By: &#123;$post['author']&#125;&lt;/p&gt;&lt;div&gt;&#123;$post['body']&#125;&lt;/div&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> $email;</span><br></pre></td></tr></table></figure>
+<p>如果我们的内容更加复杂的话，$email的赋值语句会让我们崩溃的。我们可以稍微修改一下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$email = <span class="string">"&lt;h1&gt;&#123;$post['title']&#125;&lt;/h1&gt;"</span>;</span><br><span class="line">$email .= <span class="string">"&lt;p&gt;By: &#123;$post['author']&#125;&lt;/p&gt;"</span>;</span><br><span class="line">$email .= <span class="string">"&lt;div&gt;&#123;$post['body']&#125;&lt;/div&gt;"</span>;</span><br></pre></td></tr></table></figure>
+<p>这样好一些，但仍然不会是一个好的解决方案。我们再进一步，使用php提供的<code>sprintf()</code>函数来格式化我们<br>要输出的信息。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$email = sprintf(<span class="string">"&lt;h1&gt;%s&lt;/h1&gt;&lt;p&gt;By: %s&lt;/p&gt;&lt;div&gt;%s&lt;/div&gt;"</span>, $post[<span class="string">'title'</span>], $post[<span class="string">'author'</span>], $post[<span class="string">'body'</span>]);</span><br></pre></td></tr></table></figure>
+<p>有进步，但仍然不是很好。幸好，php提供了<code>heredocs</code>的功能。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$email = <span class="string">&lt;&lt;&lt;EOT</span><br><span class="line">&lt;h1&gt;<span class="subst">&#123;$post['title']&#125;</span>&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;By: <span class="subst">&#123;$post['author']&#125;</span>&lt;/p&gt;</span><br><span class="line">&lt;div&gt;<span class="subst">&#123;$post['body']&#125;</span>&lt;/div&gt;</span><br><span class="line">EOT;</span></span><br></pre></td></tr></table></figure>
+<p><code>&lt;&lt;&lt;EOT</code>表示heredocs的开始，EOT可以用你自己定义的符号表示，比如<code>&lt;&lt;&lt;HAHA</code>，但是结束标志要一致。</p>
+<p>php提供了一个<code>extract()</code>的函数，它能够将一个关联数组中的数据编程一系列的变量，变量的名字就是key的<br>名字，值就是原先关联的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">extract($post); //生成四个变量，$author,$title,$body,$publish-date</span><br><span class="line"></span><br><span class="line">$email = &lt;&lt;&lt;EOT</span><br><span class="line">&lt;h1&gt;$title&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;By: $author&lt;/p&gt;</span><br><span class="line">&lt;div&gt;$body&lt;/div&gt;</span><br><span class="line">EOT;</span><br><span class="line"></span><br><span class="line">echo $email;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/ubuntu-php/" rel="next" title="Ubuntu PHP 开发环境配置">
+                <i class="fa fa-chevron-left"></i> Ubuntu PHP 开发环境配置
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zjl.jpg"
+               alt="张景林 ldxyzjl@163.com" />
+          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
+          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP安装"><span class="nav-number">1.</span> <span class="nav-text">PHP安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示错误信息"><span class="nav-number">3.</span> <span class="nav-text">显示错误信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">4.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件语句"><span class="nav-number">5.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">6.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件包含"><span class="nav-number">7.</span> <span class="nav-text">文件包含</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数和变量作用域"><span class="nav-number">8.</span> <span class="nav-text">函数和变量作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">9.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heredocs"><span class="nav-number">10.</span> <span class="nav-text">heredocs</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
