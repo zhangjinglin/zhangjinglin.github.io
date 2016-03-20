@@ -1,0 +1,683 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="一个Docker学习的简单笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 学习笔记">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/03/docker-in-action/index.html">
+<meta property="og:site_name" content="张景林的博客">
+<meta property="og:description" content="一个Docker学习的简单笔记。">
+<meta property="og:updated_time" content="2016-03-20T04:50:59.913Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 学习笔记">
+<meta name="twitter:description" content="一个Docker学习的简单笔记。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Docker 学习笔记 | 张景林的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/zjl.jpg"
+             alt="张景林的博客"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张景林的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">关于技术，关于人生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Docker 学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-19T09:12:10+00:00" content="2016-03-19">
+              2016-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一个Docker学习的简单笔记。</p>
+<a id="more"></a>
+<h2 id="Docker是什么？"><a href="#Docker是什么？" class="headerlink" title="Docker是什么？"></a>Docker是什么？</h2><p>略。</p>
+<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>参考<a href="http://docs.docker.com" target="_blank" rel="external">docker.com</a>上的文档安装Docker。</p>
+<h2 id="将当前用户添加到Docker组"><a href="#将当前用户添加到Docker组" class="headerlink" title="将当前用户添加到Docker组"></a>将当前用户添加到Docker组</h2><p>为了避免每次执行docker命令都需要输入<code>sudo</code>，可以将当前用户添加到docker组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd <span class="_">-a</span> <span class="variable">$&#123;USER&#125;</span> docker</span><br></pre></td></tr></table></figure>
+<p>然后退出重新进入即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version //快速检查</span><br></pre></td></tr></table></figure>
+<h2 id="运行第一个镜像"><a href="#运行第一个镜像" class="headerlink" title="运行第一个镜像"></a>运行第一个镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run debian <span class="built_in">echo</span> <span class="string">"Hello World"</span></span><br></pre></td></tr></table></figure>
+<p>运行一个命令行容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -i -t debian /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment">#root@99a15501bbaf:/# echo "Hello from Container-lan"</span></span><br><span class="line"><span class="comment">#Hello from Container-lan</span></span><br><span class="line"><span class="comment">#root@99a15501bbaf:/# exit</span></span><br><span class="line"><span class="comment">#exit</span></span><br></pre></td></tr></table></figure>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -h hostname 命名容器</span></span><br><span class="line">docker run -h CONTAINER -i -t debian /bin/bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开一个新的终端</span></span><br><span class="line">docker ps //运行的容器</span><br><span class="line">docker inspect gloomy_yalow(NAMES) //容器信息 </span><br><span class="line">docker inspect gloomy_yalow | grep IPAddress</span><br><span class="line">docker diff gloomy_yalow //容器的变化</span><br><span class="line">docker logs gloomy_yalow //容器内发生的事情</span><br><span class="line">docker ps <span class="_">-a</span> //所有容器，包括停止的</span><br><span class="line">docker rm gloomy_yalow //删除容器</span><br><span class="line">docker rm -v $(docker ps -aq <span class="_">-f</span> status=exited) //删除所有已经停止的容器</span><br></pre></td></tr></table></figure>
+<h2 id="一个cowsay的例子"><a href="#一个cowsay的例子" class="headerlink" title="一个cowsay的例子"></a>一个cowsay的例子</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name cowsay --hostname cowsay debian bash</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y cowsay fortune</span><br><span class="line">/usr/games/fortune | /usr/games/cowsay </span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">docker commit cowsay <span class="built_in">test</span>/cowsayimage</span><br><span class="line">docker run <span class="built_in">test</span>/cowsayimage /usr/games/cowsay <span class="string">"Moo"</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用Dockerfiles构建镜像"><a href="#使用Dockerfiles构建镜像" class="headerlink" title="使用Dockerfiles构建镜像"></a>使用Dockerfiles构建镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">mkdir cowsay</span><br><span class="line">cd cowsay/</span><br><span class="line">touch Dockerfile</span><br><span class="line"># 文件内容</span><br><span class="line">FROM debian:latest</span><br><span class="line"></span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y cowsay fortune</span><br><span class="line">####</span><br><span class="line"></span><br><span class="line">docker build -t test/cowsay-dockerfile .</span><br><span class="line"></span><br><span class="line">docker run test/cowsay-dockerfile /usr/games/cowsay &quot;Moo&quot;</span><br><span class="line"></span><br><span class="line"># 添加下面到Dockerfile，以便自动执行</span><br><span class="line">ENTRYPOINT [&quot;/usr/games/cowsay&quot;]</span><br><span class="line">####</span><br><span class="line"></span><br><span class="line">docker build -t test/cowsay-dockerfile .</span><br><span class="line">docker run test/cowsay-dockerfile &quot;Moo&quot;</span><br><span class="line"></span><br><span class="line"># 在主机cowsay目录下创建文件 entrypoint.sh</span><br><span class="line">touch entrypoint.sh</span><br><span class="line"># 文件内容</span><br><span class="line">#!/bin/bash</span><br><span class="line">if [ $# -eq 0 ]; then</span><br><span class="line">    /usr/games/fortune | /usr/games/cowsay</span><br><span class="line">else</span><br><span class="line">    /usr/games/cowsay &quot;$@&quot;</span><br><span class="line">fi</span><br><span class="line">####</span><br><span class="line">chmod +x entrypoint.sh </span><br><span class="line">#修改Dockerfile</span><br><span class="line">FROM debian:latest</span><br><span class="line"></span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y cowsay fortune</span><br><span class="line">COPY entrypoint.sh /</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;/entrypoint.sh&quot;]</span><br><span class="line">#####</span><br><span class="line"></span><br><span class="line">docker build -t test/cowsay-dockerfile .</span><br><span class="line">docker run test/cowsay-dockerfile</span><br><span class="line">docker run test/cowsay-dockerfile Hello Moo</span><br></pre></td></tr></table></figure>
+<h2 id="使用Redis官方镜像"><a href="#使用Redis官方镜像" class="headerlink" title="使用Redis官方镜像"></a>使用Redis官方镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br><span class="line">docker run --name myredis <span class="_">-d</span> redis //<span class="_">-d</span> 后台运行</span><br><span class="line">docker run --rm -it --link myredis:redis redis /bin/bash //--rm 运行后删除容器，--link 连接两个容器 已存在容器名/在本容器中使用名</span><br><span class="line"></span><br><span class="line">redis-cli -h redis -p 6379</span><br><span class="line">redis:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line">redis:6379&gt; <span class="built_in">set</span> <span class="string">"abc"</span> 123</span><br><span class="line">OK</span><br><span class="line">redis:6379&gt; get <span class="string">"abc"</span></span><br><span class="line"><span class="string">"123"</span></span><br><span class="line">redis:6379&gt; <span class="built_in">exit</span></span><br><span class="line">root@e78e3538b2c8:/data<span class="comment"># exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line"></span><br><span class="line">docker stop myredis</span><br><span class="line">docker rm -v myredis</span><br><span class="line"></span><br><span class="line">docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+<h2 id="使用docker进行开发"><a href="#使用docker进行开发" class="headerlink" title="使用docker进行开发"></a>使用docker进行开发</h2><p>我们使用python和flask构建一个website。</p>
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello, World"></a>Hello, World</h3><p>构建一个返回“hello，world”的web server。</p>
+<p>创建以下的目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">identidock/</span><br><span class="line">|-- app</span><br><span class="line">|   `-- identidock.py</span><br><span class="line">`-- Dockerfile</span><br><span class="line"></span><br><span class="line">1 directory, 2 files</span><br></pre></td></tr></table></figure>
+<p>编辑<code>identidock.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello World!\n'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="keyword">True</span>, host=<span class="string">'0.0.0.0'</span>)</span><br></pre></td></tr></table></figure>
+<p>编辑<code>Dockerfile</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ROM python:latest</span><br><span class="line"></span><br><span class="line">RUN pip install Flask==0.10.1</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY app /app</span><br><span class="line">CMD [&quot;python&quot;, &quot;identidock.py&quot;]</span><br></pre></td></tr></table></figure>
+<p>创建镜像并测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t identidock .</span><br><span class="line">docker run <span class="_">-d</span> p 5000:5000 identidock</span><br><span class="line">curl localhost:5000</span><br></pre></td></tr></table></figure>
+<p>但是如果每次我们修改代码都要重新运行构建镜像也是一件麻烦的事情，我们改进一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -lq) //停止最后运行的container</span><br><span class="line">docker run <span class="_">-d</span> -p 5000:5000 -v <span class="string">"<span class="variable">$(pwd)</span>"</span>/app:/app identidock //将主机app目录挂载到容器/app目录下</span><br><span class="line">curl localhost:5000</span><br><span class="line"></span><br><span class="line">//修改python文件，返回不同的字符串，再次测试</span><br><span class="line">curl lcoalhost:5000</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/php-fundamentals-2/" rel="next" title="PHP 基础(二)">
+                <i class="fa fa-chevron-left"></i> PHP 基础(二)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zjl.jpg"
+               alt="张景林 ldxyzjl@163.com" />
+          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
+          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker是什么？"><span class="nav-number">1.</span> <span class="nav-text">Docker是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker安装"><span class="nav-number">2.</span> <span class="nav-text">Docker安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将当前用户添加到Docker组"><span class="nav-number">3.</span> <span class="nav-text">将当前用户添加到Docker组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行第一个镜像"><span class="nav-number">4.</span> <span class="nav-text">运行第一个镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本命令"><span class="nav-number">5.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个cowsay的例子"><span class="nav-number">6.</span> <span class="nav-text">一个cowsay的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Dockerfiles构建镜像"><span class="nav-number">7.</span> <span class="nav-text">使用Dockerfiles构建镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Redis官方镜像"><span class="nav-number">8.</span> <span class="nav-text">使用Redis官方镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用docker进行开发"><span class="nav-number">9.</span> <span class="nav-text">使用docker进行开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World"><span class="nav-number">9.1.</span> <span class="nav-text">Hello, World</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
