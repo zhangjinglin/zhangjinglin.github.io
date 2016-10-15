@@ -57,19 +57,22 @@
 
 
 
-<meta name="description" content="项目地址官方网址
-快速、可靠、安全的依赖管理。">
+<meta name="description" content="VueJS中的Vue组件是以.vue为扩展名的，atom中不识别，atom默认认为是Plain Text，所以没有语法高亮等特性。
+在atom中有一个名为language-vue的社区包，安装之后能够高亮.vue的文件，还有一个template的缩略词，能够快速生成Vue组件的结构，看似完美。
+但是Emmet不好用！！！！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2016年第42周最火的Github项目 - Yarn">
-<meta property="og:url" content="http://zhangjinglin.github.io/2016/10/yarn/index.html">
+<meta property="og:title" content="Atom下VueJS开发的配置">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/10/atom-vue/index.html">
 <meta property="og:site_name" content="张景林的博客">
-<meta property="og:description" content="项目地址官方网址
-快速、可靠、安全的依赖管理。">
-<meta property="og:updated_time" content="2016-10-15T07:03:01.055Z">
+<meta property="og:description" content="VueJS中的Vue组件是以.vue为扩展名的，atom中不识别，atom默认认为是Plain Text，所以没有语法高亮等特性。
+在atom中有一个名为language-vue的社区包，安装之后能够高亮.vue的文件，还有一个template的缩略词，能够快速生成Vue组件的结构，看似完美。
+但是Emmet不好用！！！！">
+<meta property="og:updated_time" content="2016-10-15T09:56:50.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2016年第42周最火的Github项目 - Yarn">
-<meta name="twitter:description" content="项目地址官方网址
-快速、可靠、安全的依赖管理。">
+<meta name="twitter:title" content="Atom下VueJS开发的配置">
+<meta name="twitter:description" content="VueJS中的Vue组件是以.vue为扩展名的，atom中不识别，atom默认认为是Plain Text，所以没有语法高亮等特性。
+在atom中有一个名为language-vue的社区包，安装之后能够高亮.vue的文件，还有一个template的缩略词，能够快速生成Vue组件的结构，看似完美。
+但是Emmet不好用！！！！">
 
 
 
@@ -87,7 +90,7 @@
   };
 </script>
 
-  <title> 2016年第42周最火的Github项目 - Yarn | 张景林的博客 </title>
+  <title> Atom下VueJS开发的配置 | 张景林的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -216,7 +219,7 @@
             
             
               
-                2016年第42周最火的Github项目 - Yarn
+                Atom下VueJS开发的配置
               
             
           </h1>
@@ -228,7 +231,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-15T06:59:56+00:00" content="2016-10-15">
+            <time itemprop="dateCreated" datetime="2016-10-15T09:51:00+00:00" content="2016-10-15">
               2016-10-15
             </time>
           </span>
@@ -255,28 +258,24 @@
       
 
       
-        <p><a href="https://github.com/yarnpkg/yarn" target="_blank" rel="external">项目地址</a><br><a href="https://yarnpkg.com" target="_blank" rel="external">官方网址</a></p>
-<h2 id="快速、可靠、安全的依赖管理。"><a href="#快速、可靠、安全的依赖管理。" class="headerlink" title="快速、可靠、安全的依赖管理。"></a>快速、可靠、安全的依赖管理。</h2><a id="more"></a>
-<h3 id="什么东东"><a href="#什么东东" class="headerlink" title="什么东东?"></a>什么东东?</h3><p>yarn是一个可以替代npm的包管理工具，用于管理NodeJS的包。</p>
-<h3 id="有什么优势？"><a href="#有什么优势？" class="headerlink" title="有什么优势？"></a>有什么优势？</h3><ul>
-<li>快速：yarn把每一个package都缓存起来，下次就不需要再下载了。它还可以并行操作，比以往都快。</li>
-<li>可靠：使用了一个lockfile文件，把当前的package版本确定下来，避免版本的问题。</li>
-<li>安全：yarn使用checksums校验每一个包，确保正确。</li>
-</ul>
-<h3 id="怎么安装？"><a href="#怎么安装？" class="headerlink" title="怎么安装？"></a>怎么安装？</h3><ul>
-<li>MacOS</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// brew</span><br><span class="line">brew update</span><br><span class="line">brew install yarn</span><br><span class="line"></span><br><span class="line">// shell</span><br><span class="line">curl -o- -L https://yarnpkg.com/install.sh | bash</span><br></pre></td></tr></table></figure>
-<ul>
-<li>其他平台：参考<a href="https://yarnpkg.com/en/docs/install" target="_blank" rel="external">官方网址</a></li>
-</ul>
-<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><p>基本上和npm一样，除了一些命令参数以外。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//开始新项目</span><br><span class="line">yarn init // npm init</span><br><span class="line"></span><br><span class="line">//添加包</span><br><span class="line">yarn add [package] // npm install [package] --save</span><br><span class="line">yarn add [package] --dev // npm install [package] --save-dev</span><br><span class="line">//安装所有依赖</span><br><span class="line">yarn | yarn install</span><br><span class="line"></span><br><span class="line">//全局安装</span><br><span class="line">yarn global add [package] // npm install -g [package]</span><br><span class="line"></span><br><span class="line">//运行脚本</span><br><span class="line">yarn run [script] // npm run [script]</span><br></pre></td></tr></table></figure>
-<h3 id="一些技巧"><a href="#一些技巧" class="headerlink" title="一些技巧"></a>一些技巧</h3><ul>
-<li><code>yarn add</code>等同于<code>npm install [package]</code>命令，用于向项目中安装依赖的包，但是如果安装<code>package.json</code>中的全部包，等同于<code>npm install</code>的命令是<code>yarn install</code>命令。</li>
-<li>如果目录中没有<code>package.json</code>的话，yarn会自动建立，每个<code>yarn add</code>命令会自动在<code>dependencies</code>段中添加依赖，不需要明确的<code>--save</code>参数。</li>
-<li>yarn会自动产生<code>yarn.lock</code>文件，文件中描述了依赖包的版本。</li>
-</ul>
+        <p>VueJS中的Vue组件是以<code>.vue</code>为扩展名的，atom中不识别，atom默认认为是<code>Plain Text</code>，所以没有语法高亮等特性。</p>
+<p>在atom中有一个名为<code>language-vue</code>的社区包，安装之后能够高亮<code>.vue</code>的文件，还有一个<code>template</code>的缩略词，能够快速生成Vue组件的结构，看似完美。</p>
+<blockquote><h3 id="但是Emmet不好用！！！！"><a href="#但是Emmet不好用！！！！" class="headerlink" title="但是Emmet不好用！！！！"></a>但是Emmet不好用！！！！</h3></blockquote>
+<a id="more"></a>
+<p>作为一个无法离开Emmet的人来说，没有Emmet的功能简直是回到了原始社会，无法忍受。</p>
+<p>在google上搜索，得到解决方案，在emmet-atom中有#364的开放issue，joshuajohnson814提出了可以在<code>keymap.cson</code>中添加自定义快捷键：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">'atom-text-editor[data-grammar~="vue"]:not([mini])':</span><br><span class="line">    'tab': 'emmet:expand-abbreviation-with-tab'</span><br></pre></td></tr></table></figure>
+<p>作为临时的解决方案，但是其他人提出：</p>
+<blockquote><h3 id="CSS-不好用"><a href="#CSS-不好用" class="headerlink" title="CSS 不好用"></a>CSS 不好用</h3></blockquote>
+<p>也就是我没办法输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w10[tab] -&gt; width: 10px;</span><br></pre></td></tr></table></figure>
+<p>其实，<code>.vue</code>文件不过就是<code>html</code>文件换了个扩展名而已，我们可以直接把<code>.vue</code>登记成<code>.html</code>文件即可，也就是atom看到了<code>.vue</code>文件就用<code>.html</code>来处理即可。</p>
+<h2 id="完美解决方案"><a href="#完美解决方案" class="headerlink" title="完美解决方案"></a>完美解决方案</h2><p>在atom中打开<code>config.json</code>文件，别告诉我你不知道怎么打开，在MacOS下，在atom菜单中。</p>
+<p>在<code>core</code>段下面增加：</p>
+<figure class="highlight cson"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">customFileTypes:</span><br><span class="line">  <span class="string">'text.html.basic'</span>: [</span><br><span class="line">    <span class="string">'vue'</span></span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+<p>这样，所有的<code>.vue</code>文件一律视为<code>html</code>，完美解决。</p>
+<p>我得意地笑，得意地笑，~~~~</p>
+<p>上面那段配置什么意思？给你一个网址，<a href="http://flight-manual.atom.io/using-atom/sections/basic-customization/" target="_blank" rel="external">atom官方手册</a>，好好看看<code>Customizing Language Recognition</code>这一段就明白了。</p>
 
       
     </div>
@@ -294,17 +293,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/php-fundamentals-mysql/" rel="next" title="PHP 基础 - MySQL">
-                <i class="fa fa-chevron-left"></i> PHP 基础 - MySQL
+              <a href="/2016/10/yarn/" rel="next" title="2016年第42周最火的Github项目 - Yarn">
+                <i class="fa fa-chevron-left"></i> 2016年第42周最火的Github项目 - Yarn
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/atom-vue/" rel="prev" title="Atom下VueJS开发的配置">
-                Atom下VueJS开发的配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -408,7 +403,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速、可靠、安全的依赖管理。"><span class="nav-number">1.</span> <span class="nav-text">快速、可靠、安全的依赖管理。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么东东"><span class="nav-number">1.1.</span> <span class="nav-text">什么东东?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有什么优势？"><span class="nav-number">1.2.</span> <span class="nav-text">有什么优势？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么安装？"><span class="nav-number">1.3.</span> <span class="nav-text">怎么安装？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么使用"><span class="nav-number">1.4.</span> <span class="nav-text">怎么使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些技巧"><span class="nav-number">1.5.</span> <span class="nav-text">一些技巧</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#但是Emmet不好用！！！！"><span class="nav-number">1.</span> <span class="nav-text">但是Emmet不好用！！！！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-不好用"><span class="nav-number">2.</span> <span class="nav-text">CSS 不好用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完美解决方案"><span class="nav-number"></span> <span class="nav-text">完美解决方案</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
