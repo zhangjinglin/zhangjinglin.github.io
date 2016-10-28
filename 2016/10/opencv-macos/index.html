@@ -57,19 +57,21 @@
 
 
 
-<meta name="description" content="项目地址官方网址
-快速、可靠、安全的依赖管理。">
+<meta name="description" content="我们来详细探讨如何在macOS Sierra, Xcode 8 环境下来配置OpenCV的学习环境。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2016年第42周最火的Github项目 - Yarn">
-<meta property="og:url" content="http://zhangjinglin.github.io/2016/10/yarn/index.html">
+<meta property="og:title" content="macOS Sierra, Xcode 8 环境下OpenCV 3.1配置">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/10/opencv-macos/index.html">
 <meta property="og:site_name" content="张景林的博客">
-<meta property="og:description" content="项目地址官方网址
-快速、可靠、安全的依赖管理。">
-<meta property="og:updated_time" content="2016-10-15T07:03:01.055Z">
+<meta property="og:description" content="我们来详细探讨如何在macOS Sierra, Xcode 8 环境下来配置OpenCV的学习环境。">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-macos/01.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-macos/02.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-macos/03.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-macos/04.png">
+<meta property="og:updated_time" content="2016-10-28T09:20:30.468Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2016年第42周最火的Github项目 - Yarn">
-<meta name="twitter:description" content="项目地址官方网址
-快速、可靠、安全的依赖管理。">
+<meta name="twitter:title" content="macOS Sierra, Xcode 8 环境下OpenCV 3.1配置">
+<meta name="twitter:description" content="我们来详细探讨如何在macOS Sierra, Xcode 8 环境下来配置OpenCV的学习环境。">
+<meta name="twitter:image" content="http://zhangjinglin.github.io/2016/10/opencv-macos/01.png">
 
 
 
@@ -87,7 +89,7 @@
   };
 </script>
 
-  <title> 2016年第42周最火的Github项目 - Yarn | 张景林的博客 </title>
+  <title> macOS Sierra, Xcode 8 环境下OpenCV 3.1配置 | 张景林的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -216,7 +218,7 @@
             
             
               
-                2016年第42周最火的Github项目 - Yarn
+                macOS Sierra, Xcode 8 环境下OpenCV 3.1配置
               
             
           </h1>
@@ -228,8 +230,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-15T06:59:56+00:00" content="2016-10-15">
-              2016-10-15
+            <time itemprop="dateCreated" datetime="2016-10-28T09:13:30+00:00" content="2016-10-28">
+              2016-10-28
             </time>
           </span>
 
@@ -255,28 +257,26 @@
       
 
       
-        <p><a href="https://github.com/yarnpkg/yarn" target="_blank" rel="external">项目地址</a><br><a href="https://yarnpkg.com" target="_blank" rel="external">官方网址</a></p>
-<h2 id="快速、可靠、安全的依赖管理。"><a href="#快速、可靠、安全的依赖管理。" class="headerlink" title="快速、可靠、安全的依赖管理。"></a>快速、可靠、安全的依赖管理。</h2><a id="more"></a>
-<h3 id="什么东东"><a href="#什么东东" class="headerlink" title="什么东东?"></a>什么东东?</h3><p>yarn是一个可以替代npm的包管理工具，用于管理NodeJS的包。</p>
-<h3 id="有什么优势？"><a href="#有什么优势？" class="headerlink" title="有什么优势？"></a>有什么优势？</h3><ul>
-<li>快速：yarn把每一个package都缓存起来，下次就不需要再下载了。它还可以并行操作，比以往都快。</li>
-<li>可靠：使用了一个lockfile文件，把当前的package版本确定下来，避免版本的问题。</li>
-<li>安全：yarn使用checksums校验每一个包，确保正确。</li>
-</ul>
-<h3 id="怎么安装？"><a href="#怎么安装？" class="headerlink" title="怎么安装？"></a>怎么安装？</h3><ul>
-<li>MacOS</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// brew</span><br><span class="line">brew update</span><br><span class="line">brew install yarn</span><br><span class="line"></span><br><span class="line">// shell</span><br><span class="line">curl -o- -L https://yarnpkg.com/install.sh | bash</span><br></pre></td></tr></table></figure>
-<ul>
-<li>其他平台：参考<a href="https://yarnpkg.com/en/docs/install" target="_blank" rel="external">官方网址</a></li>
-</ul>
-<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><p>基本上和npm一样，除了一些命令参数以外。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//开始新项目</span><br><span class="line">yarn init // npm init</span><br><span class="line"></span><br><span class="line">//添加包</span><br><span class="line">yarn add [package] // npm install [package] --save</span><br><span class="line">yarn add [package] --dev // npm install [package] --save-dev</span><br><span class="line">//安装所有依赖</span><br><span class="line">yarn | yarn install</span><br><span class="line"></span><br><span class="line">//全局安装</span><br><span class="line">yarn global add [package] // npm install -g [package]</span><br><span class="line"></span><br><span class="line">//运行脚本</span><br><span class="line">yarn run [script] // npm run [script]</span><br></pre></td></tr></table></figure>
-<h3 id="一些技巧"><a href="#一些技巧" class="headerlink" title="一些技巧"></a>一些技巧</h3><ul>
-<li><code>yarn add</code>等同于<code>npm install [package]</code>命令，用于向项目中安装依赖的包，但是如果安装<code>package.json</code>中的全部包，等同于<code>npm install</code>的命令是<code>yarn install</code>命令。</li>
-<li>如果目录中没有<code>package.json</code>的话，yarn会自动建立，每个<code>yarn add</code>命令会自动在<code>dependencies</code>段中添加依赖，不需要明确的<code>--save</code>参数。</li>
-<li>yarn会自动产生<code>yarn.lock</code>文件，文件中描述了依赖包的版本。</li>
-</ul>
+        <p>我们来详细探讨如何在macOS Sierra, Xcode 8 环境下来配置OpenCV的学习环境。</p>
+<a id="more"></a>
+<h3 id="安装OpenCV"><a href="#安装OpenCV" class="headerlink" title="安装OpenCV"></a>安装OpenCV</h3><p>在macOS下，最方便的安装是使用<code>brew</code>来进行安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install homebrew/science/opencv3 --HEAD</span><br></pre></td></tr></table></figure>
+<blockquote><p>上面非常重要的是一定要加上<code>--HEAD</code>选项，确保在macOS Sierra下能够正确编译，否则，你会收到<code>QT</code>的错误。OpenCV的下个发行版会改正这个Bug，目前3.1版本我们要加上参数。</p>
+</blockquote>
+<p>OpenCV3 会安装在 <code>/usr/local/opt/opencv3</code>的目录下。</p>
+<h3 id="配置Xcode进行开发"><a href="#配置Xcode进行开发" class="headerlink" title="配置Xcode进行开发"></a>配置Xcode进行开发</h3><p>在<code>Xcode 8</code>中新建一个<code>macOS</code>的<code>Command Line Tool</code>项目。</p>
+<img src="/2016/10/opencv-macos/01.png" alt="新建命令行项目" title="新建命令行项目">
+<p>项目名字和位置自己定义好，确保语言选择的是<code>C++</code>。</p>
+<img src="/2016/10/opencv-macos/02.png" alt="C++" title="C++">
+<p>在项目的<code>Build Settings</code>中，找到<code>Search Paths</code>段，然后设置<code>Header Search Paths</code>和<code>Library Search Paths</code>，填入OpenCV3的<code>include</code>和<code>lib</code>目录，使用brew安装的话，分别是<code>/usr/local/opt/opencv3/include</code>和<code>/usr/local/opt/opencv3/lib</code>。</p>
+<img src="/2016/10/opencv-macos/03.png" alt="设置头文件和库的查找路径" title="设置头文件和库的查找路径">
+<p>在<code>Linking</code>段中设置<code>Other Linker Flags</code></p>
+<blockquote><p>对于链接的设定，可以依据你要使用的OpenCV功能来进行链接设定。比如，我只是用<code>core</code>的功能，那么就设定为<code>-lopencv_core</code>即可，如果还要使用<code>imgcodecs</code>的功能，那就设定<code>-lopencv_core -lopencv_imgcodecs</code>，如果图方便，就把所有的都设定上。</p>
+</blockquote>
+<img src="/2016/10/opencv-macos/04.png" alt="Linker Settings" title="Linker Settings">
+<p>修改<code>mian.cpp</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  OpenCV-Demo</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 张景林 on 28/10/2016.</span></span><br><span class="line"><span class="comment">//  Copyright © 2016 张景林. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">// insert code here...</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"OpenCV Version "</span> &lt;&lt; CV_VERSION &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>OK，大功告成！</p>
 
       
     </div>
@@ -294,17 +294,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/php-fundamentals-mysql/" rel="next" title="PHP 基础 - MySQL">
-                <i class="fa fa-chevron-left"></i> PHP 基础 - MySQL
+              <a href="/2016/10/opencv-windows-md/" rel="next" title="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门">
+                <i class="fa fa-chevron-left"></i> Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/atom-vue/" rel="prev" title="Atom下VueJS开发的配置">
-                Atom下VueJS开发的配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -408,7 +404,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速、可靠、安全的依赖管理。"><span class="nav-number">1.</span> <span class="nav-text">快速、可靠、安全的依赖管理。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么东东"><span class="nav-number">1.1.</span> <span class="nav-text">什么东东?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有什么优势？"><span class="nav-number">1.2.</span> <span class="nav-text">有什么优势？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么安装？"><span class="nav-number">1.3.</span> <span class="nav-text">怎么安装？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么使用"><span class="nav-number">1.4.</span> <span class="nav-text">怎么使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些技巧"><span class="nav-number">1.5.</span> <span class="nav-text">一些技巧</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装OpenCV"><span class="nav-number">1.</span> <span class="nav-text">安装OpenCV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Xcode进行开发"><span class="nav-number">2.</span> <span class="nav-text">配置Xcode进行开发</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
