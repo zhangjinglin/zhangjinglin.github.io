@@ -57,22 +57,16 @@
 
 
 
-<meta name="description" content="大连理工大学 施光燕教授 线性代数笔记
-因为 Hexo 对 TeX 数学公式解析问题,采用 pdf 文件形式.
-线性代数-逆矩阵.pdf">
+<meta name="description" content="macOS 的内核基于 unix 的变种 FreeBSD 来进行开发的, 在内核上面配有苹果公司漂亮的图形界面. 因为 macOS 是基于 unix 变种的, 所以 macOS 在程序员中特别流行. 近年来, 新的软件技术和严肃的程序开发, 大部分在 unix 中或者类 unix 的 Linux 中完成, 而 macOS 天生的 unix 基因, 使得 macOS 也得到了很多便利. 但 macO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性代数(三) - 逆矩阵">
-<meta property="og:url" content="http://zhangjinglin.github.io/2016/11/xxds03/index.html">
+<meta property="og:title" content="(FMS01)Homebrew - macOS 不可或缺的套件管理器">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/12/FMS01-brew/index.html">
 <meta property="og:site_name" content="张景林的博客">
-<meta property="og:description" content="大连理工大学 施光燕教授 线性代数笔记
-因为 Hexo 对 TeX 数学公式解析问题,采用 pdf 文件形式.
-线性代数-逆矩阵.pdf">
-<meta property="og:updated_time" content="2016-11-27T05:29:13.811Z">
+<meta property="og:description" content="macOS 的内核基于 unix 的变种 FreeBSD 来进行开发的, 在内核上面配有苹果公司漂亮的图形界面. 因为 macOS 是基于 unix 变种的, 所以 macOS 在程序员中特别流行. 近年来, 新的软件技术和严肃的程序开发, 大部分在 unix 中或者类 unix 的 Linux 中完成, 而 macOS 天生的 unix 基因, 使得 macOS 也得到了很多便利. 但 macO">
+<meta property="og:updated_time" content="2016-12-01T08:09:27.963Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线性代数(三) - 逆矩阵">
-<meta name="twitter:description" content="大连理工大学 施光燕教授 线性代数笔记
-因为 Hexo 对 TeX 数学公式解析问题,采用 pdf 文件形式.
-线性代数-逆矩阵.pdf">
+<meta name="twitter:title" content="(FMS01)Homebrew - macOS 不可或缺的套件管理器">
+<meta name="twitter:description" content="macOS 的内核基于 unix 的变种 FreeBSD 来进行开发的, 在内核上面配有苹果公司漂亮的图形界面. 因为 macOS 是基于 unix 变种的, 所以 macOS 在程序员中特别流行. 近年来, 新的软件技术和严肃的程序开发, 大部分在 unix 中或者类 unix 的 Linux 中完成, 而 macOS 天生的 unix 基因, 使得 macOS 也得到了很多便利. 但 macO">
 
 
 
@@ -90,7 +84,7 @@
   };
 </script>
 
-  <title> 线性代数(三) - 逆矩阵 | 张景林的博客 </title>
+  <title> (FMS01)Homebrew - macOS 不可或缺的套件管理器 | 张景林的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -219,7 +213,7 @@
             
             
               
-                线性代数(三) - 逆矩阵
+                (FMS01)Homebrew - macOS 不可或缺的套件管理器
               
             
           </h1>
@@ -231,8 +225,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-27T01:26:24+00:00" content="2016-11-27">
-              2016-11-27
+            <time itemprop="dateCreated" datetime="2016-12-01T08:08:34+00:00" content="2016-12-01">
+              2016-12-01
             </time>
           </span>
 
@@ -258,9 +252,20 @@
       
 
       
-        <p>大连理工大学 施光燕教授 线性代数笔记</p>
-<p>因为 Hexo 对 TeX 数学公式解析问题,采用 pdf 文件形式.</p>
-<a href="/2016/11/xxds03/xxds-3.pdf" title="线性代数-逆矩阵.pdf">线性代数-逆矩阵.pdf</a>
+        <p>macOS 的内核基于 unix 的变种 FreeBSD 来进行开发的, 在内核上面配有苹果公司漂亮的图形界面. 因为 macOS 是基于 unix 变种的, 所以 macOS 在程序员中特别流行. 近年来, 新的软件技术和严肃的程序开发, 大部分在 unix 中或者类 unix 的 Linux 中完成, 而 macOS 天生的 unix 基因, 使得 macOS 也得到了很多便利. 但 macOS 毕竟不是 Linux, 使得很多 Linux 下的优秀软件没有在 macOS 下进行实现, 而 Homebrew 则填补了这方面的空白.</p>
+<a id="more"></a>
+<p><a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a> 是基于 Ruby 语言进行开发的. 你可以再 <a href="https://github.com/Homebrew/brew" target="_blank" rel="external">Github</a> 上面查看它的全部源代码.</p>
+<p>Homebrew 的使用非常简单, 首先你要确认你安装了 Xcode, 因为 Homebrew 通过 git 获取你要安装的软件包, 然后通过 clang(gcc 的 Apple 实现) 进行编译和安装, 安装的软件都放置在 <code>/usr/local/Cella</code> 中, 并在 <code>/usr/local/bin</code> 中做了执行文件的链接程序.</p>
+<h3 id="安装-Homebrew"><a href="#安装-Homebrew" class="headerlink" title="安装 Homebrew"></a>安装 Homebrew</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
+<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><ul>
+<li><p>brew search 软件名称 (在 Homebrew 中称为 Formula)</p>
+</li>
+<li><p>brew update 更细 brew 自身和相应的包版本库</p>
+</li>
+<li>brew upgrade 升级已经安装的包</li>
+<li>brew install $FORMULA 安装软件包</li>
+</ul>
+<p>其他详细信息请看 <a href="https://github.com/Homebrew/brew/blob/master/docs/FAQ.md" target="_blank" rel="external">FAQ</a></p>
 
       
     </div>
@@ -278,16 +283,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/xxds02/" rel="next" title="线性代数(二) - 矩阵">
-                <i class="fa fa-chevron-left"></i> 线性代数(二) - 矩阵
+              <a href="/2016/11/xxds08/" rel="next" title="线性代数(八) - 线性方程组(三)">
+                <i class="fa fa-chevron-left"></i> 线性代数(八) - 线性方程组(三)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/xxds04/" rel="prev" title="线性代数(四) - 初等行变换">
-                线性代数(四) - 初等行变换 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/FMS02-vim01/" rel="prev" title="(FMS02)Vim 安装与配置">
+                (FMS02)Vim 安装与配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -392,7 +397,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Homebrew"><span class="nav-number">1.</span> <span class="nav-text">安装 Homebrew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么使用"><span class="nav-number">2.</span> <span class="nav-text">怎么使用</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -57,22 +57,16 @@
 
 
 
-<meta name="description" content="大连理工大学 施光燕教授 线性代数笔记
-因为 Hexo 对 TeX 数学公式解析问题,采用 pdf 文件形式.
-线性代数-逆矩阵.pdf">
+<meta name="description" content="编辑器之神 Vim 的安装与简单配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性代数(三) - 逆矩阵">
-<meta property="og:url" content="http://zhangjinglin.github.io/2016/11/xxds03/index.html">
+<meta property="og:title" content="(FMS02)Vim 安装与配置">
+<meta property="og:url" content="http://zhangjinglin.github.io/2016/12/FMS02-vim01/index.html">
 <meta property="og:site_name" content="张景林的博客">
-<meta property="og:description" content="大连理工大学 施光燕教授 线性代数笔记
-因为 Hexo 对 TeX 数学公式解析问题,采用 pdf 文件形式.
-线性代数-逆矩阵.pdf">
-<meta property="og:updated_time" content="2016-11-27T05:29:13.811Z">
+<meta property="og:description" content="编辑器之神 Vim 的安装与简单配置">
+<meta property="og:updated_time" content="2016-12-01T08:13:29.479Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线性代数(三) - 逆矩阵">
-<meta name="twitter:description" content="大连理工大学 施光燕教授 线性代数笔记
-因为 Hexo 对 TeX 数学公式解析问题,采用 pdf 文件形式.
-线性代数-逆矩阵.pdf">
+<meta name="twitter:title" content="(FMS02)Vim 安装与配置">
+<meta name="twitter:description" content="编辑器之神 Vim 的安装与简单配置">
 
 
 
@@ -90,7 +84,7 @@
   };
 </script>
 
-  <title> 线性代数(三) - 逆矩阵 | 张景林的博客 </title>
+  <title> (FMS02)Vim 安装与配置 | 张景林的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -219,7 +213,7 @@
             
             
               
-                线性代数(三) - 逆矩阵
+                (FMS02)Vim 安装与配置
               
             
           </h1>
@@ -231,8 +225,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-27T01:26:24+00:00" content="2016-11-27">
-              2016-11-27
+            <time itemprop="dateCreated" datetime="2016-12-01T08:11:19+00:00" content="2016-12-01">
+              2016-12-01
             </time>
           </span>
 
@@ -258,9 +252,32 @@
       
 
       
-        <p>大连理工大学 施光燕教授 线性代数笔记</p>
-<p>因为 Hexo 对 TeX 数学公式解析问题,采用 pdf 文件形式.</p>
-<a href="/2016/11/xxds03/xxds-3.pdf" title="线性代数-逆矩阵.pdf">线性代数-逆矩阵.pdf</a>
+        <p>编辑器之神 Vim 的安装与简单配置</p>
+<a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew update //升级 brew 到最新版本</span><br><span class="line">brew info vim //查看 vim 包的配置信息</span><br><span class="line">brew install vim --with-lua //安装 brew, 同时安装 lua 支持, 我们的一些插件需要 lua 的支持</span><br><span class="line">//下载, 配置, 编译</span><br><span class="line"></span><br><span class="line">mvim //启动 vim 图形界面, 也可以执行 vim 进入字符界面, 我们用 macOS 要享受图形界面的美观</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>初看 vim 你肯定傻眼了, 啥么玩意, 这界面太古老了. 我们需要配置才能让 vim 符合我们自己的审美观点.</p>
+<blockquote><ul>
+<li>edit mode: 编辑模式, 在 <code>normal mode</code> 下按 <code>i</code> 进入, 按 <code>esc</code> 返回 <code>normal mode</code>, 此模式下可以自由键入文本, 但此模式应该仅仅是键入字符, 修改请返回 <code>normal mode</code></li>
+<li>normal mode: 普通模式, vim 最强大的模式, 在这种模式下可以对文件进行修改和查找替换等, 是最常用的模式, 在任何模式中, 按 <code>esc</code> 进入此模式.</li>
+<li>command mode: 命令模式, 在 <code>normal mode</code> 中按 <code>:</code> 进入此模式, 此模式可以进行查找替换和其他的配置</li>
+<li>virtual mode: 可视化模式, 主要用于选择</li>
+</ul>
+<footer><strong>vim模式扫盲</strong></footer></blockquote>
+<p>扫盲之后, 我们来操作一下. 先按下 <code>i</code>, 进入 <code>edit</code> 模式, 随便输入几行文字. 然后按 <code>esc</code> 进入 <code>normal</code> 模式.</p>
+<p>在 <code>normal</code> 模式下按下 <code>:</code> 进入<code>command</code>模式, 在 vim 的最底端出现了 <code>:</code> 等待我们键入命令, 尝试输入 <code>set guifont=Menlo:h16</code>, 看到字体和大小改变了吧, 哈哈! 再次输入 <code>:set number</code>, 行号出来了, 漂亮.</p>
+<p> 但是总不能每次都输入吧, 我们需要写一个配置文件来保存我们常用的设置.</p>
+<p>vim 依据自己的配置文件来进行自身的配置, vim 的配置文件是 <code>~/.vimrc</code>.</p>
+<p>退出 <code>mvim</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> //返回主目录</span><br><span class="line">mvim .vimrc //编辑配置文件</span><br></pre></td></tr></table></figure>
+<p>输入我们刚才的配置信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set guifont=Menlo:h16</span><br><span class="line">set number</span><br></pre></td></tr></table></figure>
+<p>进入 <code>command mode</code>, 别跟我说你不会进入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:source ~/.vimrc //重新读入 vim 配置, 请搜索一下 source(Linux) 命令的用法和作用, vim 中的 source 韩以相同</span><br></pre></td></tr></table></figure>
+<p>配置立刻生效了.</p>
+<p>ok, 下面我们就可以慢慢的写配置文件了.</p>
+<p>我的 <code>.vimrc</code> 文件配置部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let mapleader=&quot;;&quot;</span><br><span class="line">#mapleader 是一个特殊的符号, 你可以自行定义, 当在 vim 中输入这个字符后, 意味着可能后面的字符会是一个自定义的命令, 请看下一条的解释</span><br><span class="line"></span><br><span class="line">nmap &lt;Leader&gt;l $</span><br><span class="line">#nmap(normal map), normal 模式下当输入了 mapleader+l 之后, 意味着发出了 $(倒行尾) 的命令. 也就是输入 ;l 就相当于输入了 $ 命令. $ 不好输入, 还要按 shift 键, 所以我用 ;l 代替 $</span><br><span class="line"></span><br><span class="line">nmap &lt;Leader&gt;h 0</span><br><span class="line">#nmap(normal map), normal 模式下当输入了 mapleader+h 之后, 意味着发出了 0(倒行首) 的命令. 也就是输入 ;h 就相当于输入了 0 命令.</span><br><span class="line"></span><br><span class="line">vnoremap &lt;Leader&gt;y &quot;+y</span><br><span class="line">#virtual 模式下, 将选中的内容拷贝到系统剪贴板</span><br><span class="line">nmap &lt;Leader&gt;p &quot;+p</span><br><span class="line">#从系统剪贴板粘贴</span><br><span class="line">nmap &lt;Leader&gt;q :q&lt;CR&gt;</span><br><span class="line"># ;q 退出系统</span><br><span class="line"></span><br><span class="line">#下面四个用于切换窗口</span><br><span class="line">nmap &lt;Leader&gt;wh &lt;C-W&gt;h</span><br><span class="line">nmap &lt;Leader&gt;wl &lt;C-W&gt;l</span><br><span class="line">nmap &lt;Leader&gt;wj &lt;C-W&gt;j</span><br><span class="line">nmap &lt;Leader&gt;wk &lt;C-W&gt;k</span><br><span class="line"></span><br><span class="line">#在需要 ; 结尾的语言中, 使用 ;; 直接跳到行尾插入;并回车</span><br><span class="line">inoremap ;; &lt;C-o&gt;$;&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">filetype plugin indent on</span><br><span class="line">#设定文件类型敏感, 支持各种语言的缩进</span><br><span class="line"></span><br><span class="line">syntax on</span><br><span class="line">syntax enable</span><br><span class="line">#语法高亮</span><br><span class="line"></span><br><span class="line">#请自行查找设定的内容与含义</span><br><span class="line">set autowrite</span><br><span class="line">set autowriteall</span><br><span class="line">set ignorecase</span><br><span class="line">set hlsearch</span><br><span class="line">set incsearch</span><br><span class="line">set smartcase</span><br><span class="line">set gdefault</span><br><span class="line">set showmatch</span><br><span class="line"></span><br><span class="line">set autoindent</span><br><span class="line">set ts=4 sts=4 sw=4 expandtab</span><br><span class="line"></span><br><span class="line">set backspace=indent,eol,start</span><br><span class="line">set noswapfile</span><br><span class="line">set visualbell</span><br><span class="line">set cursorline</span><br><span class="line">set number</span><br><span class="line">set laststatus=2</span><br><span class="line">set ruler</span><br><span class="line"></span><br><span class="line">set encoding=utf-8</span><br><span class="line">set fileencoding=utf-8</span><br><span class="line"></span><br><span class="line">set guifont=Menlo:h20</span><br></pre></td></tr></table></figure>
+<p>预告, 下次 vim 插件系统</p>
 
       
     </div>
@@ -278,17 +295,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/xxds02/" rel="next" title="线性代数(二) - 矩阵">
-                <i class="fa fa-chevron-left"></i> 线性代数(二) - 矩阵
+              <a href="/2016/12/FMS01-brew/" rel="next" title="(FMS01)Homebrew - macOS 不可或缺的套件管理器">
+                <i class="fa fa-chevron-left"></i> (FMS01)Homebrew - macOS 不可或缺的套件管理器
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/xxds04/" rel="prev" title="线性代数(四) - 初等行变换">
-                线性代数(四) - 初等行变换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -392,7 +405,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">1.1.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
