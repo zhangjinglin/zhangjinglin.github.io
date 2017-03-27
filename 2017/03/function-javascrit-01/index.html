@@ -1,0 +1,729 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="函数式编程的简单术语什么是函数式编程？为什么很重要？数学中的函数
+$$f(x)= Y$$
+函数F，它以X为参数，并返回输出Y。在定义中有重要的含义：
+
+函数必须有参数。
+函数必须始终返回一个值。
+函数只能对其接收参数（即X）起作用，而不是外部。
+对于给定的X，将只有一个Y。
+
+函数式编程技术主要基于数学函数及其思想，我们将会看到数学函数的想法以及如何使用它们来理解函数式编程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 函数编程（一）">
+<meta property="og:url" content="http://zhangjinglin.github.io/2017/03/function-javascrit-01/index.html">
+<meta property="og:site_name" content="张景林的博客">
+<meta property="og:description" content="函数式编程的简单术语什么是函数式编程？为什么很重要？数学中的函数
+$$f(x)= Y$$
+函数F，它以X为参数，并返回输出Y。在定义中有重要的含义：
+
+函数必须有参数。
+函数必须始终返回一个值。
+函数只能对其接收参数（即X）起作用，而不是外部。
+对于给定的X，将只有一个Y。
+
+函数式编程技术主要基于数学函数及其思想，我们将会看到数学函数的想法以及如何使用它们来理解函数式编程。">
+<meta property="og:updated_time" content="2017-03-27T05:19:27.087Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 函数编程（一）">
+<meta name="twitter:description" content="函数式编程的简单术语什么是函数式编程？为什么很重要？数学中的函数
+$$f(x)= Y$$
+函数F，它以X为参数，并返回输出Y。在定义中有重要的含义：
+
+函数必须有参数。
+函数必须始终返回一个值。
+函数只能对其接收参数（即X）起作用，而不是外部。
+对于给定的X，将只有一个Y。
+
+函数式编程技术主要基于数学函数及其思想，我们将会看到数学函数的想法以及如何使用它们来理解函数式编程。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript 函数编程（一） | 张景林的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/zjl.jpg"
+             alt="张景林的博客"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张景林的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">关于技术，关于人生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript 函数编程（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-27T05:15:08+00:00" content="2017-03-27">
+              2017-03-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="函数式编程的简单术语"><a href="#函数式编程的简单术语" class="headerlink" title="函数式编程的简单术语"></a>函数式编程的简单术语</h1><h2 id="什么是函数式编程？为什么很重要？"><a href="#什么是函数式编程？为什么很重要？" class="headerlink" title="什么是函数式编程？为什么很重要？"></a>什么是函数式编程？为什么很重要？</h2><p>数学中的函数</p>
+<p>$$f(x)= Y$$</p>
+<p>函数F，它以X为参数，并返回输出Y。<br>在定义中有重要的含义：</p>
+<ul>
+<li>函数必须有参数。</li>
+<li>函数必须始终返回一个值。</li>
+<li>函数只能对其接收参数（即X）起作用，而不是外部。</li>
+<li>对于给定的X，将只有一个Y。</li>
+</ul>
+<p>函数式编程技术主要基于数学函数及其思想，我们将会看到数学函数的想法以及如何使用它们来理解函数式编程。</p>
+<a id="more"></a>
+<p>想象一下，我们必须编写一个执行税收计算的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> percentValue = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> calculateTax = (value) =&gt; &#123; <span class="keyword">return</span> value/<span class="number">100</span> * (<span class="number">100</span> + percentValue) &#125;</span><br><span class="line"><span class="built_in">console</span>.log(calculateTax(<span class="number">100</span>))</span><br></pre></td></tr></table></figure>
+<p>以上的功能calculateTax完全符合我们要做的。 看起来整洁，不是吗？ 我们暂停一下，就我们的数学定义分析上述功能。 我们的数学函数术语的关键之一是函数逻辑不应该依赖于外部世界。 在我们上面定义的函数calculateTax中，我们使函数取决于全局变量percentValue。 因此，我们创建的上述函数在数学意义上不能被称为真正的函数。 所以我们来解决一下。</p>
+<p>修复很简单：我们只需要将percentValue作为我们的函数参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> calculateTax = (value, percentValue) =&gt; &#123; <span class="keyword">return</span> value/<span class="number">100</span> * (<span class="number">100</span> + percentValue) &#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们的函数calculateTax可以被称为真正的函数。 我们刚刚在calculateTax函数中消除了全局变量访问。 删除函数内的全局变量访问使得测试变得容易。<br>函数式编程是一个范例，我们将在其中创建功能，通过依赖于其输入来实现其逻辑。 这样可以确保在多次调用时函数将返回相同的结果。 该功能也不会改变外部任何数据，导致可高速缓存和可测试的代码库。</p>
+<h2 id="引用透明（Referential-Transparency）"><a href="#引用透明（Referential-Transparency）" class="headerlink" title="引用透明（Referential Transparency）"></a>引用透明（Referential Transparency）</h2><p>所有的函数都将为相同的输入返回相同的值，而把这个特征称为引用透明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> identity = (i) =&gt; &#123; <span class="keyword">return</span> i &#125;</span><br><span class="line">sum(<span class="number">4</span>,<span class="number">5</span>) + identity(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//使用我们的引用透明定义，我们可以将上述语句转换为：</span></span><br><span class="line">sum(<span class="number">4</span>,<span class="number">5</span>) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>现在这个过程称为替代模型(Substitution model)，因为您可以直接用返回值替换函数的结果（主要是因为函数的逻辑不依赖于其他全局变量）。</p>
+<p>这可以产生并行代码和缓存。</p>
+<p>想象一下，使用这个模型，您可以轻松地使用多个线程运行上述函数，甚至不需要同步！为什么？同步的原因来自线程在并行运行时不应该对全局数据采取行动的事实。</p>
+<p>而且由于函数将为给定的输入返回相同的值，所以实际上可以缓存它！例如，假设有一个叫做“factorial”的函数，它计算给定数字的阶乘。 我们都知道’5’的阶乘将是’120’。如果用户第二次调用“5”的“factorial”怎么办？如果“因子”函数遵循参照透明度，那么我们知道结果将像以前一样是“120”（并且只取决于输入参数）。考虑到这个特征，我们可以缓存我们的“factorial”函数的值。因此，如果第二次调用“factorial”，输入为“5”，我们可以返回缓存的值而不是再次计算。</p>
+<h2 id="强制性，声明性，抽象性"><a href="#强制性，声明性，抽象性" class="headerlink" title="强制性，声明性，抽象性"></a>强制性，声明性，抽象性</h2><p>假设你有一个列表或数组，并想要遍历数组并将其打印到控制台。 代码可能如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;array.length;i++)</span><br><span class="line">    <span class="built_in">console</span>.log(array[i])</span><br></pre></td></tr></table></figure>
+<p>工作正常但是，在上述解决问题的方法中，我们正在准确地告诉我们如何做到这一点。例如，我们已经编写了一个隐含的for循环，并使用索引计算数组长度并打印项目。这里的任务是什么？ “打印数组元素”对吧？但是看起来我们正在告诉编译器该怎么做。在这种情况下，我们告诉“获取数组长度，循环我们的数组，使用索引获取数组的每个元素”。我们称之为“命令式”解决方案。</p>
+<p>命令编程就是告诉编译器“怎么做”事情。</p>
+<p>我们现在将切换到硬币的另一面，声明式编程。在声明式编程中，我们将要告诉编译器需要做什么，而不是“如何”的部分。 “如何”部分被抽象为共同的功能（这些功能被称为高阶函数，我们将在后面介绍）。现在我们可以使用内建的forEach函数来迭代数组并进行打印。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">array.forEach((element) =&gt; <span class="built_in">console</span>.log(element))</span><br></pre></td></tr></table></figure>
+<p>上面的代码段打印完全相同的输出。 但是在这里我们已经删除了“如何”的部分，如“获取数组长度，循环我们的数组，使用索引获取数组的每个元素”等。我们使用了一个抽象的函数，它实现了“如何”部分。</p>
+<p>函数式编程是以抽象的方式创建函数，可以由代码的其他部分重用。</p>
+<h2 id="纯函数（Pure-Functions）"><a href="#纯函数（Pure-Functions）" class="headerlink" title="纯函数（Pure Functions）"></a>纯函数（Pure Functions）</h2><p>纯函数是为给定输入返回相同输出的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> double = (value) =&gt; value * <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>上述函数“double”是一个纯函数，只是因为给定一个输入，它将始终返回相同的输出。 使用输入5调用总是将结果返回为10！ 纯函数服从引用透明。 因此，我们可以用10替换双（5），没有任何犹豫。</p>
+<ul>
+<li>纯函数产生可测试代码</li>
+<li>纯函数产生合理的代码</li>
+</ul>
+<h2 id="并行代码"><a href="#并行代码" class="headerlink" title="并行代码"></a>并行代码</h2><p>纯函数允许我们并行运行代码。 由于纯函数不会改变其任何环境，所以这意味着我们不需要担心所有的同步！</p>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>由于纯函数总是为给定的输入返回相同的输出，我们可以缓存功能输出。 想象一下，我们有一个功能耗时的计算，我们将这个函数命名为longRunningFunction</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longRunningFunction = (ip) =&gt; &#123; <span class="comment">//do long running tasks and return &#125;</span></span><br></pre></td></tr></table></figure>
+<p>如果longRunningFunction函数是一个纯函数，那么我们知道对于给定的输入，它将返回给我们相同的输出！想象一下，我们有一个对象，它保留longRunningFunction的所有函数调用结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> longRunningFnBookKeeper = &#123; <span class="number">2</span> : <span class="number">3</span>, <span class="number">4</span> : <span class="number">5</span> &#125;</span><br><span class="line"><span class="comment">//check if the key present in longRunningFnBookKeeper</span></span><br><span class="line"><span class="comment">//if get back the result else update the bookkeeping object</span></span><br><span class="line">longRunningFnBookKeeper.hasOwnProperty(ip) ?</span><br><span class="line">      longRunningFnBookKeeper[ip] :</span><br><span class="line">      longRunningFnBookKeeper[ip] = longRunningFunction(ip)</span><br></pre></td></tr></table></figure>
+<h2 id="管道和组合"><a href="#管道和组合" class="headerlink" title="管道和组合"></a>管道和组合</h2><p>使用纯函数，我们将在该函数中仅做一件事情。 我们已经看到，纯函数将如何通过查看其名称来作为对该功能的自我理解。 纯函数的设计应该只有一件事。 只做一件事情就是一个UNIX哲学; 我们将在实现我们的纯函数时遵循相同的规定。 在UNIX和LINUX平台中有许多命令，用于日常任务。 例如，我们使用cat打印文件的内容，grep来搜索文件，wc来计算行数等。这些命令一次解决一个问题。 但是我们可以组合或管理这些复杂的任务。</p>
+<p>组合不仅仅是UNIX / LINUX命令行的唯一，而是函数式编程范例的核心。 我们称之为<em>函数组合</em>。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/fms03-vim02-md/" rel="next" title="(FMS03)Vim 的插件">
+                <i class="fa fa-chevron-left"></i> (FMS03)Vim 的插件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zjl.jpg"
+               alt="张景林 ldxyzjl@163.com" />
+          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
+          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数式编程的简单术语"><span class="nav-number">1.</span> <span class="nav-text">函数式编程的简单术语</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是函数式编程？为什么很重要？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是函数式编程？为什么很重要？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用透明（Referential-Transparency）"><span class="nav-number">1.2.</span> <span class="nav-text">引用透明（Referential Transparency）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制性，声明性，抽象性"><span class="nav-number">1.3.</span> <span class="nav-text">强制性，声明性，抽象性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#纯函数（Pure-Functions）"><span class="nav-number">1.4.</span> <span class="nav-text">纯函数（Pure Functions）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并行代码"><span class="nav-number">1.5.</span> <span class="nav-text">并行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">1.6.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道和组合"><span class="nav-number">1.7.</span> <span class="nav-text">管道和组合</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
