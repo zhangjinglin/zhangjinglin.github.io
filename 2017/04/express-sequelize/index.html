@@ -1,0 +1,754 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="如何使用 Sequelize ORM 来创建一个 Express 的项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建基于 Sequelize ORM 和 Sqlite 的 Node Express 项目">
+<meta property="og:url" content="http://zhangjinglin.github.io/2017/04/express-sequelize/index.html">
+<meta property="og:site_name" content="张景林的博客">
+<meta property="og:description" content="如何使用 Sequelize ORM 来创建一个 Express 的项目">
+<meta property="og:image" content="http://zhangjinglin.github.io/2017/04/express-sequelize/node-sequelize-sqlite-53958.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2017/04/express-sequelize/node-sequelize-sqlite-bc8c9.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2017/04/express-sequelize/node-sequelize-sqlite-6d615.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2017/04/express-sequelize/node-sequelize-sqlite-4d4d2.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2017/04/express-sequelize/node-sequelize-sqlite-5084d.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2017/04/express-sequelize/node-sequelize-sqlite-6835a.png">
+<meta property="og:image" content="http://zhangjinglin.github.io/2017/04/express-sequelize/node-sequelize-sqlite-9d858.png">
+<meta property="og:updated_time" content="2017-04-24T08:19:01.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="创建基于 Sequelize ORM 和 Sqlite 的 Node Express 项目">
+<meta name="twitter:description" content="如何使用 Sequelize ORM 来创建一个 Express 的项目">
+<meta name="twitter:image" content="http://zhangjinglin.github.io/2017/04/express-sequelize/node-sequelize-sqlite-53958.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 创建基于 Sequelize ORM 和 Sqlite 的 Node Express 项目 | 张景林的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/zjl1.jpg"
+             alt="张景林的博客"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">张景林的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">关于技术，关于人生</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                创建基于 Sequelize ORM 和 Sqlite 的 Node Express 项目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-24T08:12:01+00:00" content="2017-04-24">
+              2017-04-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>如何使用 Sequelize ORM 来创建一个 Express 的项目</p>
+<a id="more"></a>
+<h2 id="设置项目"><a href="#设置项目" class="headerlink" title="设置项目"></a>设置项目</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir project-dir</span><br><span class="line"><span class="built_in">cd</span> project-dir</span><br><span class="line">mkdir bin server</span><br><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<h2 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add express body-parser morgan</span><br><span class="line">touch app.js</span><br></pre></td></tr></table></figure>
+<p>app.js 文件内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> logger = <span class="built_in">require</span>(<span class="string">'morgan'</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line">app.use(logger(<span class="string">'dev'</span>))</span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;extended: <span class="literal">false</span>&#125;))</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'*'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  res.status(<span class="number">200</span>).send(&#123;</span><br><span class="line">    message: <span class="string">'Welcome to the beginning of nothingness.'</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = app</span><br></pre></td></tr></table></figure></p>
+<p>在 <code>bin</code> 目录中创建 <code>www</code> 文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="built_in">require</span>(<span class="string">'../app'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> port = <span class="built_in">parseInt</span>(process.env.PORT, <span class="number">10</span>) || <span class="number">8000</span></span><br><span class="line">app.set(<span class="string">'port'</span>, port)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(app)</span><br><span class="line">server.listen(port)</span><br></pre></td></tr></table></figure></p>
+<p>为了避免每次修改代码都需要重新启动服务，我们使用 <code>nodemon</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add nodemon --dev</span><br></pre></td></tr></table></figure></p>
+<p>修改 <code>package.json</code> 创建启动服务器的命令。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">"scripts": &#123;</span><br><span class="line">  "start:dev": "nodemon ./bin/www",</span><br><span class="line">  "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>尝试启动服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn run start:dev</span><br></pre></td></tr></table></figure></p>
+<p>打开浏览器可以看见结果<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"message"</span>: <span class="string">"Welcome to the beginning of nothingness."</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Sequelize-设置"><a href="#Sequelize-设置" class="headerlink" title="Sequelize 设置"></a>Sequelize 设置</h2><p>安装 <code>Sequelize CLI</code> 工具<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g sequelize-cli</span><br></pre></td></tr></table></figure></p>
+<p>创建 <code>.sequelizerc</code> 文件描述路径。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="string">"config"</span>: path.resolve(<span class="string">'./server/config'</span>, <span class="string">'config.json'</span>),</span><br><span class="line">  <span class="string">"models-path"</span>: path.resolve(<span class="string">'./server/models'</span>),</span><br><span class="line">  <span class="string">"seeders-path"</span>: path.resolve(<span class="string">'./server/seeders'</span>),</span><br><span class="line">  <span class="string">"migrations-path"</span>: path.resolve(<span class="string">'./server/migrations'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>安装 <code>sequelize sqlite</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add sequelize sqlite3</span><br></pre></td></tr></table></figure></p>
+<p>初始化 <code>sequelize</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sequelize init</span><br></pre></td></tr></table></figure></p>
+<p>修改 <code>server/models/index.js</code> 从 <code>es5</code> 修改为 <code>es2015</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fs        = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> path      = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> Sequelize = <span class="built_in">require</span>(<span class="string">'sequelize'</span>);</span><br><span class="line"><span class="keyword">const</span> basename  = path.basename(<span class="built_in">module</span>.filename);</span><br><span class="line"><span class="keyword">const</span> env       = process.env.NODE_ENV || <span class="string">'development'</span>;</span><br><span class="line"><span class="keyword">const</span> config    = <span class="built_in">require</span>(__dirname + <span class="string">'/../config/config.json'</span>)[env];</span><br><span class="line"><span class="keyword">const</span> db        = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sequelize</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (config.use_env_variable) &#123;</span><br><span class="line">  sequelize = <span class="keyword">new</span> Sequelize(process.env[config.use_env_variable]);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  sequelize = <span class="keyword">new</span> Sequelize(config.database, config.username, config.password, config);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fs</span><br><span class="line">  .readdirSync(__dirname)</span><br><span class="line">  .filter(<span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (file.indexOf(<span class="string">'.'</span>) !== <span class="number">0</span>) &amp;&amp; (file !== basename) &amp;&amp; (file.slice(<span class="number">-3</span>) === <span class="string">'.js'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .forEach(<span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> model = sequelize[<span class="string">'import'</span>](path.join(__dirname, file));</span><br><span class="line">    db[model.name] = model;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(db).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">modelName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (db[modelName].associate) &#123;</span><br><span class="line">    db[modelName].associate(db);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.sequelize = sequelize;</span><br><span class="line">db.Sequelize = Sequelize;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = db;</span><br></pre></td></tr></table></figure></p>
+<p>创建 <code>sqlite</code> 数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch todos-dev.db</span><br></pre></td></tr></table></figure></p>
+<p>修改 <code>server/config/config.json</code><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"development"</span>: &#123;</span><br><span class="line">    <span class="attr">"storage"</span>: <span class="string">"todos-dev.db"</span>,</span><br><span class="line">    <span class="attr">"dialect"</span>: <span class="string">"sqlite"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"test"</span>: &#123;</span><br><span class="line">    <span class="attr">"storage"</span>: <span class="string">"todos-test.db"</span>,</span><br><span class="line">    <span class="attr">"dialect"</span>: <span class="string">"sqlite"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="生成模型"><a href="#生成模型" class="headerlink" title="生成模型"></a>生成模型</h3><p>我们有两个模型 <code>Todo</code> 和 <code>TodoItem</code>，是一对多的关系。让我们生成 <code>Todo</code> 模型。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sequelize model:create --name Todo --attributes title:string</span><br></pre></td></tr></table></figure></p>
+<p>生成了 <code>server/models/todo.js</code> 和 <code>server/migrations/&lt;date&gt;-create-todo.js</code> 两个文件，一个是模型文件，一个是数据库迁移文件。</p>
+<p>生成 <code>TodoItem</code> 模型。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sequelize model:create --name TodoItem --attributes content:string,complete:boolean</span><br></pre></td></tr></table></figure></p>
+<p>修改 <code>todo.js</code>，添加关系并更改为 <code>es2015</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = (sequelize, DataTypes) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> Todo = sequelize.define(<span class="string">'Todo'</span>, &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">      type: DataTypes.STRING,</span><br><span class="line">      allowNull: <span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    classMethods: &#123;</span><br><span class="line">      associate: (models) =&gt; &#123;</span><br><span class="line">        <span class="comment">// associations can be defined here</span></span><br><span class="line">        Todo.hasMany(models.TodoItem, &#123;</span><br><span class="line">          foreignKey: <span class="string">'todoId'</span>,</span><br><span class="line">          <span class="keyword">as</span>: <span class="string">'todoItems'</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> Todo;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>修改 <code>todoitem.js</code>，添加关系并更改为 <code>es2015</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = (sequelize, DataTypes) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> TodoItem = sequelize.define(<span class="string">'TodoItem'</span>, &#123;</span><br><span class="line">    content: &#123;</span><br><span class="line">      type: DataTypes.STRING,</span><br><span class="line">      allowNull: <span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    complete: &#123;</span><br><span class="line">      type: DataTypes.BOOLEAN,</span><br><span class="line">      defaultValue: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    classMethods: &#123;</span><br><span class="line">      associate: (models) =&gt; &#123;</span><br><span class="line">        <span class="comment">// associations can be defined here</span></span><br><span class="line">        TodoItem.belongsTo(models.Todo, &#123;</span><br><span class="line">          foreignKey: <span class="string">'todoId'</span>,</span><br><span class="line">          onDelete: <span class="string">'CASCADE'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> TodoItem;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>为了保持一致性，我们修改 <code>&lt;date&gt;-create-todo.js</code> 迁移文件并更改为 <code>es2015</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  up: (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> queryInterface.createTable(<span class="string">'Todos'</span>, &#123;</span><br><span class="line">      id: &#123;</span><br><span class="line">        allowNull: <span class="literal">false</span>,</span><br><span class="line">        autoIncrement: <span class="literal">true</span>,</span><br><span class="line">        primaryKey: <span class="literal">true</span>,</span><br><span class="line">        type: Sequelize.INTEGER</span><br><span class="line">      &#125;,</span><br><span class="line">      title: &#123;</span><br><span class="line">        type: Sequelize.STRING,</span><br><span class="line">        allowNull: <span class="literal">false</span></span><br><span class="line">      &#125;,</span><br><span class="line">      createdAt: &#123;</span><br><span class="line">        allowNull: <span class="literal">false</span>,</span><br><span class="line">        type: Sequelize.DATE</span><br><span class="line">      &#125;,</span><br><span class="line">      updatedAt: &#123;</span><br><span class="line">        allowNull: <span class="literal">false</span>,</span><br><span class="line">        type: Sequelize.DATE</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  down: (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> queryInterface.dropTable(<span class="string">'Todos'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>同样处理 <code>&lt;date&gt;-create-todo-item.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  up: (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> queryInterface.createTable(<span class="string">'TodoItems'</span>, &#123;</span><br><span class="line">      id: &#123;</span><br><span class="line">        allowNull: <span class="literal">false</span>,</span><br><span class="line">        autoIncrement: <span class="literal">true</span>,</span><br><span class="line">        primaryKey: <span class="literal">true</span>,</span><br><span class="line">        type: Sequelize.INTEGER</span><br><span class="line">      &#125;,</span><br><span class="line">      content: &#123;</span><br><span class="line">        type: Sequelize.STRING,</span><br><span class="line">        allowNull: <span class="literal">false</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      complete: &#123;</span><br><span class="line">        type: Sequelize.BOOLEAN,</span><br><span class="line">        defaultValue: <span class="literal">false</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      createdAt: &#123;</span><br><span class="line">        allowNull: <span class="literal">false</span>,</span><br><span class="line">        type: Sequelize.DATE</span><br><span class="line">      &#125;,</span><br><span class="line">      updatedAt: &#123;</span><br><span class="line">        allowNull: <span class="literal">false</span>,</span><br><span class="line">        type: Sequelize.DATE</span><br><span class="line">      &#125;,</span><br><span class="line">      todoId: &#123;</span><br><span class="line">        type: Sequelize.INTEGER,</span><br><span class="line">        onDelete: <span class="string">'CASCADE'</span>,</span><br><span class="line">        refrences: &#123;</span><br><span class="line">          model: <span class="string">'Todos'</span>,</span><br><span class="line">          key: <span class="string">'id'</span>,</span><br><span class="line">          <span class="keyword">as</span>: <span class="string">'todoId'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  down: (queryInterface, Sequelize) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> queryInterface.dropTable(<span class="string">'TodoItems'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>现在我们可以进行数据库迁移了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sequelize db:migrate</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建控制器和路由"><a href="#创建控制器和路由" class="headerlink" title="创建控制器和路由"></a>创建控制器和路由</h2><p>创建文件 <code>server/controllers/todos.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Todo = <span class="built_in">require</span>(<span class="string">'../models'</span>).Todo</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  create(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> Todo.create(&#123;</span><br><span class="line">      title: req.body.title,</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(todo =&gt; res.status(<span class="number">201</span>).send(todo))</span><br><span class="line">    .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建 <code>server/controllers/index.js</code>，暴露我们所有的控制器<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Todo = <span class="built_in">require</span>(<span class="string">'../models'</span>).Todo</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  create(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> Todo.create(&#123;</span><br><span class="line">      title: req.body.title,</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(todo =&gt; res.status(<span class="number">201</span>).send(todo))</span><br><span class="line">    .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建 <code>server/controllers/index.js</code>，暴露我们所有的控制器<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = <span class="built_in">require</span>(<span class="string">'./todos'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  todos,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建 <code>server/routes/index.js</code> 控制路由<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todosController = <span class="built_in">require</span>(<span class="string">'../controllers'</span>).todos</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = (app) =&gt;  &#123;</span><br><span class="line">  app.get(<span class="string">'/api'</span>, (req, res) =&gt; res.status(<span class="number">200</span>).send(&#123;</span><br><span class="line">    message: <span class="string">'Welcome to the Todos API'</span></span><br><span class="line">  &#125;))</span><br><span class="line">  app.post(<span class="string">'/api/todos'</span>, todosController.create)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改 <code>app.js</code> ，添加路由<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;extended: <span class="literal">false</span>&#125;))</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./server/routes/'</span>)(app)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'*'</span>, (req, res) =&gt; &#123;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>启动 <code>postman</code> 来进行测试<br><img src="/2017/04/express-sequelize/node-sequelize-sqlite-53958.png" alt="node-sequelize-sqlite-53958.png" title=""></p>
+<h3 id="查询全部待办事项"><a href="#查询全部待办事项" class="headerlink" title="查询全部待办事项"></a>查询全部待办事项</h3><p>修改 <code>server/controllers/todos.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Todo = <span class="built_in">require</span>(<span class="string">'../models'</span>).Todo</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  create(req, res) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  list(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> Todo</span><br><span class="line">      .all()</span><br><span class="line">      .then(todos =&gt; res.status(<span class="number">200</span>).send(todos))</span><br><span class="line">      .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改路由文件 <code>server/routes/index.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todosController = <span class="built_in">require</span>(<span class="string">'../controllers'</span>).todos</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = (app) =&gt;  &#123;</span><br><span class="line">  ...</span><br><span class="line">  app.post(<span class="string">'/api/todos'</span>, todosController.create)</span><br><span class="line">  app.get(<span class="string">'/api/todos'</span>, todosController.list)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用 <code>postman</code> 测试新路由<br><img src="/2017/04/express-sequelize/node-sequelize-sqlite-bc8c9.png" alt="node-sequelize-sqlite-bc8c9.png" title=""></p>
+<h3 id="创建-Todo-Items"><a href="#创建-Todo-Items" class="headerlink" title="创建 Todo Items"></a>创建 Todo Items</h3><ul>
+<li><code>server/controllers/todoitems.js</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> TodoItem = <span class="built_in">require</span>(<span class="string">'../models'</span>).TodoItem</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  create(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> TodoItem</span><br><span class="line">      .create(&#123;</span><br><span class="line">        content: req.body.content,</span><br><span class="line">        todoId: req.params.todoId,</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(todoItem =&gt; res.status(<span class="number">201</span>).send(todoItem))</span><br><span class="line">      .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>server/controllers/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos = <span class="built_in">require</span>(<span class="string">'./todos'</span>)</span><br><span class="line"><span class="keyword">const</span> todoItems = <span class="built_in">require</span>(<span class="string">'./todoitems'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  todos,</span><br><span class="line">  todoItems,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>server/routes/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todosController = <span class="built_in">require</span>(<span class="string">'../controllers'</span>).todos</span><br><span class="line"><span class="keyword">const</span> todoItemsController = <span class="built_in">require</span>(<span class="string">'../controllers'</span>).todoItems</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = (app) =&gt;  &#123;</span><br><span class="line">  ...</span><br><span class="line">  app.get(<span class="string">'/api/todos'</span>, todosController.list)</span><br><span class="line">  app.post(<span class="string">'/api/todos/:todoId/items'</span>, todoItemsController.create)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>postman 测试</p>
+<img src="/2017/04/express-sequelize/node-sequelize-sqlite-6d615.png" alt="node-sequelize-sqlite-6d615.png" title="">
+</li>
+</ul>
+<ul>
+<li>查询某个 todo 中的所有 todo-items <code>server/controllers/todos.js</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Todo = <span class="built_in">require</span>(<span class="string">'../models'</span>).Todo</span><br><span class="line"><span class="keyword">const</span> TodoItem = <span class="built_in">require</span>(<span class="string">'../models'</span>).TodoItem</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  create(req, res) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  list(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> Todo</span><br><span class="line">      .findAll(&#123;</span><br><span class="line">        include: [&#123;</span><br><span class="line">          model: TodoItem,</span><br><span class="line">          <span class="keyword">as</span>: <span class="string">'todoItems'</span></span><br><span class="line">        &#125;]</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(todos =&gt; res.status(<span class="number">200</span>).send(todos))</span><br><span class="line">      .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="/2017/04/express-sequelize/node-sequelize-sqlite-4d4d2.png" alt="node-sequelize-sqlite-4d4d2.png" title="">
+<h3 id="获取指定-todo"><a href="#获取指定-todo" class="headerlink" title="获取指定 todo"></a>获取指定 todo</h3><ul>
+<li><p><code>server/controllers/todos.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Todo = <span class="built_in">require</span>(<span class="string">'../models'</span>).Todo</span><br><span class="line"><span class="keyword">const</span> TodoItem = <span class="built_in">require</span>(<span class="string">'../models'</span>).TodoItem</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  create(req, res) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  list(req, res) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  retrieve(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> Todo</span><br><span class="line">      .findById(req.params.todoId, &#123;</span><br><span class="line">        include: [&#123;</span><br><span class="line">          model: TodoItem,</span><br><span class="line">          <span class="keyword">as</span>: <span class="string">'todoItems'</span></span><br><span class="line">        &#125;]</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(todo =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (!todo) &#123;</span><br><span class="line">          <span class="keyword">return</span> res.status(<span class="number">400</span>).send(&#123;</span><br><span class="line">            message: <span class="string">'Todo Not Found'</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.status(<span class="number">200</span>).send(todo)</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改路由 <code>server/routes/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todosController = <span class="built_in">require</span>(<span class="string">'../controllers'</span>).todos</span><br><span class="line"><span class="keyword">const</span> todoItemsController = <span class="built_in">require</span>(<span class="string">'../controllers'</span>).todoItems</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = (app) =&gt;  &#123;</span><br><span class="line">  ...</span><br><span class="line">  app.get(<span class="string">'/api/todos/:todoId'</span>, todosController.retrieve)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="/2017/04/express-sequelize/node-sequelize-sqlite-5084d.png" alt="node-sequelize-sqlite-5084d.png" title="">
+<h3 id="更新一个-todo"><a href="#更新一个-todo" class="headerlink" title="更新一个 todo"></a>更新一个 todo</h3><ul>
+<li><p><code>server/controllers/todos.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">update(req, res) &#123;</span><br><span class="line">  <span class="keyword">return</span> Todo</span><br><span class="line">    .findById(req.params.todoId, &#123;</span><br><span class="line">      include: [&#123;</span><br><span class="line">        model: TodoItem,</span><br><span class="line">        <span class="keyword">as</span>: <span class="string">'todoItems'</span></span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(todo =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (!todo) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.status(<span class="number">400</span>).send(&#123;</span><br><span class="line">          message: <span class="string">'Todo Not Found'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> todo</span><br><span class="line">        .update(&#123;</span><br><span class="line">          title: req.body.title || todo.title,</span><br><span class="line">        &#125;)</span><br><span class="line">        .then(() =&gt; res.status(<span class="number">200</span>).send(todo))</span><br><span class="line">        .catch((error) =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>server/routes/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">app.put(<span class="string">'/api/todos/:todoId'</span>, todosController.update)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="/2017/04/express-sequelize/node-sequelize-sqlite-6835a.png" alt="node-sequelize-sqlite-6835a.png" title="">
+<h3 id="删除-todo"><a href="#删除-todo" class="headerlink" title="删除 todo"></a>删除 todo</h3><ul>
+<li><p><code>server/controllers/todos.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">destroy(req, res) &#123;</span><br><span class="line">  <span class="keyword">return</span> Todo</span><br><span class="line">    .findById(req.params.todoId)</span><br><span class="line">    .then(todo =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (!todo) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.status(<span class="number">400</span>).send(&#123;</span><br><span class="line">          message: <span class="string">'Todo Not Found'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> todo</span><br><span class="line">        .destroy()</span><br><span class="line">        .then(() =&gt; res.status(<span class="number">204</span>).send())</span><br><span class="line">        .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>server/routes/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">app.delete(<span class="string">'/api/todos/:todoId'</span>, todosController.destroy)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="/2017/04/express-sequelize/node-sequelize-sqlite-9d858.png" alt="node-sequelize-sqlite-9d858.png" title="">
+<h2 id="更新和删除-todo-items"><a href="#更新和删除-todo-items" class="headerlink" title="更新和删除 todo items"></a>更新和删除 todo items</h2><ul>
+<li><p><code>server/controllers/todoitems.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> TodoItem = <span class="built_in">require</span>(<span class="string">'../models'</span>).TodoItem</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  create(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> TodoItem</span><br><span class="line">      .create(&#123;</span><br><span class="line">        content: req.body.content,</span><br><span class="line">        todoId: req.params.todoId,</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(todoItem =&gt; res.status(<span class="number">201</span>).send(todoItem))</span><br><span class="line">      .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  update(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> TodoItem</span><br><span class="line">      .find(&#123;</span><br><span class="line">        where: &#123;</span><br><span class="line">          id: req.params.todoItemId,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(todoItem =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (!todoItem) &#123;</span><br><span class="line">          <span class="keyword">return</span> res.status(<span class="number">400</span>).send(&#123;message: <span class="string">'TodoItem Not Found'</span>&#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> todoItem</span><br><span class="line">          .update(&#123;</span><br><span class="line">            content: req.body.content || todoItem.content,</span><br><span class="line">            complete: req.body.complete || todoItem.complete</span><br><span class="line">          &#125;)</span><br><span class="line">          .then(updatedTodoItem =&gt; res.status(<span class="number">200</span>).send(updatedTodoItem))</span><br><span class="line">          .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(error =&gt; res.status(<span class="number">400</span>).send(error));</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  destroy(req, res) &#123;</span><br><span class="line">    <span class="keyword">return</span> TodoItem</span><br><span class="line">      .find(&#123;</span><br><span class="line">        where: &#123;</span><br><span class="line">          id: req.params.todoItemId,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(todoItem =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (!todoItem) &#123;</span><br><span class="line">          <span class="keyword">return</span> res.status(<span class="number">400</span>).send(&#123;message: <span class="string">'TodoItem Not Found'</span>&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> todoItem</span><br><span class="line">          .destroy()</span><br><span class="line">          .then(() =&gt; res.status(<span class="number">204</span>).send())</span><br><span class="line">          .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(error =&gt; res.status(<span class="number">400</span>).send(error))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>server/routes/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todosController = <span class="built_in">require</span>(<span class="string">'../controllers'</span>).todos</span><br><span class="line"><span class="keyword">const</span> todoItemsController = <span class="built_in">require</span>(<span class="string">'../controllers'</span>).todoItems</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = (app) =&gt;  &#123;</span><br><span class="line">  app.get(<span class="string">'/api'</span>, (req, res) =&gt; res.status(<span class="number">200</span>).send(&#123;</span><br><span class="line">    message: <span class="string">'Welcome to the Todos API'</span></span><br><span class="line">  &#125;))</span><br><span class="line">  app.post(<span class="string">'/api/todos'</span>, todosController.create)</span><br><span class="line">  app.get(<span class="string">'/api/todos'</span>, todosController.list)</span><br><span class="line">  app.get(<span class="string">'/api/todos/:todoId'</span>, todosController.retrieve)</span><br><span class="line">  app.put(<span class="string">'/api/todos/:todoId'</span>, todosController.update)</span><br><span class="line">  app.delete(<span class="string">'/api/todos/:todoId'</span>, todosController.destroy)</span><br><span class="line"></span><br><span class="line">  app.post(<span class="string">'/api/todos/:todoId/items'</span>, todoItemsController.create)</span><br><span class="line">  app.put(<span class="string">'/api/todos/:todoId/items/:todoItemId'</span>, todoItemsController.update)</span><br><span class="line">  app.delete(<span class="string">'/api/todos/:todoId/items/:todoItemId'</span>, todoItemsController.destroy)</span><br><span class="line"></span><br><span class="line">  app.all(<span class="string">'/api/todos/:todoId/items'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    res.status(<span class="number">405</span>).send(&#123;</span><br><span class="line">      message: <span class="string">'Method Not Allowed'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/harpjs/" rel="next" title="Harp.js">
+                <i class="fa fa-chevron-left"></i> Harp.js
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zjl1.jpg"
+               alt="张景林 ldxyzjl@163.com" />
+          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
+          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置项目"><span class="nav-number">1.</span> <span class="nav-text">设置项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Express"><span class="nav-number">2.</span> <span class="nav-text">Express</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sequelize-设置"><span class="nav-number">3.</span> <span class="nav-text">Sequelize 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成模型"><span class="nav-number">3.1.</span> <span class="nav-text">生成模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建控制器和路由"><span class="nav-number">4.</span> <span class="nav-text">创建控制器和路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询全部待办事项"><span class="nav-number">4.1.</span> <span class="nav-text">查询全部待办事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Todo-Items"><span class="nav-number">4.2.</span> <span class="nav-text">创建 Todo Items</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取指定-todo"><span class="nav-number">4.3.</span> <span class="nav-text">获取指定 todo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新一个-todo"><span class="nav-number">4.4.</span> <span class="nav-text">更新一个 todo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除-todo"><span class="nav-number">4.5.</span> <span class="nav-text">删除 todo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新和删除-todo-items"><span class="nav-number">5.</span> <span class="nav-text">更新和删除 todo items</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+</body>
+</html>
