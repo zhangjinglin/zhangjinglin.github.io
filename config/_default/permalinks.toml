@@ -1,0 +1,18 @@
+# -------------------------------------------------------------------------------------
+# Permalinks Configuration
+# See: https://gohugo.io/configuration/permalinks/
+# -------------------------------------------------------------------------------------
+#
+# 保持与原 Hexo 站点一致的 URL 结构：/YYYY/MM/slug/
+# 这样 2016-2017 年的所有旧链接不会失效。
+# 注意：文章需要放在 content/posts/ 下，且 front matter 中提供 date 与 slug。
+
+[page]
+posts = "/:year/:month/:slugorcontentbasename/"
+
+[section]
+posts = "/posts/"
+
+[taxonomy]
+
+[term]
