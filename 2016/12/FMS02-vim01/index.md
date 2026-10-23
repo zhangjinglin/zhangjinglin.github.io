@@ -1,0 +1,141 @@
+# (FMS02)Vim 安装与配置
+
+
+编辑器之神 Vim 的安装与简单配置
+
+## 安装
+
+```sh
+brew update //升级 brew 到最新版本
+brew info vim //查看 vim 包的配置信息
+brew install vim --with-lua //安装 brew, 同时安装 lua 支持, 我们的一些插件需要 lua 的支持
+//下载, 配置, 编译
+
+mvim //启动 vim 图形界面, 也可以执行 vim 进入字符界面, 我们用 macOS 要享受图形界面的美观
+```
+
+
+
+
+
+### 配置
+
+初看 vim 你肯定傻眼了, 啥么玩意, 这界面太古老了. 我们需要配置才能让 vim 符合我们自己的审美观点.
+
+> - edit mode: 编辑模式, 在 `normal mode` 下按 `i` 进入, 按 `esc` 返回 `normal mode`, 此模式下可以自由键入文本, 但此模式应该仅仅是键入字符, 修改请返回 `normal mode`
+> - normal mode: 普通模式, vim 最强大的模式, 在这种模式下可以对文件进行修改和查找替换等, 是最常用的模式, 在任何模式中, 按 `esc` 进入此模式.
+> - command mode: 命令模式, 在 `normal mode` 中按 `:` 进入此模式, 此模式可以进行查找替换和其他的配置
+> - virtual mode: 可视化模式, 主要用于选择
+> <footer>**vim模式扫盲**</footer>
+
+扫盲之后, 我们来操作一下. 先按下 `i`, 进入 `edit` 模式, 随便输入几行文字. 然后按 `esc` 进入 `normal` 模式.
+
+在 `normal` 模式下按下 `:` 进入`command`模式, 在 vim 的最底端出现了 `:` 等待我们键入命令, 尝试输入 `set guifont=Menlo:h16`, 看到字体和大小改变了吧, 哈哈! 再次输入 `:set number`, 行号出来了, 漂亮.
+
+ 但是总不能每次都输入吧, 我们需要写一个配置文件来保存我们常用的设置.
+
+vim 依据自己的配置文件来进行自身的配置, vim 的配置文件是 `~/.vimrc`.
+
+退出 `mvim`
+
+```sh
+cd //返回主目录
+mvim .vimrc //编辑配置文件
+```
+
+
+
+输入我们刚才的配置信息
+
+```plain
+set guifont=Menlo:h16
+set number
+```
+
+
+
+进入 `command mode`, 别跟我说你不会进入
+
+```plain
+:source ~/.vimrc //重新读入 vim 配置, 请搜索一下 source(Linux) 命令的用法和作用, vim 中的 source 韩以相同
+```
+
+
+
+配置立刻生效了.
+
+ok, 下面我们就可以慢慢的写配置文件了.
+
+我的 `.vimrc` 文件配置部分
+
+```plain
+
+let mapleader=";"
+#mapleader 是一个特殊的符号, 你可以自行定义, 当在 vim 中输入这个字符后, 意味着可能后面的字符会是一个自定义的命令, 请看下一条的解释
+
+nmap <Leader>l $
+#nmap(normal map), normal 模式下当输入了 mapleader+l 之后, 意味着发出了 $(倒行尾) 的命令. 也就是输入 ;l 就相当于输入了 $ 命令. $ 不好输入, 还要按 shift 键, 所以我用 ;l 代替 $
+
+nmap <Leader>h 0
+#nmap(normal map), normal 模式下当输入了 mapleader+h 之后, 意味着发出了 0(倒行首) 的命令. 也就是输入 ;h 就相当于输入了 0 命令.
+
+vnoremap <Leader>y "+y
+#virtual 模式下, 将选中的内容拷贝到系统剪贴板
+nmap <Leader>p "+p
+#从系统剪贴板粘贴
+nmap <Leader>q :q<CR>
+# ;q 退出系统
+
+#下面四个用于切换窗口
+nmap <Leader>wh <C-W>h
+nmap <Leader>wl <C-W>l
+nmap <Leader>wj <C-W>j
+nmap <Leader>wk <C-W>k
+
+#在需要 ; 结尾的语言中, 使用 ;; 直接跳到行尾插入;并回车
+inoremap ;; <C-o>$;<CR>
+
+filetype plugin indent on
+#设定文件类型敏感, 支持各种语言的缩进
+
+syntax on
+syntax enable
+#语法高亮
+
+#请自行查找设定的内容与含义
+set autowrite
+set autowriteall
+set ignorecase
+set hlsearch
+set incsearch
+set smartcase
+set gdefault
+set showmatch
+
+set autoindent
+set ts=4 sts=4 sw=4 expandtab
+
+set backspace=indent,eol,start
+set noswapfile
+set visualbell
+set cursorline
+set number
+set laststatus=2
+set ruler
+
+set encoding=utf-8
+set fileencoding=utf-8
+
+set guifont=Menlo:h20
+```
+
+
+
+预告, 下次 vim 插件系统
+
+
+---
+
+> 作者: [张景林](https://zhangjinglin.github.io/about/)  
+> URL: https://zhangjinglin.github.io/2016/12/FMS02-vim01/  
+

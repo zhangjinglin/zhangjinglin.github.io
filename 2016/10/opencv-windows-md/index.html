@@ -1,693 +1,152 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。
-我们来详细探讨如何在Windows 10，Visual Studio 2015的环境下来配置OpenCV的学习环境。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门">
-<meta property="og:url" content="http://zhangjinglin.github.io/2016/10/opencv-windows-md/index.html">
-<meta property="og:site_name" content="张景林的博客">
-<meta property="og:description" content="OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。
-我们来详细探讨如何在Windows 10，Visual Studio 2015的环境下来配置OpenCV的学习环境。">
-<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-windows-md/01.PNG">
-<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-windows-md/02.PNG">
-<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-windows-md/03.PNG">
-<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-windows-md/04.PNG">
-<meta property="og:image" content="http://zhangjinglin.github.io/2016/10/opencv-windows-md/05.PNG">
-<meta property="og:updated_time" content="2016-11-26T09:07:51.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门">
-<meta name="twitter:description" content="OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。
-我们来详细探讨如何在Windows 10，Visual Studio 2015的环境下来配置OpenCV的学习环境。">
-<meta name="twitter:image" content="http://zhangjinglin.github.io/2016/10/opencv-windows-md/01.PNG">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"always"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门 | 张景林的博客 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-    <div class="site-meta-headline">
-      <a>
-        <img class="custom-logo-image" src="/images/zjl1.jpg"
-             alt="张景林的博客"/>
-      </a>
-    </div>
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">张景林的博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">关于技术，关于人生</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-28T04:37:33+00:00" content="2016-10-28">
-              2016-10-28
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。</p>
-<p>我们来详细探讨如何在Windows 10，Visual Studio 2015的环境下来配置OpenCV的学习环境。</p>
-<a id="more"></a>
-<h3 id="下载OpenCV"><a href="#下载OpenCV" class="headerlink" title="下载OpenCV"></a>下载OpenCV</h3><p>没啥说的，<a href="http://opencv.org/" target="_blank" rel="external">OpenCV官网</a>上下载，我们要下载最新的3.1版本，所以要点击<code>DOWNLOADS</code>链接，不要下载主页上面的2.4.13版本。在下载页面中下载<code>OpenCV for Windows 3.1</code>即可。</p>
-<img src="/2016/10/opencv-windows-md/01.PNG" alt="OpenCV 3.1 下载" title="OpenCV 3.1 下载">
-<p>下载下来的是一个<code>opencv-3.1.0.exe</code>文件，其实就是一个自解压的压缩包，可以直接执行也可以<code>7-zip</code>解压，随你便。</p>
-<p>最重要的两个目录是<code>build\include</code>和<code>build\x64\vc14\lib</code>目录，这是Visual Studio 2015 C++中要配置的两个重要目录。</p>
-<h3 id="如何配置"><a href="#如何配置" class="headerlink" title="如何配置"></a>如何配置</h3><p>在<code>Visual Studio 2015</code>中新建一个<code>Visual C++</code>的<code>Empty Project</code>，项目名字和位置自己定义好。</p>
-<img src="/2016/10/opencv-windows-md/02.PNG" alt="新建 C++ 项目" title="新建 C++ 项目">
-<p>在<code>project</code>上右击选择<code>Properties</code>，在<code>VC++ Directories</code>中配置<code>Include Directories</code>和<code>Library Directories</code>。</p>
-<img src="/2016/10/opencv-windows-md/03.PNG" alt="Setting Debug and x64" title="Setting Debug and x64">
-<p>要注意属性的配置文件，非常重要。我们配置<code>Debug</code>和<code>x64</code>。是的，OpenCV 3.1已经不支持x86的开发了。</p>
-<p>配置完路径后，要在<code>Linker</code>段中的<code>Input</code>中的<code>Additional Dependencies</code>中将OpenCV的<code>opencv_world310d.lib</code>引入。</p>
-<p>关闭配置框后一个重要的事情是在顶部工具条中要修改当前的配置。</p>
-<img src="/2016/10/opencv-windows-md/04.PNG" alt="Setting Debug and x64" title="Setting Debug and x64">
-<p>新建一个C++文件。我们来完成第一个tutorial，<a href="http://docs.opencv.org/2.4/doc/tutorials/introduction/display_image/display_image.html#display-image" target="_blank" rel="external">Load and Dispaly an Image</a>。</p>
-<p>为了学习方便，我们在一个项目中通过菜单和函数来完成不同教程。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//引入OpenCV头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\imgcodecs.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\highgui.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="built_in">string</span> <span class="title">imageName</span><span class="params">(<span class="string">"D:/zjl.jpg"</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">displayMenu</span><span class="params">()</span></span>; <span class="comment">//选择不同的Tutorial</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loadAndDisplayAnImage</span><span class="params">(<span class="built_in">string</span> windowTitle)</span></span>; <span class="comment">//第一个教程</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	displayMenu();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">displayMenu</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> key = <span class="string">' '</span>;<span class="comment">//读取菜单选项</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (key != <span class="string">'x'</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"Please select what tutorial do you want to run:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"[1]Load and Dispaly an Image"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"[x]Quit"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; key;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">switch</span> (key) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">'1'</span>:</span><br><span class="line">			loadAndDisplayAnImage(<span class="string">"Load and Display an Image"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">'x'</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loadAndDisplayAnImage</span><span class="params">(<span class="built_in">string</span> windowTitle)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	Mat inputImage;</span><br><span class="line">	inputImage = imread(imageName, CV_LOAD_IMAGE_COLOR);</span><br><span class="line">	<span class="keyword">if</span> (inputImage.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"The image has problem or file not fount"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	namedWindow(windowTitle, CV_WINDOW_AUTOSIZE);</span><br><span class="line">	imshow(windowTitle, inputImage);</span><br><span class="line"></span><br><span class="line">	waitKey();</span><br><span class="line"></span><br><span class="line">	destroyWindow(windowTitle);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译运行，会收到错误。</p>
-<img src="/2016/10/opencv-windows-md/05.PNG" alt="The dll missing" title="The dll missing">
-<p>这是因为找不到动态链接库。你有两种方法，第一种是将<code>opencv\build\x64\bin\opencv_world310d.dll</code>复制到<code>c:\windows\system</code>目录下，第二种方法是将<code>opencv\build\x64\bin\</code>目录添加到<code>path</code>环境变量中。</p>
-<p>或者我们可以把<code>opencv_world310d.dll</code>直接复制到我们生成的<code>.exe</code>目录中。</p>
-<p>OK，大功告成！</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/10/tesseract/" rel="next" title="2016年第43周最火的Github项目 - Tesseract.js">
-                <i class="fa fa-chevron-left"></i> 2016年第43周最火的Github项目 - Tesseract.js
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/opencv-macos/" rel="prev" title="macOS Sierra, Xcode 8 环境下OpenCV 3.1配置">
-                macOS Sierra, Xcode 8 环境下OpenCV 3.1配置 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/zjl1.jpg"
-               alt="张景林 ldxyzjl@163.com" />
-          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
-          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">35</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-          
-          
-
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载OpenCV"><span class="nav-number">1.</span> <span class="nav-text">下载OpenCV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何配置"><span class="nav-number">2.</span> <span class="nav-text">如何配置</span></a></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top"></div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-  
-  
-  
-
-  
-  
-
-
-</body>
-</html>
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><title>Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门 - 张景林的博客</title><meta name=author content="张景林"><meta name=description content="OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。
+"><meta name=robots content="index, follow"><meta name=keywords content='张景林,博客,技术,编程'><meta itemprop=name content="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门"><meta itemprop=description content="OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。"><meta itemprop=datePublished content="2016-10-28T04:37:33+00:00"><meta itemprop=dateModified content="2026-10-23T15:06:58+08:00"><meta itemprop=wordCount content="1185"><meta property="og:url" content="https://zhangjinglin.github.io/2016/10/opencv-windows-md/"><meta property="og:site_name" content="张景林的博客"><meta property="og:title" content="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门"><meta property="og:description" content="OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2016-10-28T04:37:33+00:00"><meta property="article:modified_time" content="2026-10-23T15:06:58+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门"><meta name=twitter:description content="OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。"><meta name=application-name content="张景林的博客"><meta name=apple-mobile-web-app-title content="张景林的博客"><meta name=theme-color data-light=#f6f8fa data-dark=#151b23 content="#f6f8fa"><meta name=msapplication-TileColor content="#2d89ef"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#FF7359><link rel=canonical type=text/html href=https://zhangjinglin.github.io/2016/10/opencv-windows-md/ title="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门 - 张景林的博客"><link rel=prev type=text/html href=https://zhangjinglin.github.io/2016/10/tesseract/ title="2016年第43周最火的Github项目 - Tesseract.js"><link rel=next type=text/html href=https://zhangjinglin.github.io/2016/10/opencv-macos/ title="macOS Sierra, Xcode 8 环境下OpenCV 3.1配置"><link rel=alternate type=text/markdown href=https://zhangjinglin.github.io/2016/10/opencv-windows-md/index.md><link rel=stylesheet href=/css/unocss.min.css><link rel=stylesheet href=/css/main.min.css><link rel=stylesheet href=/css/pages/posts.min.css><link rel=preload href=/lib/fontawesome-free/all.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/lib/animate/animate.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.css></noscript><link rel=preload href=/js/main.min.js as=script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/zhangjinglin.github.io\/2016\/10\/opencv-windows-md\/"},"genre":"posts","wordcount":1185,"url":"https:\/\/zhangjinglin.github.io\/2016\/10\/opencv-windows-md\/","datePublished":"2016-10-28T04:37:33+00:00","dateModified":"2026-10-23T15:06:58+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"张景林"},"description":""}</script><script src=/js/head.min.js></script></head><body data-instant-intensity=viewport data-header-desktop=sticky data-header-mobile=auto><div class=wrapper data-page-style=normal><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=张景林的博客 class=header-title-link><span class=typeit data-group=header-desktop><template>张景林的博客</template></span></a><span class="typeit header-subtitle" data-group=header-desktop><template>关于技术，关于人生</template></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/posts/><i class="fa-solid fa-blog fa-sm" aria-hidden=true></i> 文章</a></li><li class=menu-item><a class=menu-link href=/archives/><i class="fa-solid fa-archive fa-sm" aria-hidden=true></i> 归档</a></li><li class=menu-item><a class=menu-link href=/categories/><i class="fa-solid fa-folder-tree fa-sm" aria-hidden=true></i> 分类</a></li><li class=menu-item><a class=menu-link href=/tags/><i class="fa-solid fa-tags fa-sm" aria-hidden=true></i> 标签</a></li><li class=menu-item><a class=menu-link href=/about/><i class="fa-solid fa-user fa-sm" aria-hidden=true></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search"><button type=button class="search-trigger desktop" aria-label=搜索 title=搜索>
+<i class="fa-solid fa-search" aria-hidden=true></i>
+搜索
+<kbd></kbd></button></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch-item"><button type=button class=theme-switch aria-label=切换主题 title=切换主题><i class="fa-solid fa-adjust" aria-hidden=true></i></button></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=张景林的博客 class=header-title-link><span class=typeit data-group=header-mobile><template>张景林的博客</template></span></a><span class="typeit header-subtitle" data-group=header-mobile><template>关于技术，关于人生</template></span></div><button type=button class="search-trigger mobile" aria-label=搜索><i class="fa-solid fa-search" aria-hidden=true></i></button><button type=button class=theme-switch aria-label=切换主题><i class="fa-solid fa-adjust" aria-hidden=true></i></button>
+<button type=button class=menu-toggle id=menu-toggle-mobile aria-controls=menu-mobile aria-expanded=false aria-labelledby=menu-mobile>
+<span></span><span></span><span></span></button></div><nav><ul class=menu id=menu-mobile><li class=menu-item><a class=menu-link href=/posts/><i class="fa-solid fa-blog fa-sm" aria-hidden=true></i> 文章</a></li><li class=menu-item><a class=menu-link href=/archives/><i class="fa-solid fa-archive fa-sm" aria-hidden=true></i> 归档</a></li><li class=menu-item><a class=menu-link href=/categories/><i class="fa-solid fa-folder-tree fa-sm" aria-hidden=true></i> 分类</a></li><li class=menu-item><a class=menu-link href=/tags/><i class="fa-solid fa-tags fa-sm" aria-hidden=true></i> 标签</a></li><li class=menu-item><a class=menu-link href=/about/><i class="fa-solid fa-user fa-sm" aria-hidden=true></i> 关于</a></li><li class="menu-item menu-system"></li></ul></nav></div></header><main class=fi-container><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label=合集></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://zhangjinglin.github.io/about/ title=作者 rel=author class=author><i class="fa-solid fa-user-circle me-1" aria-hidden=true></i>张景林</a></span></div><div class=post-meta-line><span title="发布于 2016-10-28 04:37:33"><i class="fa-solid fa-calendar-days me-1" aria-hidden=true></i><time datetime=2016-10-28>2016-10-28</time></span>&nbsp;<span title="更新于 2026-10-23 15:06:58"><i class="fa-regular fa-calendar-check me-1" aria-hidden=true></i><time datetime=2026-10-23>2026-10-23</time></span>&nbsp;<span title="1185 字"><i class="fa-solid fa-pencil me-1" aria-hidden=true></i>约 1200 字</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden=true></i>预计阅读 3 分钟</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static></div></div><template data-toc><nav id=TableOfContents><ul><li><ul><li><a href=#下载opencv>下载OpenCV</a></li><li><a href=#如何配置>如何配置</a></li></ul></li></ul></nav></template><div class=content id=content><p>OpenCV是计算机视觉的事实标准库，学习OpenCV非常重要，在目前的国情下，在Windows上完成OpenCV的开发和教学工作是非常重要的，还不能指望所有人都有Mac计算机，即使Linux也是不现实的。</p><p>我们来详细探讨如何在Windows 10，Visual Studio 2015的环境下来配置OpenCV的学习环境。</p><h3 class=heading-element id=下载opencv><span>下载OpenCV</span>
+<a href=#%e4%b8%8b%e8%bd%bdopencv class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p>没啥说的，<a href=http://opencv.org/ target=_blank rel="external nofollow noopener noreferrer">OpenCV官网<i class="fa-solid fa-external-link-alt fa-xs ms-1 text-secondary" aria-hidden=true></i></a>上下载，我们要下载最新的3.1版本，所以要点击<code>DOWNLOADS</code>链接，不要下载主页上面的2.4.13版本。在下载页面中下载<code>OpenCV for Windows 3.1</code>即可。</p><p><img loading=lazy src=/2016/10/opencv-windows-md/01.PNG alt=/2016/10/opencv-windows-md/01.PNG>
+下载下来的是一个<code>opencv-3.1.0.exe</code>文件，其实就是一个自解压的压缩包，可以直接执行也可以<code>7-zip</code>解压，随你便。</p><p>最重要的两个目录是<code>build\include</code>和<code>build\x64\vc14\lib</code>目录，这是Visual Studio 2015 C++中要配置的两个重要目录。</p><h3 class=heading-element id=如何配置><span>如何配置</span>
+<a href=#%e5%a6%82%e4%bd%95%e9%85%8d%e7%bd%ae class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p>在<code>Visual Studio 2015</code>中新建一个<code>Visual C++</code>的<code>Empty Project</code>，项目名字和位置自己定义好。</p><p><img loading=lazy src=/2016/10/opencv-windows-md/02.PNG alt=/2016/10/opencv-windows-md/02.PNG>
+在<code>project</code>上右击选择<code>Properties</code>，在<code>VC++ Directories</code>中配置<code>Include Directories</code>和<code>Library Directories</code>。</p><p><img loading=lazy src=/2016/10/opencv-windows-md/03.PNG alt=/2016/10/opencv-windows-md/03.PNG>
+要注意属性的配置文件，非常重要。我们配置<code>Debug</code>和<code>x64</code>。是的，OpenCV 3.1已经不支持x86的开发了。</p><p>配置完路径后，要在<code>Linker</code>段中的<code>Input</code>中的<code>Additional Dependencies</code>中将OpenCV的<code>opencv_world310d.lib</code>引入。</p><p>关闭配置框后一个重要的事情是在顶部工具条中要修改当前的配置。</p><p><img loading=lazy src=/2016/10/opencv-windows-md/04.PNG alt=/2016/10/opencv-windows-md/04.PNG>
+新建一个C++文件。我们来完成第一个tutorial，<a href=http://docs.opencv.org/2.4/doc/tutorials/introduction/display_image/display_image.html#display-image target=_blank rel="external nofollow noopener noreferrer">Load and Dispaly an Image<i class="fa-solid fa-external-link-alt fa-xs ms-1 text-secondary" aria-hidden=true></i></a>。</p><p>为了学习方便，我们在一个项目中通过菜单和函数来完成不同教程。</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-c++"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;string&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>//引入OpenCV头文件
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;opencv2\core.hpp&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;opencv2\imgcodecs.hpp&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;opencv2\highgui.hpp&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>cv</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=n>string</span> <span class=nf>imageName</span><span class=p>(</span><span class=s>&#34;D:/zjl.jpg&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>displayMenu</span><span class=p>();</span> <span class=c1>//选择不同的Tutorial
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>loadAndDisplayAnImage</span><span class=p>(</span><span class=n>string</span> <span class=n>windowTitle</span><span class=p>);</span> <span class=c1>//第一个教程
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=n>displayMenu</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>displayMenu</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=kt>char</span> <span class=n>key</span> <span class=o>=</span> <span class=sc>&#39; &#39;</span><span class=p>;</span><span class=c1>//读取菜单选项
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=k>while</span> <span class=p>(</span><span class=n>key</span> <span class=o>!=</span> <span class=sc>&#39;x&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Please select what tutorial do you want to run:&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		<span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;[1]Load and Dispaly an Image&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		<span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;[x]Quit&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>key</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>		<span class=k>switch</span> <span class=p>(</span><span class=n>key</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=k>case</span> <span class=sc>&#39;1&#39;</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>			<span class=n>loadAndDisplayAnImage</span><span class=p>(</span><span class=s>&#34;Load and Display an Image&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>			<span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		<span class=k>case</span> <span class=sc>&#39;x&#39;</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>			<span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>loadAndDisplayAnImage</span><span class=p>(</span><span class=n>string</span> <span class=n>windowTitle</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=n>Mat</span> <span class=n>inputImage</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=n>inputImage</span> <span class=o>=</span> <span class=n>imread</span><span class=p>(</span><span class=n>imageName</span><span class=p>,</span> <span class=n>CV_LOAD_IMAGE_COLOR</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=k>if</span> <span class=p>(</span><span class=n>inputImage</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>	<span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;The image has problem or file not fount&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		<span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=n>namedWindow</span><span class=p>(</span><span class=n>windowTitle</span><span class=p>,</span> <span class=n>CV_WINDOW_AUTOSIZE</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=n>imshow</span><span class=p>(</span><span class=n>windowTitle</span><span class=p>,</span> <span class=n>inputImage</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=n>waitKey</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=n>destroyWindow</span><span class=p>(</span><span class=n>windowTitle</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><p>编译运行，会收到错误。</p><p><img loading=lazy src=/2016/10/opencv-windows-md/05.PNG alt=/2016/10/opencv-windows-md/05.PNG>
+这是因为找不到动态链接库。你有两种方法，第一种是将<code>opencv\build\x64\bin\opencv_world310d.dll</code>复制到<code>c:\windows\system</code>目录下，第二种方法是将<code>opencv\build\x64\bin\</code>目录添加到<code>path</code>环境变量中。</p><p>或者我们可以把<code>opencv_world310d.dll</code>直接复制到我们生成的<code>.exe</code>目录中。</p><p>OK，大功告成！</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="更新于 2026-10-23 15:06:58">更新于 2026-10-23&nbsp;</span></div><div class=post-info-license><span><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank>CC BY-NC-SA 4.0</a></span></div></div><div class=post-info-line><div class=post-info-md><span><a href=/2016/10/opencv-windows-md/index.md title=阅读原始文档 class=link-to-markdown>阅读原始文档</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 X" data-sharer=twitter data-url=https://zhangjinglin.github.io/2016/10/opencv-windows-md/ data-title="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门"><i class="fa-brands fa-x-twitter" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://zhangjinglin.github.io/2016/10/opencv-windows-md/><i class="fa-brands fa-facebook-square" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://zhangjinglin.github.io/2016/10/opencv-windows-md/ data-title="Windows 10, Visual Studio 2015环境下OpenCV 3.1配置和入门"><i class="fa-brands fa-weibo" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/2016/10/tesseract/ class=post-nav-item rel=prev title="2016年第43周最火的Github项目 - Tesseract.js"><i class="fa-solid fa-angle-left" aria-hidden=true></i>2016年第43周最火的Github项目 - Tesseract.js</a><a href=/2016/10/opencv-macos/ class=post-nav-item rel=next title="macOS Sierra, Xcode 8 环境下OpenCV 3.1配置">macOS Sierra, Xcode 8 环境下OpenCV 3.1配置<i class="fa-solid fa-angle-right" aria-hidden=true></i></a></div></div></article><aside class="toc animate__animated animate__fadeIn animate__faster" id=toc-auto aria-label=目录><h2 class=toc-title><span>目录<i class="toc-icon fa-solid fa-angle-down ms-1" aria-hidden=true></i></span>
+<button type=button class=toc-print-btn onclick=event.stopPropagation(),window.print() aria-label=打印><i class="fa-solid fa-print" aria-hidden=true></i></button></h2><div class=toc-content id=toc-content-auto></div></aside></main><footer class=footer><div class=footer-container><div class="footer-line powered">由 <a href="https://github.com/gohugoio/hugo?v=0.168.0" target=_blank rel="external nofollow noopener noreferrer" title="Hugo 0.168.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt?v=v1.0.0-beta.4" target=_blank rel=external title="FixIt v1.0.0-beta.4">FixIt</a></div><div class="footer-line copyright" itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright" aria-hidden=true></i>
+<span itemprop=copyrightYear>2016 - 2026</span><span class=author itemprop=copyrightHolder>
+<a href=https://zhangjinglin.github.io/about/>张景林</a></span></div></div></footer></div><div class=widgets><div id=mask></div><dialog id=nav-dialog aria-labelledby=nav-dialog-title closedby=any><button type=button class=nav-close-btn aria-label="Close 导航"><i class="fa-solid fa-xmark fa-lg" aria-hidden=true></i></button><div class=toc><h2 class=toc-title id=nav-dialog-title>导航</h2><div class=toc-content id=toc-content-drawer></div></div></dialog><dialog id=search-dialog class=search-dialog aria-label=搜索 closedby=any><div class=search-modal><div class=search-modal-header><span class=search-delimiter></span>
+<button type=button class=search-close-btn aria-label="Close Search Dialog"><i class="fa-solid fa-xmark" aria-hidden=true></i></button></div><div class=search-source-footer><div class=search-shortcuts><span class=search-shortcut><kbd><i class=lucide-arrow-up aria-hidden=true></i></kbd>
+<kbd><i class=lucide-arrow-down aria-hidden=true></i></kbd>
+切换
+</span><span class=search-shortcut><kbd><i class=lucide-corner-down-left aria-hidden=true></i></kbd>
+选择
+</span><span class=search-shortcut><kbd>ESC</kbd>
+关闭</span></div><span class=search-engine>搜索引擎 <a href=https://fusejs.io/ target=_blank rel="external nofollow noopener noreferrer">Fuse.js</a></span></div></div></dialog><div class=fixed-buttons><button type=button class="fixed-button back-to-top animate__faster hidden" aria-label=回到顶部><i class="fa-solid fa-arrow-up" aria-hidden=true></i></button><button type=button id=nav-drawer-button class="fixed-button nav-drawer-button hidden" aria-label=导航 aria-controls=nav-dialog aria-expanded=false><i class="fa-solid fa-bars" aria-hidden=true></i></button></div><noscript><div class="noscript-warning bg-danger text-white text-base font-bold fixed text-center inset-x-0 bottom-0 w-full z-fixed">该网站在启用 JavaScript 的情况下效果最佳。</div></noscript></div><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script src=/lib/autocomplete-js/index.production.js defer></script><script src=/js/lib/fuse.min.js defer></script><script src=/lib/sharer/sharer.min.js async defer></script><script src=/lib/typeit/index.umd.js defer></script><script src=/js/lib/typeit.min.js defer></script><script src=/lib/cookieconsent/cookieconsent.min.js defer></script><script src=/js/lib/cookieconsent.min.js defer></script><script src=/lib/cell-tooltip/cell-tooltip.umd.js defer></script><script src=/js/config/873e81e736a470d0f57a9b322eb9b963.min.js defer></script><script src=/js/lib/file-tree.min.js defer></script><script src=/js/main.min.js defer></script><script src=/js/custom.min.js defer></script></body></html>

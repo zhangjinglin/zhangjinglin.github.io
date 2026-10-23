@@ -1,723 +1,665 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="这是php基础中关于MySQL的内容。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="PHP 基础 - MySQL">
-<meta property="og:url" content="http://zhangjinglin.github.io/2016/03/php-fundamentals-mysql/index.html">
-<meta property="og:site_name" content="张景林的博客">
-<meta property="og:description" content="这是php基础中关于MySQL的内容。">
-<meta property="og:updated_time" content="2016-11-26T09:07:51.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP 基础 - MySQL">
-<meta name="twitter:description" content="这是php基础中关于MySQL的内容。">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"always"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> PHP 基础 - MySQL | 张景林的博客 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-    <div class="site-meta-headline">
-      <a>
-        <img class="custom-logo-image" src="/images/zjl1.jpg"
-             alt="张景林的博客"/>
-      </a>
-    </div>
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">张景林的博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">关于技术，关于人生</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-
-
-      
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                PHP 基础 - MySQL
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T05:11:05+00:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>这是php基础中关于MySQL的内容。</p>
-<a id="more"></a>
-<h2 id="MySQL-创建数据库和表"><a href="#MySQL-创建数据库和表" class="headerlink" title="MySQL 创建数据库和表"></a>MySQL 创建数据库和表</h2><p>安装好MySQL后，可以直接在命令行下操作MySQL，当然也可以使用PhpMyAdmin来进行数据的创建。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p //连接到本地数据库，默认root用户没有密码</span><br><span class="line"><span class="built_in">set</span> password <span class="keyword">for</span> root@localhost = password(<span class="string">'xxx'</span>); //设置root密码</span><br><span class="line">show databases; //显示所有数据库</span><br><span class="line"></span><br><span class="line">create database blog default charset utf8; // 创建blog数据库，并设置字符集为utf8</span><br><span class="line">use blog; //设置当前数据库为blog</span><br><span class="line">show tables; //显示当前数据库中的所有表</span><br><span class="line">create table users( id int auto_increment, name varchar(50) not null, email varchar(100) not null, primary key(id));</span><br><span class="line">describe users; //显示users的结构</span><br></pre></td></tr></table></figure>
-<h2 id="插入和删除数据"><a href="#插入和删除数据" class="headerlink" title="插入和删除数据"></a>插入和删除数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">insert into users values(null, <span class="string">'zjl'</span>, <span class="string">'ldxyzjl@163'</span>);</span><br><span class="line">select * from users;</span><br><span class="line">select email from users;</span><br><span class="line">insert into users(name, email) values(<span class="string">'zhao si'</span>, <span class="string">'zhao@si.com'</span>);</span><br><span class="line">select * from users order by name asc; //按名字升序返回记录</span><br><span class="line">select * from users order by name desc; //按名字降序返回记录</span><br><span class="line">insert into users(name, email) values(<span class="string">'wang wu'</span>, <span class="string">'wang@wu.com'</span>);</span><br><span class="line">select * from users <span class="built_in">limit</span> 2; //返回2条记录</span><br><span class="line">delete from users <span class="built_in">where</span> name = <span class="string">'wang wu'</span>; //删除名字为<span class="string">'wang wu'</span>的记录</span><br></pre></td></tr></table></figure>
-<h2 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//创建posts表，注意author_id是外键，会关联users表</span><br><span class="line">create table posts(</span><br><span class="line">    -&gt; id int auto_increment,</span><br><span class="line">    -&gt; title varchar(150),</span><br><span class="line">    -&gt; body text,</span><br><span class="line">    -&gt; author_id int not null,</span><br><span class="line">    -&gt; primary key(id)</span><br><span class="line">    -&gt; );</span><br><span class="line">insert into posts(title, body, author_id) values(<span class="string">'My first post'</span>, <span class="string">'the body of my post'</span>, 1);</span><br><span class="line">update posts <span class="built_in">set</span> author_id = 2 <span class="built_in">where</span> id = 1; //将id为1的posts记录修改author_id为2</span><br><span class="line">select * from posts inner join users on users.id = posts.author_id; //两个表的内连接查询</span><br><span class="line">select title, body, name from posts inner join users on users.id = posts.author_id;</span><br><span class="line"></span><br><span class="line">update posts <span class="built_in">set</span> title = <span class="string">'My updated post'</span> <span class="built_in">where</span> id = 1;</span><br><span class="line">update posts <span class="built_in">set</span> title = <span class="string">'updated again'</span>, body = <span class="string">'updated body'</span> <span class="built_in">where</span> id = 1;</span><br><span class="line"></span><br><span class="line">alter table posts change title subject varchar(100); //将title列修改为subject</span><br><span class="line">desc posts;</span><br><span class="line">alter table posts change subject title varchar(150); //改名和类型</span><br></pre></td></tr></table></figure>
-<h2 id="多表连接"><a href="#多表连接" class="headerlink" title="多表连接"></a>多表连接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">create database practice;</span><br><span class="line">use practice;</span><br><span class="line">create table users(</span><br><span class="line">    -&gt; id int auto_increment primary key,</span><br><span class="line">    -&gt; username varchar(100)</span><br><span class="line">    -&gt; );</span><br><span class="line">insert into users(username) values(<span class="string">'zjl'</span>);</span><br><span class="line">insert into users(username) values(<span class="string">'zs'</span>);</span><br><span class="line">insert into users(username) values(<span class="string">'ww'</span>);</span><br><span class="line"></span><br><span class="line">create table orders(</span><br><span class="line">    -&gt; id int auto_increment primary key,</span><br><span class="line">    -&gt; number int,</span><br><span class="line">    -&gt; user_id int</span><br><span class="line">    -&gt; );</span><br><span class="line">insert into orders(number, user_id) values(1466227, 1);</span><br><span class="line">insert into orders(number, user_id) values(7122567, 1);</span><br><span class="line">insert into orders(number, user_id) values(3458212, 1);</span><br><span class="line">insert into orders(number, user_id) values(9934832, 2);</span><br><span class="line">insert into orders(number, user_id) values(354522, 2);</span><br><span class="line"></span><br><span class="line">select * from users inner join orders on orders.user_id = users.id;</span><br><span class="line">select users.id, username, number as oder_number from users inner join orders on orders.user_id = users.id;</span><br><span class="line">select users.id, username, number as oder_number from users inner join orders on orders.user_id = users.id <span class="built_in">where</span> id = 1;</span><br><span class="line">ERROR 1052 (23000): Column <span class="string">'id'</span> <span class="keyword">in</span> <span class="built_in">where</span> clause is ambiguous //两个表都有id，不知道用哪一个。</span><br><span class="line">select users.id, username, number as oder_number from users inner join orders on orders.user_id = users.id <span class="built_in">where</span> users.id = 1;</span><br><span class="line"></span><br><span class="line">select users.id, username, orders.number from users left join orders on users.id = orders.user_id;</span><br><span class="line">select users.id, username, count(orders.number) as order_amount from users inner join orders on users.id = orders.user_id <span class="built_in">where</span> users.id=1;</span><br></pre></td></tr></table></figure>
-<h2 id="php连接mysql"><a href="#php连接mysql" class="headerlink" title="php连接mysql"></a>php连接mysql</h2><p>下面的描述已经过时，PHP不推荐用这种方式使用php，我在这里仅仅是说明一下。<br>创建<code>functions.php</code>文件</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//已经过时，不要使用</span></span><br><span class="line">mysql_connect(<span class="string">'localhost'</span>, <span class="string">'root'</span>, <span class="string">''</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'不能连接数据库'</span>); <span class="comment">//主机名，用户名，密码</span></span><br><span class="line"></span><br><span class="line">mysql_select_db(<span class="string">'practice'</span>);</span><br><span class="line"></span><br><span class="line">$result = mysql_query(<span class="string">'select * from users'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ($row = mysql_fetch_object($result)) &#123;</span><br><span class="line">    <span class="comment">// print_r($row);</span></span><br><span class="line">    <span class="keyword">echo</span> $row-&gt;username . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果我们要访问不同的数据库怎么办？我们还是结构化我们的代码，做一个函数。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//已经过时，不要使用</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span><span class="params">($host = <span class="string">'localhost'</span>, $username = <span class="string">'root'</span>, $password = <span class="string">''</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mysql_connect($host, $username, $password);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$conn = connect() <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'不能连接数据库'</span>);</span><br><span class="line"></span><br><span class="line">mysql_select_db(<span class="string">'practice'</span>, $conn);</span><br><span class="line"></span><br><span class="line">$result = mysql_query(<span class="string">'select * from users'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ($row = mysql_fetch_object($result)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $row-&gt;username . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果我们可以在连接的时候就传入数据库就更好了。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//已经过时，不要使用</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span><span class="params">($host, $username, $password, $database = <span class="string">''</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    $conn = mysql_connect($host, $username, $password);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>($database)) &#123;</span><br><span class="line">        mysql_select_db($database, $conn);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $conn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$conn = connect(<span class="string">'localhost'</span>, <span class="string">'root'</span>, <span class="string">''</span>, <span class="string">'practice'</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'不能连接数据库'</span>);</span><br><span class="line"></span><br><span class="line">$result = mysql_query(<span class="string">'select * from users'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ($row = mysql_fetch_object($result)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $row-&gt;username . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们来继续结构化查询</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//已经过时，不要使用</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span><span class="params">($host, $username, $password, $database = <span class="string">''</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    $conn = mysql_connect($host, $username, $password);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>($database)) &#123;</span><br><span class="line">        mysql_select_db($database, $conn);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $conn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">($query)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    $results = mysql_query($query);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ($results) &#123;</span><br><span class="line">        $rows = [];</span><br><span class="line">        <span class="keyword">while</span> ($row = mysql_fetch_object($results)) &#123;</span><br><span class="line">            $rows[] = $row;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $rows;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$conn = connect(<span class="string">'localhost'</span>, <span class="string">'root'</span>, <span class="string">''</span>, <span class="string">'practice'</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'不能连接数据库'</span>);</span><br><span class="line">$result = query(<span class="string">'select * from users'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($result) &#123;</span><br><span class="line">    <span class="keyword">foreach</span> ($result <span class="keyword">as</span> $row) &#123;</span><br><span class="line">        <span class="keyword">echo</span> $row-&gt;username . <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="使用PDO连接数据库"><a href="#使用PDO连接数据库" class="headerlink" title="使用PDO连接数据库"></a>使用PDO连接数据库</h2><p>我们连接数据库的信息应该放置在一个配置文件中，而不是硬编码在函数库中。<br>创建<code>config.php</code>文件</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$config = [</span><br><span class="line">    <span class="string">'DB_USERNAME'</span> =&gt; <span class="string">'root'</span>,</span><br><span class="line">    <span class="string">'DB_PASSWORD'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'DB_HOST'</span> =&gt; <span class="string">'localhost'</span>,</span><br><span class="line">    <span class="string">'DB_DATABASE'</span> =&gt; <span class="string">'practice'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-<p>创建<code>functions.php</code></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'config.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    $conn = <span class="keyword">new</span> PDO(<span class="string">"mysql:host=&#123;$config['DB_HOST']&#125;;dbname=&#123;$config['DB_DATABASE']&#125;"</span>, $config[<span class="string">'DB_USERNAME'</span>], $config[<span class="string">'DB_PASSWORD'</span>]);</span><br><span class="line">    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line">&#125; <span class="keyword">catch</span> (PDOException $e) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'ERROR: '</span> . $e-&gt;getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><p>我们来添加查询的语句</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'config.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    $conn = <span class="keyword">new</span> PDO(<span class="string">"mysql:host=&#123;$config['DB_HOST']&#125;;dbname=&#123;$config['DB_DATABASE']&#125;"</span>, $config[<span class="string">'DB_USERNAME'</span>], $config[<span class="string">'DB_PASSWORD'</span>]);</span><br><span class="line">    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line"></span><br><span class="line">    $results = $conn-&gt;query(<span class="string">'select * from users'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> ($results <span class="keyword">as</span> $row) &#123;</span><br><span class="line">        print_r($row);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (PDOException $e) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'ERROR: '</span> . $e-&gt;getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果我们需要id为3的记录，我们可以这样</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$results = $conn-&gt;query(<span class="string">'select * from users where id = 3'</span>);</span><br></pre></td></tr></table></figure>
-<p>如果id是动态获取的呢？我们来看一种错误的做法</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$id = <span class="number">3</span>;</span><br><span class="line">$results = $conn-&gt;query(<span class="string">'select * from users where id = '</span> . $id);</span><br></pre></td></tr></table></figure>
-<p>现在假设我们的id值被用户进行了注入攻击</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$id = <span class="string">'100 OR 1'</span>;</span><br><span class="line">$results = $conn-&gt;query(<span class="string">'select * from users where id = '</span> . $id);</span><br></pre></td></tr></table></figure>
-<p>数据已经全部暴露了，这个不得了。我们需要安全的做法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$results = $conn-&gt;query(&apos;select * from users where id = &apos; . $conn-&gt;quote($id));</span><br></pre></td></tr></table></figure>
-<p>但这仍然不是好的做法，下面我们来看一下好的做法。</p>
-<h2 id="prepared-statement"><a href="#prepared-statement" class="headerlink" title="prepared statement"></a>prepared statement</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$id = <span class="number">3</span>;</span><br><span class="line">$stmt = $conn-&gt;prepare(<span class="string">'select * from users where id = :id'</span>);</span><br><span class="line">$stmt-&gt;execute([</span><br><span class="line">    <span class="string">'id'</span> =&gt; $id</span><br><span class="line"> ]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ($row = $stmt-&gt;fetch()) &#123;</span><br><span class="line">    print_r($row);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现在可以尝试修改$id, 例如 <code>&#39;3&#39; &#39;3 or 1&#39;</code></p>
-<p>我们还可以这样做</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$stmt-&gt;bindParam(<span class="string">':id'</span>, $id, PDO::PARAM_INT);</span><br><span class="line">$stmt-&gt;execute();</span><br></pre></td></tr></table></figure>
-<p>现在我们返回的是数组，我们可以返回对象</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> ($row = $stmt-&gt;fetch(PDO::FETCH_OBJ)) &#123;</span><br><span class="line">    print_r($row);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">$stmt = $conn-&gt;prepare(<span class="string">'select * from users where id = :id'</span>);</span><br><span class="line">$stmt-&gt;setFetchMode(PDO::FETCH_OBJ);</span><br></pre></td></tr></table></figure>
-<p>也可以一次返回全部数据</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$stmt = $conn-&gt;prepare(<span class="string">'select * from users'</span>);</span><br><span class="line">$stmt-&gt;setFetchMode(PDO::FETCH_OBJ);</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line">$results = $stmt-&gt;fetchAll();</span><br><span class="line">print_r($results);</span><br></pre></td></tr></table></figure>
-<p>使用prepared statement执行插入动作</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$stmt = $conn-&gt;prepare(<span class="string">'insert into users(username) values(:username)'</span>);</span><br><span class="line">$stmt-&gt;bindParam(<span class="string">':username'</span>, $username, PDO::PARAM_STR);</span><br><span class="line"></span><br><span class="line">$username = <span class="string">'aaa'</span>;</span><br><span class="line">$stmt-&gt;execute();</span><br><span class="line"></span><br><span class="line">$username = <span class="string">'bbb'</span>;</span><br><span class="line">$stmt-&gt;execute();</span><br></pre></td></tr></table></figure>
-<p>更简洁的方式是</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$stmt = $conn-&gt;prepare(<span class="string">'insert into users(username) values(:username)'</span>);</span><br><span class="line">$stmt-&gt;bindParam(<span class="string">':username'</span>, $username, PDO::PARAM_STR);</span><br><span class="line"></span><br><span class="line">$users = [<span class="string">'ccc'</span>, <span class="string">'ddd'</span>, <span class="string">'eed'</span>];</span><br><span class="line"><span class="keyword">foreach</span> ($users <span class="keyword">as</span> $username) &#123;</span><br><span class="line">    $stmt-&gt;execute();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="PDO-辅助函数"><a href="#PDO-辅助函数" class="headerlink" title="PDO 辅助函数"></a>PDO 辅助函数</h2><p>我们先来创建<code>config.php</code></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$config = [</span><br><span class="line">    <span class="string">'DB_USERNAME'</span> =&gt; <span class="string">'root'</span>,</span><br><span class="line">    <span class="string">'DB_PASSWORD'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'DB_HOST'</span> =&gt; <span class="string">'localhost'</span>,</span><br><span class="line">    <span class="string">'DB_DATABASE'</span> =&gt; <span class="string">'practice'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-<p>创建<code>functions.php</code></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'config.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span><span class="params">($config)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        $conn = <span class="keyword">new</span> PDO(<span class="string">"mysql:host=&#123;$config['DB_HOST']&#125;;dbname=&#123;$config['DB_DATABASE']&#125;"</span>, $config[<span class="string">'DB_USERNAME'</span>], $config[<span class="string">'DB_PASSWORD'</span>]);</span><br><span class="line"></span><br><span class="line">        $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $conn;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们创建<code>index.php</code>进行测试</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'config.php'</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="string">'functions.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (connect($config)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'Connected'</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'Could not connect the db'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们在辅助函数中增加一个<code>get</code>方法，能够获取某个表的全部数据，并能够返回数据，或者没有数据返回false</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span><span class="params">($tableName, $conn)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        $result =  $conn-&gt;query(<span class="string">"SELECT * FROM $tableName"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ($result-&gt;rowCount &gt; <span class="number">0</span>) ? $result : <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们来测试一下<code>index.php</code></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'config.php'</span>;</span><br><span class="line"><span class="keyword">require</span> <span class="string">'functions.php'</span>;</span><br><span class="line"></span><br><span class="line">$conn = connect($config);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($conn) &#123;</span><br><span class="line">    $result = get(<span class="string">'users'</span>, $conn);</span><br><span class="line">    <span class="keyword">if</span> ($result) &#123;</span><br><span class="line">        <span class="keyword">foreach</span>($result <span class="keyword">as</span> $row) &#123;</span><br><span class="line">            print_r($row);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'No rows'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'Could not connect the db'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们也可以创建一个普通的<code>query</code>函数，<code>functions.php</code></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">($query, $bindings, $conn)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">     $stmt = $conn-&gt;prepare($query);</span><br><span class="line">     $stmt-&gt;execute($bindings);</span><br><span class="line">     $result = $stmt-&gt;fetchAll();</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">return</span> $result ? $result : <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ($conn) &#123;</span><br><span class="line">    $rows = query(<span class="string">'select * from users where id = :id'</span>, [</span><br><span class="line">        <span class="string">'id'</span> =&gt; <span class="number">1</span></span><br><span class="line">        ], $conn);</span><br><span class="line">    <span class="keyword">if</span> ($rows) &#123;</span><br><span class="line">        print_r($rows);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'No data'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'Could not connect the db'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>我们的函数库命名会出现问题，当我们引入其他的库的时候。我们需要命名空间来进行隔离。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">namespace</span> <span class="title">Zjl</span>\<span class="title">DB</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'conncted'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样，我们的<code>connect</code>就在<code>Zjl\DB</code>这个命名空间下了。我们测试一下</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'functions.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// echo connect(); //无法找到</span></span><br><span class="line"><span class="keyword">echo</span> Zjl\DB\connect();</span><br></pre></td></tr></table></figure>
-<p>但是我们不想每次都输入那么长的名字，我们可以使用<code>use</code>关键字</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'functions.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Zjl</span>\<span class="title">DB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> DB\connect();</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/03/docker-in-action/" rel="next" title="Docker 学习笔记">
-                <i class="fa fa-chevron-left"></i> Docker 学习笔记
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/yarn/" rel="prev" title="2016年第42周最火的Github项目 - Yarn">
-                2016年第42周最火的Github项目 - Yarn <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/zjl1.jpg"
-               alt="张景林 ldxyzjl@163.com" />
-          <p class="site-author-name" itemprop="name">张景林 ldxyzjl@163.com</p>
-          <p class="site-description motion-element" itemprop="description">不要让别人定义我的生命</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">35</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-          
-          
-
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-创建数据库和表"><span class="nav-number">1.</span> <span class="nav-text">MySQL 创建数据库和表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入和删除数据"><span class="nav-number">2.</span> <span class="nav-text">插入和删除数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改记录"><span class="nav-number">3.</span> <span class="nav-text">修改记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多表连接"><span class="nav-number">4.</span> <span class="nav-text">多表连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#php连接mysql"><span class="nav-number">5.</span> <span class="nav-text">php连接mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用PDO连接数据库"><span class="nav-number">6.</span> <span class="nav-text">使用PDO连接数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询数据"><span class="nav-number">7.</span> <span class="nav-text">查询数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prepared-statement"><span class="nav-number">8.</span> <span class="nav-text">prepared statement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDO-辅助函数"><span class="nav-number">9.</span> <span class="nav-text">PDO 辅助函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间"><span class="nav-number">10.</span> <span class="nav-text">命名空间</span></a></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">张景林 ldxyzjl@163.com</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top"></div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-  
-  
-  
-
-  
-  
-
-
-</body>
-</html>
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><title>PHP 基础 - MySQL - 张景林的博客</title><meta name=author content="张景林"><meta name=description content="这是php基础中关于MySQL的内容。
+MySQL 创建数据库和表 安装好MySQL后，可以直接在命令行下操作MySQL，当然也可以使用PhpMyAdmin来进行数据的创建。
+"><meta name=robots content="index, follow"><meta name=keywords content='张景林,博客,技术,编程'><meta itemprop=name content="PHP 基础 - MySQL"><meta itemprop=description content="这是php基础中关于MySQL的内容。
+MySQL 创建数据库和表 安装好MySQL后，可以直接在命令行下操作MySQL，当然也可以使用PhpMyAdmin来进行数据的创建。"><meta itemprop=datePublished content="2016-03-20T05:11:05+00:00"><meta itemprop=dateModified content="2026-10-23T15:06:58+08:00"><meta itemprop=wordCount content="2579"><meta property="og:url" content="https://zhangjinglin.github.io/2016/03/php-fundamentals-mysql/"><meta property="og:site_name" content="张景林的博客"><meta property="og:title" content="PHP 基础 - MySQL"><meta property="og:description" content="这是php基础中关于MySQL的内容。
+MySQL 创建数据库和表 安装好MySQL后，可以直接在命令行下操作MySQL，当然也可以使用PhpMyAdmin来进行数据的创建。"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2016-03-20T05:11:05+00:00"><meta property="article:modified_time" content="2026-10-23T15:06:58+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="PHP 基础 - MySQL"><meta name=twitter:description content="这是php基础中关于MySQL的内容。
+MySQL 创建数据库和表 安装好MySQL后，可以直接在命令行下操作MySQL，当然也可以使用PhpMyAdmin来进行数据的创建。"><meta name=application-name content="张景林的博客"><meta name=apple-mobile-web-app-title content="张景林的博客"><meta name=theme-color data-light=#f6f8fa data-dark=#151b23 content="#f6f8fa"><meta name=msapplication-TileColor content="#2d89ef"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#FF7359><link rel=canonical type=text/html href=https://zhangjinglin.github.io/2016/03/php-fundamentals-mysql/ title="PHP 基础 - MySQL - 张景林的博客"><link rel=prev type=text/html href=https://zhangjinglin.github.io/2016/03/docker-in-action/ title="Docker 学习笔记"><link rel=next type=text/html href=https://zhangjinglin.github.io/2016/10/yarn/ title="2016年第42周最火的Github项目 - Yarn"><link rel=alternate type=text/markdown href=https://zhangjinglin.github.io/2016/03/php-fundamentals-mysql/index.md><link rel=stylesheet href=/css/unocss.min.css><link rel=stylesheet href=/css/main.min.css><link rel=stylesheet href=/css/pages/posts.min.css><link rel=preload href=/lib/fontawesome-free/all.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/lib/animate/animate.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.css></noscript><link rel=preload href=/js/main.min.js as=script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"PHP 基础 - MySQL","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/zhangjinglin.github.io\/2016\/03\/php-fundamentals-mysql\/"},"genre":"posts","wordcount":2579,"url":"https:\/\/zhangjinglin.github.io\/2016\/03\/php-fundamentals-mysql\/","datePublished":"2016-03-20T05:11:05+00:00","dateModified":"2026-10-23T15:06:58+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"张景林"},"description":""}</script><script src=/js/head.min.js></script></head><body data-instant-intensity=viewport data-header-desktop=sticky data-header-mobile=auto><div class=wrapper data-page-style=normal><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=张景林的博客 class=header-title-link><span class=typeit data-group=header-desktop><template>张景林的博客</template></span></a><span class="typeit header-subtitle" data-group=header-desktop><template>关于技术，关于人生</template></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/posts/><i class="fa-solid fa-blog fa-sm" aria-hidden=true></i> 文章</a></li><li class=menu-item><a class=menu-link href=/archives/><i class="fa-solid fa-archive fa-sm" aria-hidden=true></i> 归档</a></li><li class=menu-item><a class=menu-link href=/categories/><i class="fa-solid fa-folder-tree fa-sm" aria-hidden=true></i> 分类</a></li><li class=menu-item><a class=menu-link href=/tags/><i class="fa-solid fa-tags fa-sm" aria-hidden=true></i> 标签</a></li><li class=menu-item><a class=menu-link href=/about/><i class="fa-solid fa-user fa-sm" aria-hidden=true></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search"><button type=button class="search-trigger desktop" aria-label=搜索 title=搜索>
+<i class="fa-solid fa-search" aria-hidden=true></i>
+搜索
+<kbd></kbd></button></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch-item"><button type=button class=theme-switch aria-label=切换主题 title=切换主题><i class="fa-solid fa-adjust" aria-hidden=true></i></button></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=张景林的博客 class=header-title-link><span class=typeit data-group=header-mobile><template>张景林的博客</template></span></a><span class="typeit header-subtitle" data-group=header-mobile><template>关于技术，关于人生</template></span></div><button type=button class="search-trigger mobile" aria-label=搜索><i class="fa-solid fa-search" aria-hidden=true></i></button><button type=button class=theme-switch aria-label=切换主题><i class="fa-solid fa-adjust" aria-hidden=true></i></button>
+<button type=button class=menu-toggle id=menu-toggle-mobile aria-controls=menu-mobile aria-expanded=false aria-labelledby=menu-mobile>
+<span></span><span></span><span></span></button></div><nav><ul class=menu id=menu-mobile><li class=menu-item><a class=menu-link href=/posts/><i class="fa-solid fa-blog fa-sm" aria-hidden=true></i> 文章</a></li><li class=menu-item><a class=menu-link href=/archives/><i class="fa-solid fa-archive fa-sm" aria-hidden=true></i> 归档</a></li><li class=menu-item><a class=menu-link href=/categories/><i class="fa-solid fa-folder-tree fa-sm" aria-hidden=true></i> 分类</a></li><li class=menu-item><a class=menu-link href=/tags/><i class="fa-solid fa-tags fa-sm" aria-hidden=true></i> 标签</a></li><li class=menu-item><a class=menu-link href=/about/><i class="fa-solid fa-user fa-sm" aria-hidden=true></i> 关于</a></li><li class="menu-item menu-system"></li></ul></nav></div></header><main class=fi-container><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label=合集></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>PHP 基础 - MySQL</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://zhangjinglin.github.io/about/ title=作者 rel=author class=author><i class="fa-solid fa-user-circle me-1" aria-hidden=true></i>张景林</a></span></div><div class=post-meta-line><span title="发布于 2016-03-20 05:11:05"><i class="fa-solid fa-calendar-days me-1" aria-hidden=true></i><time datetime=2016-03-20>2016-03-20</time></span>&nbsp;<span title="更新于 2026-10-23 15:06:58"><i class="fa-regular fa-calendar-check me-1" aria-hidden=true></i><time datetime=2026-10-23>2026-10-23</time></span>&nbsp;<span title="2579 字"><i class="fa-solid fa-pencil me-1" aria-hidden=true></i>约 2600 字</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden=true></i>预计阅读 6 分钟</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static></div></div><template data-toc><nav id=TableOfContents><ul><li><a href=#mysql-创建数据库和表>MySQL 创建数据库和表</a></li><li><a href=#插入和删除数据>插入和删除数据</a></li><li><a href=#修改记录>修改记录</a></li><li><a href=#多表连接>多表连接</a></li><li><a href=#php连接mysql>php连接mysql</a></li><li><a href=#使用pdo连接数据库>使用PDO连接数据库</a></li><li><a href=#查询数据>查询数据</a></li><li><a href=#prepared-statement>prepared statement</a></li><li><a href=#pdo-辅助函数>PDO 辅助函数</a></li><li><a href=#命名空间>命名空间</a></li></ul></nav></template><div class=content id=content><p>这是php基础中关于MySQL的内容。</p><h2 class=heading-element id=mysql-创建数据库和表><span>MySQL 创建数据库和表</span>
+<a href=#mysql-%e5%88%9b%e5%bb%ba%e6%95%b0%e6%8d%ae%e5%ba%93%e5%92%8c%e8%a1%a8 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>安装好MySQL后，可以直接在命令行下操作MySQL，当然也可以使用PhpMyAdmin来进行数据的创建。</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-bash"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mysql -u root -p //连接到本地数据库，默认root用户没有密码
+</span></span><span class=line><span class=cl><span class=nb>set</span> password <span class=k>for</span> root@localhost <span class=o>=</span> password<span class=o>(</span><span class=s1>&#39;xxx&#39;</span><span class=o>)</span><span class=p>;</span> //设置root密码
+</span></span><span class=line><span class=cl>show databases<span class=p>;</span> //显示所有数据库
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>create database blog default charset utf8<span class=p>;</span> // 创建blog数据库，并设置字符集为utf8
+</span></span><span class=line><span class=cl>use blog<span class=p>;</span> //设置当前数据库为blog
+</span></span><span class=line><span class=cl>show tables<span class=p>;</span> //显示当前数据库中的所有表
+</span></span><span class=line><span class=cl>create table users<span class=o>(</span> id int auto_increment, name varchar<span class=o>(</span>50<span class=o>)</span> not null, email varchar<span class=o>(</span>100<span class=o>)</span> not null, primary key<span class=o>(</span>id<span class=o>))</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>describe users<span class=p>;</span> //显示users的结构</span></span></code></pre></td></tr></table></div></div></div><h2 class=heading-element id=插入和删除数据><span>插入和删除数据</span>
+<a href=#%e6%8f%92%e5%85%a5%e5%92%8c%e5%88%a0%e9%99%a4%e6%95%b0%e6%8d%ae class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-bash"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>insert into users values<span class=o>(</span>null, <span class=s1>&#39;zjl&#39;</span>, <span class=s1>&#39;ldxyzjl@163&#39;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>select</span> * from users<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>select</span> email from users<span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into users<span class=o>(</span>name, email<span class=o>)</span> values<span class=o>(</span><span class=s1>&#39;zhao si&#39;</span>, <span class=s1>&#39;zhao@si.com&#39;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>select</span> * from users order by name asc<span class=p>;</span> //按名字升序返回记录
+</span></span><span class=line><span class=cl><span class=k>select</span> * from users order by name desc<span class=p>;</span> //按名字降序返回记录
+</span></span><span class=line><span class=cl>insert into users<span class=o>(</span>name, email<span class=o>)</span> values<span class=o>(</span><span class=s1>&#39;wang wu&#39;</span>, <span class=s1>&#39;wang@wu.com&#39;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>select</span> * from users limit 2<span class=p>;</span> //返回2条记录
+</span></span><span class=line><span class=cl>delete from users where <span class=nv>name</span> <span class=o>=</span> <span class=s1>&#39;wang wu&#39;</span><span class=p>;</span> //删除名字为<span class=s1>&#39;wang wu&#39;</span>的记录</span></span></code></pre></td></tr></table></div></div></div><h2 class=heading-element id=修改记录><span>修改记录</span>
+<a href=#%e4%bf%ae%e6%94%b9%e8%ae%b0%e5%bd%95 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-bash"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>//创建posts表，注意author_id是外键，会关联users表
+</span></span><span class=line><span class=cl>create table posts<span class=o>(</span>
+</span></span><span class=line><span class=cl>    -&gt; id int auto_increment,
+</span></span><span class=line><span class=cl>    -&gt; title varchar<span class=o>(</span>150<span class=o>)</span>,
+</span></span><span class=line><span class=cl>    -&gt; body text,
+</span></span><span class=line><span class=cl>    -&gt; author_id int not null,
+</span></span><span class=line><span class=cl>    -&gt; primary key<span class=o>(</span>id<span class=o>)</span>
+</span></span><span class=line><span class=cl>    -&gt; <span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into posts<span class=o>(</span>title, body, author_id<span class=o>)</span> values<span class=o>(</span><span class=s1>&#39;My first post&#39;</span>, <span class=s1>&#39;the body of my post&#39;</span>, 1<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>update posts <span class=nb>set</span> <span class=nv>author_id</span> <span class=o>=</span> <span class=m>2</span> where <span class=nv>id</span> <span class=o>=</span> 1<span class=p>;</span> //将id为1的posts记录修改author_id为2
+</span></span><span class=line><span class=cl><span class=k>select</span> * from posts inner join users on users.id <span class=o>=</span> posts.author_id<span class=p>;</span> //两个表的内连接查询
+</span></span><span class=line><span class=cl><span class=k>select</span> title, body, name from posts inner join users on users.id <span class=o>=</span> posts.author_id<span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>update posts <span class=nb>set</span> <span class=nv>title</span> <span class=o>=</span> <span class=s1>&#39;My updated post&#39;</span> where <span class=nv>id</span> <span class=o>=</span> 1<span class=p>;</span>
+</span></span><span class=line><span class=cl>update posts <span class=nb>set</span> <span class=nv>title</span> <span class=o>=</span> <span class=s1>&#39;updated again&#39;</span>, <span class=nv>body</span> <span class=o>=</span> <span class=s1>&#39;updated body&#39;</span> where <span class=nv>id</span> <span class=o>=</span> 1<span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>alter table posts change title subject varchar<span class=o>(</span>100<span class=o>)</span><span class=p>;</span> //将title列修改为subject
+</span></span><span class=line><span class=cl>desc posts<span class=p>;</span>
+</span></span><span class=line><span class=cl>alter table posts change subject title varchar<span class=o>(</span>150<span class=o>)</span><span class=p>;</span> //改名和类型</span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><h2 class=heading-element id=多表连接><span>多表连接</span>
+<a href=#%e5%a4%9a%e8%a1%a8%e8%bf%9e%e6%8e%a5 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-bash"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>create database practice<span class=p>;</span>
+</span></span><span class=line><span class=cl>use practice<span class=p>;</span>
+</span></span><span class=line><span class=cl>create table users<span class=o>(</span>
+</span></span><span class=line><span class=cl>    -&gt; id int auto_increment primary key,
+</span></span><span class=line><span class=cl>    -&gt; username varchar<span class=o>(</span>100<span class=o>)</span>
+</span></span><span class=line><span class=cl>    -&gt; <span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into users<span class=o>(</span>username<span class=o>)</span> values<span class=o>(</span><span class=s1>&#39;zjl&#39;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into users<span class=o>(</span>username<span class=o>)</span> values<span class=o>(</span><span class=s1>&#39;zs&#39;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into users<span class=o>(</span>username<span class=o>)</span> values<span class=o>(</span><span class=s1>&#39;ww&#39;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>create table orders<span class=o>(</span>
+</span></span><span class=line><span class=cl>    -&gt; id int auto_increment primary key,
+</span></span><span class=line><span class=cl>    -&gt; number int,
+</span></span><span class=line><span class=cl>    -&gt; user_id int
+</span></span><span class=line><span class=cl>    -&gt; <span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into orders<span class=o>(</span>number, user_id<span class=o>)</span> values<span class=o>(</span>1466227, 1<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into orders<span class=o>(</span>number, user_id<span class=o>)</span> values<span class=o>(</span>7122567, 1<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into orders<span class=o>(</span>number, user_id<span class=o>)</span> values<span class=o>(</span>3458212, 1<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into orders<span class=o>(</span>number, user_id<span class=o>)</span> values<span class=o>(</span>9934832, 2<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>insert into orders<span class=o>(</span>number, user_id<span class=o>)</span> values<span class=o>(</span>354522, 2<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>select</span> * from users inner join orders on orders.user_id <span class=o>=</span> users.id<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>select</span> users.id, username, number as oder_number from users inner join orders on orders.user_id <span class=o>=</span> users.id<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>select</span> users.id, username, number as oder_number from users inner join orders on orders.user_id <span class=o>=</span> users.id where <span class=nv>id</span> <span class=o>=</span> 1<span class=p>;</span>
+</span></span><span class=line><span class=cl>ERROR <span class=m>1052</span> <span class=o>(</span>23000<span class=o>)</span>: Column <span class=s1>&#39;id&#39;</span> in where clause is ambiguous //两个表都有id，不知道用哪一个。
+</span></span><span class=line><span class=cl><span class=k>select</span> users.id, username, number as oder_number from users inner join orders on orders.user_id <span class=o>=</span> users.id where users.id <span class=o>=</span> 1<span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>select</span> users.id, username, orders.number from users left join orders on users.id <span class=o>=</span> orders.user_id<span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>select</span> users.id, username, count<span class=o>(</span>orders.number<span class=o>)</span> as order_amount from users inner join orders on users.id <span class=o>=</span> orders.user_id where users.id<span class=o>=</span>1<span class=p>;</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><h2 class=heading-element id=php连接mysql><span>php连接mysql</span>
+<a href=#php%e8%bf%9e%e6%8e%a5mysql class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>下面的描述已经过时，PHP不推荐用这种方式使用php，我在这里仅仅是说明一下。
+创建<code>functions.php</code>文件</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl><span class=c1>//已经过时，不要使用
+</span></span></span><span class=line><span class=cl><span class=nx>mysql_connect</span><span class=p>(</span><span class=s1>&#39;localhost&#39;</span><span class=p>,</span> <span class=s1>&#39;root&#39;</span><span class=p>,</span> <span class=s1>&#39;&#39;</span><span class=p>)</span> <span class=k>or</span> <span class=k>die</span><span class=p>(</span><span class=s1>&#39;不能连接数据库&#39;</span><span class=p>);</span> <span class=c1>//主机名，用户名，密码
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>mysql_select_db</span><span class=p>(</span><span class=s1>&#39;practice&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$result</span> <span class=o>=</span> <span class=nx>mysql_query</span><span class=p>(</span><span class=s1>&#39;select * from users&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=p>(</span><span class=nv>$row</span> <span class=o>=</span> <span class=nx>mysql_fetch_object</span><span class=p>(</span><span class=nv>$result</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// print_r($row);
+</span></span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=nv>$row</span><span class=o>-&gt;</span><span class=na>username</span> <span class=o>.</span> <span class=s1>&#39;&lt;br&gt;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><p>如果我们要访问不同的数据库怎么办？我们还是结构化我们的代码，做一个函数。</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl><span class=c1>//已经过时，不要使用
+</span></span></span><span class=line><span class=cl><span class=k>function</span> <span class=nf>connect</span><span class=p>(</span><span class=nv>$host</span> <span class=o>=</span> <span class=s1>&#39;localhost&#39;</span><span class=p>,</span> <span class=nv>$username</span> <span class=o>=</span> <span class=s1>&#39;root&#39;</span><span class=p>,</span> <span class=nv>$password</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>mysql_connect</span><span class=p>(</span><span class=nv>$host</span><span class=p>,</span> <span class=nv>$username</span><span class=p>,</span> <span class=nv>$password</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$conn</span> <span class=o>=</span> <span class=nx>connect</span><span class=p>()</span> <span class=k>or</span> <span class=k>die</span><span class=p>(</span><span class=s1>&#39;不能连接数据库&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>mysql_select_db</span><span class=p>(</span><span class=s1>&#39;practice&#39;</span><span class=p>,</span> <span class=nv>$conn</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$result</span> <span class=o>=</span> <span class=nx>mysql_query</span><span class=p>(</span><span class=s1>&#39;select * from users&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=p>(</span><span class=nv>$row</span> <span class=o>=</span> <span class=nx>mysql_fetch_object</span><span class=p>(</span><span class=nv>$result</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=nv>$row</span><span class=o>-&gt;</span><span class=na>username</span> <span class=o>.</span> <span class=s1>&#39;&lt;br&gt;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><p>如果我们可以在连接的时候就传入数据库就更好了。</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl><span class=c1>//已经过时，不要使用
+</span></span></span><span class=line><span class=cl><span class=k>function</span> <span class=nf>connect</span><span class=p>(</span><span class=nv>$host</span><span class=p>,</span> <span class=nv>$username</span><span class=p>,</span> <span class=nv>$password</span><span class=p>,</span> <span class=nv>$database</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$conn</span> <span class=o>=</span> <span class=nx>mysql_connect</span><span class=p>(</span><span class=nv>$host</span><span class=p>,</span> <span class=nv>$username</span><span class=p>,</span> <span class=nv>$password</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=k>empty</span><span class=p>(</span><span class=nv>$database</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>mysql_select_db</span><span class=p>(</span><span class=nv>$database</span><span class=p>,</span> <span class=nv>$conn</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nv>$conn</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$conn</span> <span class=o>=</span> <span class=nx>connect</span><span class=p>(</span><span class=s1>&#39;localhost&#39;</span><span class=p>,</span> <span class=s1>&#39;root&#39;</span><span class=p>,</span> <span class=s1>&#39;&#39;</span><span class=p>,</span> <span class=s1>&#39;practice&#39;</span><span class=p>)</span> <span class=k>or</span> <span class=k>die</span><span class=p>(</span><span class=s1>&#39;不能连接数据库&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$result</span> <span class=o>=</span> <span class=nx>mysql_query</span><span class=p>(</span><span class=s1>&#39;select * from users&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=p>(</span><span class=nv>$row</span> <span class=o>=</span> <span class=nx>mysql_fetch_object</span><span class=p>(</span><span class=nv>$result</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=nv>$row</span><span class=o>-&gt;</span><span class=na>username</span> <span class=o>.</span> <span class=s1>&#39;&lt;br&gt;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><p>我们来继续结构化查询</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl><span class=c1>//已经过时，不要使用
+</span></span></span><span class=line><span class=cl><span class=k>function</span> <span class=nf>connect</span><span class=p>(</span><span class=nv>$host</span><span class=p>,</span> <span class=nv>$username</span><span class=p>,</span> <span class=nv>$password</span><span class=p>,</span> <span class=nv>$database</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$conn</span> <span class=o>=</span> <span class=nx>mysql_connect</span><span class=p>(</span><span class=nv>$host</span><span class=p>,</span> <span class=nv>$username</span><span class=p>,</span> <span class=nv>$password</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=k>empty</span><span class=p>(</span><span class=nv>$database</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>mysql_select_db</span><span class=p>(</span><span class=nv>$database</span><span class=p>,</span> <span class=nv>$conn</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nv>$conn</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>function</span> <span class=nf>query</span><span class=p>(</span><span class=nv>$query</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$results</span> <span class=o>=</span> <span class=nx>mysql_query</span><span class=p>(</span><span class=nv>$query</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nv>$results</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$rows</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>        <span class=k>while</span> <span class=p>(</span><span class=nv>$row</span> <span class=o>=</span> <span class=nx>mysql_fetch_object</span><span class=p>(</span><span class=nv>$results</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nv>$rows</span><span class=p>[]</span> <span class=o>=</span> <span class=nv>$row</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$rows</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=k>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$conn</span> <span class=o>=</span> <span class=nx>connect</span><span class=p>(</span><span class=s1>&#39;localhost&#39;</span><span class=p>,</span> <span class=s1>&#39;root&#39;</span><span class=p>,</span> <span class=s1>&#39;&#39;</span><span class=p>,</span> <span class=s1>&#39;practice&#39;</span><span class=p>)</span> <span class=k>or</span> <span class=k>die</span><span class=p>(</span><span class=s1>&#39;不能连接数据库&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$result</span> <span class=o>=</span> <span class=nx>query</span><span class=p>(</span><span class=s1>&#39;select * from users&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nv>$result</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>foreach</span> <span class=p>(</span><span class=nv>$result</span> <span class=k>as</span> <span class=nv>$row</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>echo</span> <span class=nv>$row</span><span class=o>-&gt;</span><span class=na>username</span> <span class=o>.</span> <span class=s1>&#39;&lt;br&gt;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><h2 class=heading-element id=使用pdo连接数据库><span>使用PDO连接数据库</span>
+<a href=#%e4%bd%bf%e7%94%a8pdo%e8%bf%9e%e6%8e%a5%e6%95%b0%e6%8d%ae%e5%ba%93 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>我们连接数据库的信息应该放置在一个配置文件中，而不是硬编码在函数库中。
+创建<code>config.php</code>文件</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$config</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;DB_USERNAME&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;root&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;DB_PASSWORD&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;DB_HOST&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;localhost&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;DB_DATABASE&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;practice&#39;</span>
+</span></span><span class=line><span class=cl><span class=p>];</span></span></span></code></pre></td></tr></table></div></div></div><p>创建<code>functions.php</code></p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;config.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>try</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$conn</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>PDO</span><span class=p>(</span><span class=s2>&#34;mysql:host=</span><span class=si>{</span><span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_HOST&#39;</span><span class=p>]</span><span class=si>}</span><span class=s2>;dbname=</span><span class=si>{</span><span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_DATABASE&#39;</span><span class=p>]</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_USERNAME&#39;</span><span class=p>],</span> <span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_PASSWORD&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>setAttribute</span><span class=p>(</span><span class=nx>PDO</span><span class=o>::</span><span class=na>ATTR_ERRMODE</span><span class=p>,</span> <span class=nx>PDO</span><span class=o>::</span><span class=na>ERRMODE_EXCEPTION</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=nx>PDOException</span> <span class=nv>$e</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=s1>&#39;ERROR: &#39;</span> <span class=o>.</span> <span class=nv>$e</span><span class=o>-&gt;</span><span class=na>getMessage</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></div><h2 class=heading-element id=查询数据><span>查询数据</span>
+<a href=#%e6%9f%a5%e8%af%a2%e6%95%b0%e6%8d%ae class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>我们来添加查询的语句</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;config.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>try</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$conn</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>PDO</span><span class=p>(</span><span class=s2>&#34;mysql:host=</span><span class=si>{</span><span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_HOST&#39;</span><span class=p>]</span><span class=si>}</span><span class=s2>;dbname=</span><span class=si>{</span><span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_DATABASE&#39;</span><span class=p>]</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_USERNAME&#39;</span><span class=p>],</span> <span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_PASSWORD&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>setAttribute</span><span class=p>(</span><span class=nx>PDO</span><span class=o>::</span><span class=na>ATTR_ERRMODE</span><span class=p>,</span> <span class=nx>PDO</span><span class=o>::</span><span class=na>ERRMODE_EXCEPTION</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nv>$results</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>query</span><span class=p>(</span><span class=s1>&#39;select * from users&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>foreach</span> <span class=p>(</span><span class=nv>$results</span> <span class=k>as</span> <span class=nv>$row</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>print_r</span><span class=p>(</span><span class=nv>$row</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=nx>PDOException</span> <span class=nv>$e</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=s1>&#39;ERROR: &#39;</span> <span class=o>.</span> <span class=nv>$e</span><span class=o>-&gt;</span><span class=na>getMessage</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><p>如果我们需要id为3的记录，我们可以这样</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$results</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>query</span><span class=p>(</span><span class=s1>&#39;select * from users where id = 3&#39;</span><span class=p>);</span></span></span></code></pre></td></tr></table></div></div></div><p>如果id是动态获取的呢？我们来看一种错误的做法</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$id</span> <span class=o>=</span> <span class=mi>3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nv>$results</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>query</span><span class=p>(</span><span class=s1>&#39;select * from users where id = &#39;</span> <span class=o>.</span> <span class=nv>$id</span><span class=p>);</span></span></span></code></pre></td></tr></table></div></div></div><p>现在假设我们的id值被用户进行了注入攻击</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$id</span> <span class=o>=</span> <span class=s1>&#39;100 OR 1&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nv>$results</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>query</span><span class=p>(</span><span class=s1>&#39;select * from users where id = &#39;</span> <span class=o>.</span> <span class=nv>$id</span><span class=p>);</span></span></span></code></pre></td></tr></table></div></div></div><p>数据已经全部暴露了，这个不得了。我们需要安全的做法</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-plain"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-plain data-lang=plain><span class=line><span class=cl>$results = $conn-&gt;query(&#39;select * from users where id = &#39; . $conn-&gt;quote($id));</span></span></code></pre></td></tr></table></div></div></div><p>但这仍然不是好的做法，下面我们来看一下好的做法。</p><h2 class=heading-element id=prepared-statement><span>prepared statement</span>
+<a href=#prepared-statement class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$id</span> <span class=o>=</span> <span class=mi>3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>prepare</span><span class=p>(</span><span class=s1>&#39;select * from users where id = :id&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>execute</span><span class=p>([</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;id&#39;</span> <span class=o>=&gt;</span> <span class=nv>$id</span>
+</span></span><span class=line><span class=cl> <span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=p>(</span><span class=nv>$row</span> <span class=o>=</span> <span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>fetch</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>print_r</span><span class=p>(</span><span class=nv>$row</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></div><p>现在可以尝试修改$id, 例如 <code>'3' '3 or 1'</code></p><p>我们还可以这样做</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>bindParam</span><span class=p>(</span><span class=s1>&#39;:id&#39;</span><span class=p>,</span> <span class=nv>$id</span><span class=p>,</span> <span class=nx>PDO</span><span class=o>::</span><span class=na>PARAM_INT</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>execute</span><span class=p>();</span></span></span></code></pre></td></tr></table></div></div></div><p>现在我们返回的是数组，我们可以返回对象</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>while</span> <span class=p>(</span><span class=nv>$row</span> <span class=o>=</span> <span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>fetch</span><span class=p>(</span><span class=nx>PDO</span><span class=o>::</span><span class=na>FETCH_OBJ</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>print_r</span><span class=p>(</span><span class=nv>$row</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>//或者
+</span></span></span><span class=line><span class=cl><span class=nv>$stmt</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>prepare</span><span class=p>(</span><span class=s1>&#39;select * from users where id = :id&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>setFetchMode</span><span class=p>(</span><span class=nx>PDO</span><span class=o>::</span><span class=na>FETCH_OBJ</span><span class=p>);</span></span></span></code></pre></td></tr></table></div></div></div><p>也可以一次返回全部数据</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$stmt</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>prepare</span><span class=p>(</span><span class=s1>&#39;select * from users&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>setFetchMode</span><span class=p>(</span><span class=nx>PDO</span><span class=o>::</span><span class=na>FETCH_OBJ</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>execute</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nv>$results</span> <span class=o>=</span> <span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>fetchAll</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>print_r</span><span class=p>(</span><span class=nv>$results</span><span class=p>);</span></span></span></code></pre></td></tr></table></div></div></div><p>使用prepared statement执行插入动作</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$stmt</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>prepare</span><span class=p>(</span><span class=s1>&#39;insert into users(username) values(:username)&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>bindParam</span><span class=p>(</span><span class=s1>&#39;:username&#39;</span><span class=p>,</span> <span class=nv>$username</span><span class=p>,</span> <span class=nx>PDO</span><span class=o>::</span><span class=na>PARAM_STR</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$username</span> <span class=o>=</span> <span class=s1>&#39;aaa&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>execute</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$username</span> <span class=o>=</span> <span class=s1>&#39;bbb&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>execute</span><span class=p>();</span></span></span></code></pre></td></tr></table></div></div></div><p>更简洁的方式是</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$stmt</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>prepare</span><span class=p>(</span><span class=s1>&#39;insert into users(username) values(:username)&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>bindParam</span><span class=p>(</span><span class=s1>&#39;:username&#39;</span><span class=p>,</span> <span class=nv>$username</span><span class=p>,</span> <span class=nx>PDO</span><span class=o>::</span><span class=na>PARAM_STR</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$users</span> <span class=o>=</span> <span class=p>[</span><span class=s1>&#39;ccc&#39;</span><span class=p>,</span> <span class=s1>&#39;ddd&#39;</span><span class=p>,</span> <span class=s1>&#39;eed&#39;</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=k>foreach</span> <span class=p>(</span><span class=nv>$users</span> <span class=k>as</span> <span class=nv>$username</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>execute</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></div><h2 class=heading-element id=pdo-辅助函数><span>PDO 辅助函数</span>
+<a href=#pdo-%e8%be%85%e5%8a%a9%e5%87%bd%e6%95%b0 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>我们先来创建<code>config.php</code></p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$config</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;DB_USERNAME&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;root&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;DB_PASSWORD&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;DB_HOST&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;localhost&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;DB_DATABASE&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;practice&#39;</span>
+</span></span><span class=line><span class=cl><span class=p>];</span></span></span></code></pre></td></tr></table></div></div></div><p>创建<code>functions.php</code></p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;config.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>function</span> <span class=nf>connect</span><span class=p>(</span><span class=nv>$config</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>try</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$conn</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>PDO</span><span class=p>(</span><span class=s2>&#34;mysql:host=</span><span class=si>{</span><span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_HOST&#39;</span><span class=p>]</span><span class=si>}</span><span class=s2>;dbname=</span><span class=si>{</span><span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_DATABASE&#39;</span><span class=p>]</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_USERNAME&#39;</span><span class=p>],</span> <span class=nv>$config</span><span class=p>[</span><span class=s1>&#39;DB_PASSWORD&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>setAttribute</span><span class=p>(</span><span class=nx>PDO</span><span class=o>::</span><span class=na>ATTR_ERRMODE</span><span class=p>,</span> <span class=nx>PDO</span><span class=o>::</span><span class=na>ERRMODE_EXCEPTION</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$conn</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=nx>Exception</span> <span class=nv>$e</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=k>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><p>我们创建<code>index.php</code>进行测试</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;config.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;functions.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nx>connect</span><span class=p>(</span><span class=nv>$config</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=s1>&#39;Connected&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=s1>&#39;Could not connect the db&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></div><p>我们在辅助函数中增加一个<code>get</code>方法，能够获取某个表的全部数据，并能够返回数据，或者没有数据返回false</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>function</span> <span class=nf>get</span><span class=p>(</span><span class=nv>$tableName</span><span class=p>,</span> <span class=nv>$conn</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>try</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$result</span> <span class=o>=</span>  <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>query</span><span class=p>(</span><span class=s2>&#34;SELECT * FROM </span><span class=si>$tableName</span><span class=s2>&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=p>(</span><span class=nv>$result</span><span class=o>-&gt;</span><span class=na>rowCount</span> <span class=o>&gt;</span> <span class=mi>0</span><span class=p>)</span> <span class=o>?</span> <span class=nv>$result</span> <span class=o>:</span> <span class=k>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=nx>Exception</span> <span class=nv>$e</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=k>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></div><p>我们来测试一下<code>index.php</code></p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;config.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;functions.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>$conn</span> <span class=o>=</span> <span class=nx>connect</span><span class=p>(</span><span class=nv>$config</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nv>$conn</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$result</span> <span class=o>=</span> <span class=nx>get</span><span class=p>(</span><span class=s1>&#39;users&#39;</span><span class=p>,</span> <span class=nv>$conn</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nv>$result</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>foreach</span><span class=p>(</span><span class=nv>$result</span> <span class=k>as</span> <span class=nv>$row</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>print_r</span><span class=p>(</span><span class=nv>$row</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>echo</span> <span class=s1>&#39;No rows&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=s1>&#39;Could not connect the db&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><p>我们也可以创建一个普通的<code>query</code>函数，<code>functions.php</code></p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>function</span> <span class=nf>query</span><span class=p>(</span><span class=nv>$query</span><span class=p>,</span> <span class=nv>$bindings</span><span class=p>,</span> <span class=nv>$conn</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>     <span class=nv>$stmt</span> <span class=o>=</span> <span class=nv>$conn</span><span class=o>-&gt;</span><span class=na>prepare</span><span class=p>(</span><span class=nv>$query</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>     <span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>execute</span><span class=p>(</span><span class=nv>$bindings</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>     <span class=nv>$result</span> <span class=o>=</span> <span class=nv>$stmt</span><span class=o>-&gt;</span><span class=na>fetchAll</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>     
+</span></span><span class=line><span class=cl>     <span class=k>return</span> <span class=nv>$result</span> <span class=o>?</span> <span class=nv>$result</span> <span class=o>:</span> <span class=k>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></div><p>测试</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=2 style=--fi-max-shown-lines:10;--fi-line-digit:2;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nv>$conn</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$rows</span> <span class=o>=</span> <span class=nx>query</span><span class=p>(</span><span class=s1>&#39;select * from users where id = :id&#39;</span><span class=p>,</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;id&#39;</span> <span class=o>=&gt;</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=p>],</span> <span class=nv>$conn</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nv>$rows</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>print_r</span><span class=p>(</span><span class=nv>$rows</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>echo</span> <span class=s1>&#39;No data&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>echo</span> <span class=s1>&#39;Could not connect the db&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div><button type=button class=code-expand-btn aria-label=展开或折叠代码块><i class="fa-solid fa-angles-down" aria-hidden=true></i></button></div></div><h2 class=heading-element id=命名空间><span>命名空间</span>
+<a href=#%e5%91%bd%e5%90%8d%e7%a9%ba%e9%97%b4 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>我们的函数库命名会出现问题，当我们引入其他的库的时候。我们需要命名空间来进行隔离。</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span> <span class=k>namespace</span> <span class=nx>Zjl\DB</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>function</span> <span class=nf>connect</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;conncted&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></div><p>这样，我们的<code>connect</code>就在<code>Zjl\DB</code>这个命名空间下了。我们测试一下</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;functions.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// echo connect(); //无法找到
+</span></span></span><span class=line><span class=cl><span class=k>echo</span> <span class=nx>Zjl\DB\connect</span><span class=p>();</span></span></span></code></pre></td></tr></table></div></div></div><p>但是我们不想每次都输入那么长的名字，我们可以使用<code>use</code>关键字</p><div class="code-block highlight" data-mode=classic data-copyable=true><div class=chroma><div class="code-header language-php"><span class=code-title><i class="arrow fa-solid fa-chevron-down" aria-hidden=true></i></span><button type=button class=ellipses-btn aria-label="Show more options"><i class="fa-solid fa-ellipsis-h" aria-hidden=true></i></button><button type=button class="action-btn line-nos-btn" aria-label=切换行号 title=切换行号><i class="fa-solid fa-list-ol" aria-hidden=true></i></button><button type=button class="action-btn line-wrap-btn" aria-label=切换自动换行 title=切换自动换行><i class="fa-solid fa-right-left" aria-hidden=true></i></button><button type=button class="action-btn copy-btn" aria-label=复制到剪贴板 title=复制到剪贴板 data-copied-text=已复制><i class="fa-regular fa-clone" aria-hidden=true></i></button></div><div class=code-wrapper data-max=10 data-line-digit=1 style=--fi-max-shown-lines:10;--fi-line-digit:1;--fi-line-start:1><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>require</span> <span class=s1>&#39;functions.php&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Zjl\DB</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>echo</span> <span class=nx>DB\connect</span><span class=p>();</span></span></span></code></pre></td></tr></table></div></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="更新于 2026-10-23 15:06:58">更新于 2026-10-23&nbsp;</span></div><div class=post-info-license><span><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank>CC BY-NC-SA 4.0</a></span></div></div><div class=post-info-line><div class=post-info-md><span><a href=/2016/03/php-fundamentals-mysql/index.md title=阅读原始文档 class=link-to-markdown>阅读原始文档</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 X" data-sharer=twitter data-url=https://zhangjinglin.github.io/2016/03/php-fundamentals-mysql/ data-title="PHP 基础 - MySQL"><i class="fa-brands fa-x-twitter" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://zhangjinglin.github.io/2016/03/php-fundamentals-mysql/><i class="fa-brands fa-facebook-square" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://zhangjinglin.github.io/2016/03/php-fundamentals-mysql/ data-title="PHP 基础 - MySQL"><i class="fa-brands fa-weibo" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/2016/03/docker-in-action/ class=post-nav-item rel=prev title="Docker 学习笔记"><i class="fa-solid fa-angle-left" aria-hidden=true></i>Docker 学习笔记</a><a href=/2016/10/yarn/ class=post-nav-item rel=next title="2016年第42周最火的Github项目 - Yarn">2016年第42周最火的Github项目 - Yarn<i class="fa-solid fa-angle-right" aria-hidden=true></i></a></div></div></article><aside class="toc animate__animated animate__fadeIn animate__faster" id=toc-auto aria-label=目录><h2 class=toc-title><span>目录<i class="toc-icon fa-solid fa-angle-down ms-1" aria-hidden=true></i></span>
+<button type=button class=toc-print-btn onclick=event.stopPropagation(),window.print() aria-label=打印><i class="fa-solid fa-print" aria-hidden=true></i></button></h2><div class=toc-content id=toc-content-auto></div></aside></main><footer class=footer><div class=footer-container><div class="footer-line powered">由 <a href="https://github.com/gohugoio/hugo?v=0.168.0" target=_blank rel="external nofollow noopener noreferrer" title="Hugo 0.168.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt?v=v1.0.0-beta.4" target=_blank rel=external title="FixIt v1.0.0-beta.4">FixIt</a></div><div class="footer-line copyright" itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright" aria-hidden=true></i>
+<span itemprop=copyrightYear>2016 - 2026</span><span class=author itemprop=copyrightHolder>
+<a href=https://zhangjinglin.github.io/about/>张景林</a></span></div></div></footer></div><div class=widgets><div id=mask></div><dialog id=nav-dialog aria-labelledby=nav-dialog-title closedby=any><button type=button class=nav-close-btn aria-label="Close 导航"><i class="fa-solid fa-xmark fa-lg" aria-hidden=true></i></button><div class=toc><h2 class=toc-title id=nav-dialog-title>导航</h2><div class=toc-content id=toc-content-drawer></div></div></dialog><dialog id=search-dialog class=search-dialog aria-label=搜索 closedby=any><div class=search-modal><div class=search-modal-header><span class=search-delimiter></span>
+<button type=button class=search-close-btn aria-label="Close Search Dialog"><i class="fa-solid fa-xmark" aria-hidden=true></i></button></div><div class=search-source-footer><div class=search-shortcuts><span class=search-shortcut><kbd><i class=lucide-arrow-up aria-hidden=true></i></kbd>
+<kbd><i class=lucide-arrow-down aria-hidden=true></i></kbd>
+切换
+</span><span class=search-shortcut><kbd><i class=lucide-corner-down-left aria-hidden=true></i></kbd>
+选择
+</span><span class=search-shortcut><kbd>ESC</kbd>
+关闭</span></div><span class=search-engine>搜索引擎 <a href=https://fusejs.io/ target=_blank rel="external nofollow noopener noreferrer">Fuse.js</a></span></div></div></dialog><div class=fixed-buttons><button type=button class="fixed-button back-to-top animate__faster hidden" aria-label=回到顶部><i class="fa-solid fa-arrow-up" aria-hidden=true></i></button><button type=button id=nav-drawer-button class="fixed-button nav-drawer-button hidden" aria-label=导航 aria-controls=nav-dialog aria-expanded=false><i class="fa-solid fa-bars" aria-hidden=true></i></button></div><noscript><div class="noscript-warning bg-danger text-white text-base font-bold fixed text-center inset-x-0 bottom-0 w-full z-fixed">该网站在启用 JavaScript 的情况下效果最佳。</div></noscript></div><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script src=/lib/autocomplete-js/index.production.js defer></script><script src=/js/lib/fuse.min.js defer></script><script src=/lib/sharer/sharer.min.js async defer></script><script src=/lib/typeit/index.umd.js defer></script><script src=/js/lib/typeit.min.js defer></script><script src=/lib/cookieconsent/cookieconsent.min.js defer></script><script src=/js/lib/cookieconsent.min.js defer></script><script src=/lib/cell-tooltip/cell-tooltip.umd.js defer></script><script src=/js/config/d4df40acbbad2105dd90355941320525.min.js defer></script><script src=/js/lib/file-tree.min.js defer></script><script src=/js/main.min.js defer></script><script src=/js/custom.min.js defer></script></body></html>
