@@ -1286,7 +1286,7 @@ logo_url = ""
 
 # Analytics configuration.
 [analytics]
-enable = false
+enable = true
 
 # Google Analytics.
 [analytics.google]
@@ -1306,10 +1306,10 @@ id = ""
 
 # Umami Analytics.
 [analytics.umami]
-data_website_id = ""
-src = ""
+data_website_id = "bb0dfe34-c795-4daa-a447-5281233ae4d0"
+src = "https://cloud.umami.is/script.js"
 data_host_url = ""
-data_domains = ""
+data_domains = "zhangjinglin.github.io"
 
 # Plausible Analytics.
 [analytics.plausible]
@@ -1322,7 +1322,7 @@ token = ""
 
 # Cookie consent configuration.
 [cookieconsent]
-enable = true
+enable = false
 
 # Text strings used for Cookie consent banner.
 [cookieconsent.content]
