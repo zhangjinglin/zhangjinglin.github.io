@@ -150,3 +150,14 @@ url: "/2016/12/FMS01-brew/"
 - favicon 缺失（`/favicon.ico`、`/favicon-32x32.png` 等），主题模板引用了但仓库里没有
 - 评论系统未配置（FixIt 支持 giscus 等多种，需要时再开）
 - 搜索：FixIt 内置 Pagefind，已生成 `search.json`，可用
+
+## 变更日志
+
+### 2026-10-23 — 封面叠图上线 + 新文章发布
+
+- 首页卡片与详情页改为「标题压在封面图上」，实现方式见上方「文章封面图」一节
+- 涉及文件：`layouts/summary.html`、`layouts/posts/single.html`、`assets/scss/custom.scss`、`config/_default/params.toml`（`image_preview = true`）
+- 发布《古法创新：当 AI 接管数学之后》，`draft: true` 改为 `false`，题图 `assets/images/ai-math-civilization.jpg`
+- 提交：`223c41a`（封面叠图）、`84b40f2`（新文章）
+- 坑：hermes 新增顶层目录（`assets/scss`、`layouts`）时 dev server 有时不触发重建，重启 `hugo server` 即可
+- 验证：`hugo --quiet` 本地生产构建通过；无封面文章正常回落原样式
