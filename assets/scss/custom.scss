@@ -1,0 +1,134 @@
+/// ==========================================================================
+/// 张景林博客 — 自定义样式（2026-10-23）
+/// 主题会通过 _partials/base/head/css.html 自动装载本文件：
+///   {{- with resources.Get "scss/custom.scss" -}}
+/// ==========================================================================
+@use "core/mixins" as *;
+
+/// --------------------------------------------------------------------------
+/// 首页文章卡片：标题叠在封面图上
+/// 模板：layouts/summary.html 给有封面的卡片加了 .title-overlay
+/// 结构：<div class="featured-image-preview title-overlay">
+///         <a><img/></a>            ← 绝对定位铺满（主题样式）
+///         <h2 class="single-title"> ← 这里定位到左下角
+/// --------------------------------------------------------------------------
+.featured-image-preview.title-overlay {
+  // 底部深色渐变遮罩：保证白字在浅色图上也可读；位于图之上、文字之下
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .single-title {
+    position: absolute;
+    inset-inline-start: 1.5rem;
+    inset-inline-end: 1.5rem;
+    bottom: 1.25rem;
+    z-index: 2;
+    margin: 0;
+    line-height: 140%;
+    font-size: 1.75rem;
+
+    @include media('xs') {
+      font-size: 1.375rem;
+    }
+
+    a {
+      color: #fff;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+  }
+}
+
+/// --------------------------------------------------------------------------
+/// 文章详情页：标题叠在封面图上
+/// 模板：layouts/posts/single.html 把 .featured-image 提到最前面，
+///       并把标题块（.header）放进同一个容器里。
+/// 结构：<div class="featured-image title-overlay">
+///         <img/>
+///         <div class="header"><h1 class="single-title"/></div>
+///       </div>
+/// --------------------------------------------------------------------------
+.single > .featured-image.title-overlay {
+  position: relative;
+  overflow: hidden;
+
+  // 图片自己撑开高度，标题绝对定位压在它上面
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // 底部深色渐变，保证白字在浅色区域也可读
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    height: 55%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  > .header {
+    position: absolute;
+    inset-inline-start: 1.75rem;
+    inset-inline-end: 1.75rem;
+    bottom: 1.5rem;
+    z-index: 2;
+  }
+
+  .single-title {
+    padding: 0;
+    margin: 0;
+    font-size: 2rem;
+    line-height: 130%;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  }
+
+  .single-subtitle {
+    margin-block: 0.4rem 0;
+    color: rgba(255, 255, 255, 0.86);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  @include media('md') {
+    > .header {
+      inset-inline-start: 1.25rem;
+      inset-inline-end: 1.25rem;
+      bottom: 1.1rem;
+    }
+
+    .single-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  @include media('xs') {
+    > .header {
+      inset-inline-start: 1rem;
+      inset-inline-end: 1rem;
+      bottom: 0.85rem;
+    }
+
+    .single-title {
+      font-size: 1.2rem;
+      line-height: 132%;
+    }
+  }
+}

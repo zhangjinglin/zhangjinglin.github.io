@@ -34,6 +34,43 @@ git add -A && git commit -m "新文章：xxx" && git push origin main
 
 ⚠️ **`date` 不能写未来时间**，Hugo 默认不构建未来日期的文章。
 
+## 文章封面图（2026-10-23 做的，两条覆盖模板）
+
+FixIt 原生**不支持**“标题压在封面上”——它的 `featured_image` 只是正文里的一张插图。
+现在用两个项目级模板覆盖补上了，**日常只管写 front matter，不用碰代码**。
+
+### 给文章加封面 = 三步
+
+1. 图片放到 **`assets/images/`**（⚠️ 不是 `static/`，放错就没有 webp/srcset 优化）
+2. front matter 加两行（**路径不带前导斜杠**，`resources.Get` 才认）：
+
+```yaml
+featured_image: "images/xxx.jpg"
+featured_image_preview: "images/xxx.jpg"
+```
+
+3. 完事。效果：
+   - 详情页 → 封面打头、标题/副标题白色压在左下
+   - 首页卡片 → `fill 800x336` 裁切缩略图 + 标题压在图上（`home.posts.image_preview` 已开）
+   - 自动出 srcset：详情页 800/1200/1600/2000w，卡片 800/1200/1600w，**webp 格式**
+
+### 开关
+
+front matter 写 `cover_overlay: false` → 退回主题原版版式（图在上、标题在下）。
+不写就是默认的压图模式。详情页和首页卡片同时生效。
+
+### 涉及的三个文件（升级主题时要同步！）
+
+- `layouts/posts/single.html` — 覆盖主题同名文件，封面提到最前 + 标题入容器
+- `layouts/summary.html` — 覆盖首页卡片，标题塞进 `.featured-image-preview`
+- `assets/scss/custom.scss` — 浮层定位、渐变遮罩、字号断点
+
+主题里这两个模板改了结构 → 这边要重新复制再改一遍，否则新功能不显示。
+文件头都写了警告注释。
+
+⚠️ **主题默认 `params.image.optimise = false`**，不改全局配置；优化是在这两个模板的
+图片调用里用 `"Optimise" true` 单独开的。以后新增别的图片调用点，记得同样加。
+
 ## 本地预览
 
 ```bash

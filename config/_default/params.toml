@@ -1074,7 +1074,7 @@ enable = true
 # Special amount of posts in each home posts page.
 paginate = 6
 # Whether to show featured image preview in home page post list.
-image_preview = false
+image_preview = true
 
 # Social configuration about the author.
 # Custom social links like the following.
