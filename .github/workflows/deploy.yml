@@ -32,7 +32,10 @@ jobs:
       - name: Setup Dart Sass
         run: |
           npm install -g sass
+          echo "--- 诊断信息 ---"
+          hugo version
           sass --version
+          which sass
 
       - name: Build
         run: hugo --gc --minify --baseURL "https://zhangjinglin.github.io/"
