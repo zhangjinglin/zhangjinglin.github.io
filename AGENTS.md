@@ -134,16 +134,16 @@ git add -A && git commit -m "新文章：<标题>" && git push origin main
 
 ```bash
 cd ~/blog/zhangjinglin.github.io
-hugo server --bind 0.0.0.0 --port 1313 --baseURL http://192.168.1.151:1313/
-# 访问 http://192.168.1.151:1313/
+hugo server --bind 0.0.0.0 --port 1313 --baseURL http://192.168.1.99:1313/
+# 访问 http://192.168.1.99:1313/
 ```
 
 停止：`pkill -f "hugo server"`
 
 ## 依赖（本机）
 
-- `hugo`（0.168.0 extended）— `yay -S hugo`
-- `dart-sass` — `yay -S dart-sass`（**必需**，FixIt 的样式是 SCSS，没有它构建直接失败）
+- `hugo`（0.168.0 extended）— `.99` 上从 GitHub release 装（与 CI 同版本），Debian 源只有 0.131 且非 extended
+- `dart-sass` 1.106.1 — 官方二进制解压到 `/opt/dart-sass`，软链 `/usr/local/bin/sass`（**必需**，FixIt 的样式是 SCSS，没有它构建直接失败）
 - 主题在 `themes/FixIt`，是 **git submodule**，拉仓库要 `git submodule update --init --recursive`
 
 ## URL 规则（重要，别破坏）
@@ -176,7 +176,7 @@ url: "/2016/12/FMS01-brew/"
 
 ## 内容现状
 
-- **39 篇**文章：36 篇旧文（2016-02 ~ 2017-05）+ 《十年之后，重新出发》+《古法创新：当 AI 接管数学之后》+《当老师不再敢说「学这个将来有前途」》
+- **40 篇**文章：36 篇旧文（2016-02 ~ 2017-05）+ 《十年之后，重新出发》+《古法创新：当 AI 接管数学之后》+《当老师不再敢说「学这个将来有前途」》+《化解费米悖论：为什么宇宙如此安静》
 - 旧文从 Hexo 渲染的 HTML 反解为 Markdown，**547 个代码块逐字校验零差异**
 - 图片 26 张、PDF 8 个，原样迁移到 `static/`
 - **线性代数 8 篇（xxds01-08）**：正文只有一句话，内容全在 PDF 里。
@@ -211,6 +211,16 @@ url: "/2016/12/FMS01-brew/"
 - 搜索：FixIt 内置 Pagefind，已生成 `search.json`，可用
 
 ## 变更日志
+
+### 2026-11-07 — 发布《化解费米悖论：为什么宇宙如此安静》
+
+- 来源：用户提供的成稿（arXiv 1806.02404《Dissolving the Fermi Paradox》科普稿，五节 + 尾声）
+- 只做 Markdown 规整：删掉开头残留的 `Searched "1806.02404" arxiv` 与末尾分隔线，公式改 `$1/100$`、`$10^{-100}$`（站点 KaTeX 已开，服务端渲染验证通过）
+- 事实核对：arXiv 原文确认「银河系内只有我们」置信度 → 53%–99.6%、「可观测宇宙内」→ 39%–85%，与文中数字一致
+- **本次未加题图**（用户直接要求发布）；封面提示词已给出，出图后可补 `featured_image` 重推
+- 本机补装 **Hugo 0.168.0 extended + dart-sass 1.106.1**（与 CI 同版本，之前 `.99` 上没有 hugo）
+- 坑：`date` 写成 17:40 而当下 17:35 → 被当未来文章跳过、`public/2026/11/` 不生成；改成 17:30 后正常
+- 顺手更新：内容现状 39 → 40 篇
 
 ### 2026-10-23 — 发布《当老师不再敢说「学这个将来有前途」》
 
